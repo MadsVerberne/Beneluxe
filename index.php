@@ -8,6 +8,8 @@
     <title>Beneluxe</title>
 </head>
 <body>
-    
+    <header>
+        
+    </header>
 </body>
 </html>
