@@ -6,7 +6,8 @@
 
         <title>Laravel</title>
         <link rel="icon" type="image/x-icon" href="img/Favicon.png">
-        Test
+        
+        Nick heeft vandaag weer niks gedaan!
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
