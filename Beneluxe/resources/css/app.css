@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.BLABLA{
+    font-size: xx-large;
+    background-color: red;
+}
