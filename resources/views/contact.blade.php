@@ -22,6 +22,6 @@
         @endif
     </head>
     <body>
-        <header>Welcome Page</header>
+        <header>Contact Page</header>
     </body>
 </html>
