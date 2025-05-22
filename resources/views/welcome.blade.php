@@ -18,6 +18,6 @@
         @endif
     </head>
     <body>
-        <header>TestTestGitTest</header>
+        <header>Welcome Page</header>
     </body>
 </html>
