@@ -15,6 +15,10 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
+Route::get('/huizen', function () {
+    return view('huizen');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
