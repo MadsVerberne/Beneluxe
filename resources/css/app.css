@@ -153,5 +153,53 @@
 /* main */
 main {
     background-color: #f9f7f1;
-    height: 500px;
+    padding: 100px;
+}
+
+.populairehuizen {
+    display: flex;
+    flex-direction: column;
+}
+
+.populairehuizen h2 {
+    font-family: Playfair;
+    font-size: 56px;
+    font-weight: 500;
+}
+
+.populairehuizenrow {
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-between;
+}
+
+.populairehuizencol h3 {
+    font-size: 20px;
+    margin-top: 10px;
+    font-weight: 700;
+}
+
+.populairehuizencol span {
+    font-weight: 400;
+}
+
+.populairehuizencol h4 {
+    font-size: 20px;
+    margin-top: 10px;
+    font-weight: 700;
+}
+
+.ratingstars i {
+    color: #F5C144;
+}
+
+.ratingstars {
+    margin: 5px 0px;
+}
+
+.populairehuizen img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 20px;
 }
