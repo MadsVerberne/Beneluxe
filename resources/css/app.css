@@ -203,3 +203,18 @@ main {
     object-fit: cover;
     border-radius: 20px;
 }
+
+/* Footer */
+footer {
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f7f1;
+}
+
+.footerrow1 {
+    display: flex;
+}
+
+.footercol1 img {
+    width: 100px;
+}

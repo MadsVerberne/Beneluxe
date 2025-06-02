@@ -151,8 +151,35 @@
     </main>
 
     <footer>
-        <div class="footerrow">
-        
+        <div class="footerrow1">
+            <div class="footercol1">
+                <a href="/">
+                    <img src="/img/Favicon.png" alt="Beneluxe logo">
+                </a>
+                <p>Beneluxe helpt je bij het vinden en boeken<br> van vakantiehuizen in Nederland, België en Luxemburg.<br>Betrouwbaar, overzichtelijk en met zorg geselecteerd.</p>
+            </div>
+            <div class="footercol2">
+                <h2>Snelle links</h2>
+                <a href="/">Home</a>
+                <a href="/">Huizen</a>
+                <a href="/">Over ons</a>
+                <a href="/">Contact</a>
+            </div>
+            <div class="footercol3">
+                <h2>Informatie</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br>Minima corrupti culpa dolor alias in cum repellendus,<br> earum obcaecati fugiat animi eos tenetur ratione quis<br> similique quidem, tempora ad distinctio aperiam?</p>
+            </div>
+            <div class="footercol4">
+                <h2>Contact</h2>
+                <a href="mailto:91489@roc-teraa.nl">91489@roc-teraa.nl</a>
+                <a href="tel:0683610158">06 - 836 101 58</a>
+                <p>Keizerin Marialaan 2, Helmond</p>
+            </div>
+        </div>
+        <div class="footerrow2">
+            <hr>
+            <p>Beneluxe is dé specialist in vakantiehuisjes in Nederland, België en Luxemburg.</p>
+            <p>© 2024-2025 Beneluxe™ - Alle rechten voorbehouden.</p>
         </div>
     </footer>
 </body>
