@@ -23,5 +23,16 @@
     </head>
     <body>
         <header>Huizen Page</header>
+
+        @foreach ($huisjes as $huisje)
+        <h2>{{ $huisje->titel }}</h2>
+        <p>{{ $huisje->locatie }}</p>
+        <p>{{ $huisje->prijs_per_nacht }}</p>
+
+         @foreach($huisje->fotos as $foto)
+                    <img src="/img/{{$foto->foto_url }}" alt="Foto van {{ $huisje->titel }}" style="width: 200px; margin-right: 10px;">
+                @endforeach
+
+        @endforeach
     </body>
 </html>
