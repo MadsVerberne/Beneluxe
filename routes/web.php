@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Models\Huisje;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -16,7 +17,9 @@ Route::get('/contact', function () {
 });
 
 Route::get('/huizen', function () {
-    return view('huizen');
+    $huisjes = Huisje::with('fotos')->get();
+
+    return view('huizen', compact('huisjes'));
 });
 
 Route::get('/dashboard', function () {
