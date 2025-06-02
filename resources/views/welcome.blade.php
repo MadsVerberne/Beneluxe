@@ -149,6 +149,12 @@
             </div>
         </div>
     </main>
+
+    <footer>
+        <div class="footerrow">
+        
+        </div>
+    </footer>
 </body>
 
 </html>
