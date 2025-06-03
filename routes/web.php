@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HuisjeController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Huisje;
 use Illuminate\Support\Facades\Route;
@@ -16,11 +17,8 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-Route::get('/huizen', function () {
-    $huisjes = Huisje::with('fotos')->get();
-
-    return view('huizen', compact('huisjes'));
-});
+Route::get('/huisjes', [HuisjeController::class, 'index'])->name('huisjes.index');
+Route::get('/huisjes/{huisje}', [HuisjeController::class, 'show'])->name('huisjes.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -32,4 +30,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

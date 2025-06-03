@@ -66,7 +66,7 @@
 
         <nav class="nav">
             <ul>
-                <li><a href="/huizen">Huizen</a></li>
+                <li><a href="/huisjes">Huisjes</a></li>
                 <li><a href="/about">Over ons</a></li>
                 <li><a href="/contact">Contact</a></li>
             </ul>

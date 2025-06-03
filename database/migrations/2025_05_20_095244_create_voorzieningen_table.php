@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('voorzieningen', function (Blueprint $table) {
+        Schema::create('boekingen', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('gebruiker_id')->constrained('gebruikers')->onDelete('cascade');
             $table->foreignId('huisje_id')->constrained('huisjes')->onDelete('cascade');
             $table->date('van_datum');
             $table->date('tot_datum');
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('voorzieningen');
+        Schema::dropIfExists('boekingen');
     }
 };

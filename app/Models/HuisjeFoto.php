@@ -10,6 +10,6 @@ class HuisjeFoto extends Model
 
     public function huisje()
     {
-        return $this->belongsTo(Huisje::class, 'huisjes_id');
+        return $this->belongsTo(Huisje::class, 'huisje_id');
     }
 }

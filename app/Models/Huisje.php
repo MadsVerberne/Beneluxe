@@ -10,6 +10,11 @@ class Huisje extends Model
 
     public function fotos()
     {
-        return $this->hasMany(HuisjeFoto::class)->orderBy('volgorde');
+        return $this->hasMany(HuisjeFoto::class, 'huisje_id')->orderBy('volgorde');
+    }
+
+    public function eersteFotoUrl()
+    {
+        return $this->fotos->first()?->foto_url ?? 'placeholder.png';
     }
 }
