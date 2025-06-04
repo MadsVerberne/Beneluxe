@@ -8,13 +8,23 @@ class Huisje extends Model
 {
     protected $table = 'huisjes';
 
+    protected $fillable = [
+        'titel',
+        'beschrijving',
+        'locatie',
+        'aantal_bedden',
+        'aantal_badkamers',
+        'aantal_personen',
+        'prijs_per_nacht',
+    ];
+
     public function fotos()
     {
         return $this->hasMany(HuisjeFoto::class, 'huisje_id')->orderBy('volgorde');
     }
 
-    public function eersteFotoUrl()
+    public function voorzieningen()
     {
-        return $this->fotos->first()?->foto_url ?? 'placeholder.png';
+        return $this->belongsToMany(Voorzieningen::class, 'huisje_voorziening', 'huisje_id', 'voorziening_id');
     }
 }

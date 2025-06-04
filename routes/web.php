@@ -17,6 +17,9 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
+Route::get('/huisjes/create', [HuisjeController::class, 'create'])->name('huisjes.create');
+Route::post('/huisjes', [HuisjeController::class, 'store'])->name('huisjes.store');
+
 Route::get('/huisjes', [HuisjeController::class, 'index'])->name('huisjes.index');
 Route::get('/huisjes/{huisje}', [HuisjeController::class, 'show'])->name('huisjes.show');
 
