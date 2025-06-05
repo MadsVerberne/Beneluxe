@@ -11,8 +11,11 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <!-- Bootstrap Icons -->
+    <!-- Bootstrap icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <!-- Flag icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.3.2/css/flag-icons.min.css" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -66,7 +69,7 @@
 
         <nav class="nav">
             <ul>
-                <li><a href="/huisjes">Huisjes</a></li>
+                <li><a href="/huisjes">Huizen</a></li>
                 <li><a href="/about">Over ons</a></li>
                 <li><a href="/contact">Contact</a></li>
             </ul>
@@ -147,6 +150,59 @@
                     <h4>€220 · <span>5 nachten</span></h4>
                 </div>
             </div>
+            <div class="usp">
+                <h2>Waarom Beneluxe?</h2>
+                <div class="usp-tegels-container">
+                    <div class="usptegel">
+                    <img src="/img/ico/Eenvoudig Boeken.png" alt="">
+                    <div class="usptext">
+                        <h3>Eenvoudig boeken</h3>
+                        <p>Reserveer je vakantiehuisje in een paar klikken</p>
+                    </div>
+                    </div>
+                    <div class="usptegel">
+                    <img src="/img/ico/Direct Bevestigd.png" alt="">
+                    <div class="usptext">
+                        <h3>Direct bevestigd</h3>
+                        <p>De meeste boekingen worden meteen bevestigd</p>
+                    </div>
+                    </div>
+                    <div class="usptegel">
+                    <img src="/img/ico/Geen verborgen kosten.png" alt="">
+                    <div class="usptext">
+                        <h3>Geen verborgen kosten</h3>
+                        <p>Wat je ziet is wat je betaalt, zonder verrassingen achteraf</p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
+        </div>
+        <div class="bestemmingen">
+            <h2>Onze bestemmingen</h2>
+            <div class="bestemmingentegels">
+                <div class="bestemmingnl bestemming-tegel">
+                    <div class="overlay">
+                        <span class="fi fi-nl"></span>
+                        <h3>Nederland</h3>
+                    </div>
+                    <img src="/img/Nederland.jpg" alt="Nederland">
+                </div>
+                <div class="bestemmingbe bestemming-tegel">
+                    <div class="overlay">
+                        <span class="fi fi-be"></span>
+                        <h3>België</h3>
+                    </div>
+                    <img src="/img/België.jpg" alt="België">
+                </div>
+                <div class="bestemminglu bestemming-tegel">
+                    <div class="overlay">
+                        <span class="fi fi-lu"></span>
+                        <h3>Luxemburg</h3>
+                    </div>
+                    <img src="/img/Luxemburg.jpg" alt="Luxemburg">
+                </div>
+            </div>
         </div>
     </main>
 
@@ -156,30 +212,50 @@
                 <a href="/">
                     <img src="/img/Favicon.png" alt="Beneluxe logo">
                 </a>
-                <p>Beneluxe helpt je bij het vinden en boeken<br> van vakantiehuizen in Nederland, België en Luxemburg.<br>Betrouwbaar, overzichtelijk en met zorg geselecteerd.</p>
+                <p>Beneluxe helpt je bij het vinden en<br> boeken van vakantiehuizen in Nederland,<br> België en Luxemburg. Betrouwbaar,<br> overzichtelijk en met zorg geselecteerd.</p>
             </div>
             <div class="footercol2">
-                <h2>Snelle links</h2>
+                <h2>Snelle Links</h2>
                 <a href="/">Home</a>
-                <a href="/">Huizen</a>
-                <a href="/">Over ons</a>
-                <a href="/">Contact</a>
+                <a href="/huisjes">Huizen</a>
+                <a href="/about">Over ons</a>
+                <a href="/contact">Contact</a>
             </div>
             <div class="footercol3">
-                <h2>Informatie</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br>Minima corrupti culpa dolor alias in cum repellendus,<br> earum obcaecati fugiat animi eos tenetur ratione quis<br> similique quidem, tempora ad distinctio aperiam?</p>
+                <h2>Landen</h2>
+                <div class="icona">
+                    <span class="fi fi-nl"></span>
+                    <a href="/">Nederland</a>
+                </div>
+                <div class="icona">
+                    <span class="fi fi-be"></span>
+                    <a href="/">België</a>
+                </div>
+                <div class="icona">
+                    <span class="fi fi-lu"></span>
+                    <a href="/">Luxemburg</a>
+                </div>
             </div>
             <div class="footercol4">
                 <h2>Contact</h2>
-                <a href="mailto:91489@roc-teraa.nl">91489@roc-teraa.nl</a>
-                <a href="tel:0683610158">06 - 836 101 58</a>
-                <p>Keizerin Marialaan 2, Helmond</p>
+                <div class="icona">
+                    <i class="bi bi-envelope-fill"></i>
+                    <a href="mailto:91489@roc-teraa.nl">91489@roc-teraa.nl</a>
+                </div>
+                <div class="icona">
+                    <i class="bi bi-telephone-fill"></i>
+                    <a href="tel:0683610158">06 - 836 101 58</a>
+                </div>
+                <div class="icona">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <p>Keizerin Marialaan 2, <br>Helmond</p>
+                </div>
             </div>
         </div>
         <div class="footerrow2">
             <hr>
-            <p>Beneluxe is dé specialist in vakantiehuisjes in Nederland, België en Luxemburg.</p>
-            <p>© 2024-2025 Beneluxe™ - Alle rechten voorbehouden.</p>
+            <p><span>Beneluxe</span> is dé specialist in vakantiehuisjes in Nederland, België en Luxemburg.</p>
+            <p>© 2024-2025 <span>Beneluxe</span>™ - Alle rechten voorbehouden.</p>
         </div>
     </footer>
 </body>
