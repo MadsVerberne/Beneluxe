@@ -2,15 +2,14 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Laravel</title>
-    <link rel="icon" type="image/x-icon" href="img/Favicon.png">
-
+    <title>Huisje Bewerken</title>
+    <link rel="icon" type="image/x-icon" href="img/Favicon.png" />
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link rel="preconnect" href="https://fonts.bunny.net" />
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
 
     <!-- Styles / Scripts -->
@@ -1524,7 +1523,7 @@
 
 <body>
     <div class="container mx-auto max-w-xl py-6">
-        <h1 class="text-2xl font-bold mb-4">Nieuw Huisje Aanmaken</h1>
+        <h1 class="text-2xl font-bold mb-4">Huisje Bewerken</h1>
 
         @if ($errors->any())
             <div class="bg-red-100 text-red-700 p-4 rounded mb-4">
@@ -1537,46 +1536,49 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ route('huisjes.store') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('huisjes.update', $huisje) }}" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
 
             <div class="mb-4">
                 <label class="block font-medium">Titel</label>
-                <input type="text" name="titel" class="w-full border rounded p-2" value="{{ old('titel') }}">
+                <input type="text" name="titel" class="w-full border rounded p-2"
+                    value="{{ old('titel', $huisje->titel) }}" />
             </div>
 
             <div class="mb-4">
                 <label class="block font-medium">Beschrijving</label>
-                <textarea name="beschrijving" class="w-full border rounded p-2">{{ old('beschrijving') }}</textarea>
+                <textarea name="beschrijving" class="w-full border rounded p-2">{{ old('beschrijving', $huisje->beschrijving) }}</textarea>
             </div>
 
             <div class="mb-4">
                 <label class="block font-medium">Locatie</label>
-                <input type="text" name="locatie" class="w-full border rounded p-2" value="{{ old('locatie') }}">
+                <input type="text" name="locatie" class="w-full border rounded p-2"
+                    value="{{ old('locatie', $huisje->locatie) }}" />
             </div>
 
             <div class="mb-4">
                 <label class="block font-medium">Aantal bedden</label>
                 <input type="number" name="aantal_bedden" class="w-full border rounded p-2"
-                    value="{{ old('aantal_bedden') }}">
+                    value="{{ old('aantal_bedden', $huisje->aantal_bedden) }}" />
             </div>
 
             <div class="mb-4">
                 <label class="block font-medium">Aantal badkamers</label>
                 <input type="number" name="aantal_badkamers" class="w-full border rounded p-2"
-                    value="{{ old('aantal_badkamers') }}">
+                    value="{{ old('aantal_badkamers', $huisje->aantal_badkamers) }}" />
             </div>
 
             <div class="mb-4">
                 <label class="block font-medium">Aantal personen</label>
                 <input type="number" name="aantal_personen" class="w-full border rounded p-2"
-                    value="{{ old('aantal_personen') }}">
+                    value="{{ old('aantal_personen', $huisje->aantal_personen) }}" />
             </div>
 
             <div class="mb-4">
                 <label class="block font-medium">Prijs per nacht (€)</label>
                 <input type="number" step="0.01" name="prijs_per_nacht" class="w-full border rounded p-2"
-                    value="{{ old('prijs_per_nacht') }}">
+                    value="{{ old('prijs_per_nacht', $huisje->prijs_per_nacht) }}" />
             </div>
 
             <div class="mb-4">
@@ -1585,18 +1587,44 @@
                     @foreach ($voorzieningen as $voorziening)
                         <label class="flex items-center">
                             <input type="checkbox" name="voorzieningen[]" value="{{ $voorziening->id }}"
-                                {{ in_array($voorziening->id, old('voorzieningen', [])) ? 'checked' : '' }}>
+                                {{ in_array($voorziening->id, old('voorzieningen', $huisje->voorzieningen->pluck('id')->toArray())) ? 'checked' : '' }}>
                             <span class="ml-2">{{ $voorziening->naam }}</span>
                         </label>
                     @endforeach
                 </div>
             </div>
 
-            <!-- Foto upload en preview -->
+            @if ($huisje->fotos->count())
+                <div class="mb-6">
+                    <label class="block font-medium mb-2">Bestaande foto's (versleep om te sorteren, klik ✕ om te
+                        verwijderen)</label>
+                    <input type="hidden" name="bestaande_foto_volgorde" id="bestaande_foto_volgorde">
+                    <ul id="bestaande-foto-lijst" class="space-y-2">
+                        @foreach ($huisje->fotos->sortBy('volgorde') as $foto)
+                            <li data-id="{{ $foto->id }}"
+                                class="relative border rounded overflow-hidden group bg-white p-1">
+                                <img src="{{ asset('storage/' . $foto->foto_url) }}" alt="Foto {{ $loop->iteration }}"
+                                    class="w-full h-32 object-cover transition-opacity duration-300" />
+
+                                <button type="button"
+                                    class="absolute top-1 right-1 bg-red-600 text-white rounded px-2 py-1 text-sm opacity-75 hover:opacity-100"
+                                    onclick="toggleDelete(this)" title="Verwijderen">
+                                    ✕
+                                </button>
+
+                                <input type="checkbox" name="verwijder_fotos[]" value="{{ $foto->id }}"
+                                    class="hidden" />
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            <!-- Nieuwe foto upload en preview -->
             <div id="photo-upload-area" class="mb-6">
-                <label class="block font-medium mb-2">Foto's uploaden (sleep om te sorteren)</label>
-                <input type="file" name="fotos[]" multiple id="fotos-input" class="w-full border rounded p-2 mb-2">
-                <input type="hidden" name="foto_volgorde" id="foto_volgorde">
+                <label class="block font-medium mb-2">Nieuwe foto's uploaden (sleep om te sorteren)</label>
+                <input type="file" name="fotos[]" multiple id="fotos-input" class="w-full border rounded p-2 mb-2" />
+                <input type="hidden" name="foto_volgorde" id="foto_volgorde" />
                 <ul id="photo-preview-list" class="space-y-2"></ul>
             </div>
 
@@ -1605,6 +1633,7 @@
     </div>
 
     <script>
+        // 📸 =============== NIEUWE FOTO'S UPLOADEN ================
         const input = document.getElementById('fotos-input');
         const previewList = document.getElementById('photo-preview-list');
         const fotoVolgordeInput = document.getElementById('foto_volgorde');
@@ -1639,21 +1668,54 @@
                     li.appendChild(img);
                     li.appendChild(deleteBtn);
                     previewList.appendChild(li);
-                    updateOrder();
+                    updateNewOrder();
                 };
                 reader.readAsDataURL(file);
             });
         }
 
-        function updateOrder() {
+        function updateNewOrder() {
             const order = [...previewList.children].map(li => li.dataset.index);
             fotoVolgordeInput.value = order.join(',');
         }
 
         new Sortable(previewList, {
             animation: 150,
-            onEnd: updateOrder
+            onEnd: updateNewOrder
         });
+
+        // 🏠 =============== BESTAANDE FOTO'S SORTEREN ================
+        const bestaandeLijst = document.getElementById('bestaande-foto-lijst');
+        const bestaandeVolgordeInput = document.getElementById('bestaande_foto_volgorde');
+
+        if (bestaandeLijst) {
+            new Sortable(bestaandeLijst, {
+                animation: 150,
+                onEnd: updateBestaandeOrder
+            });
+
+            function updateBestaandeOrder() {
+                const ids = [...bestaandeLijst.children].map(li => li.dataset.id);
+                bestaandeVolgordeInput.value = ids.join(',');
+            }
+
+            updateBestaandeOrder(); // initieel invullen
+        }
+
+        // ❌ =============== VERWIJDEREN TOGGLE ====================
+        function toggleDelete(button) {
+            const li = button.closest('li');
+            const checkbox = li.querySelector('input[type="checkbox"]');
+            checkbox.checked = !checkbox.checked;
+
+            li.classList.toggle('opacity-50', checkbox.checked);
+            li.classList.toggle('bg-red-100', checkbox.checked);
+
+            // Optioneel: knopstijl aanpassen
+            button.classList.toggle('bg-red-600', !checkbox.checked);
+            button.classList.toggle('bg-gray-400', checkbox.checked);
+            button.textContent = checkbox.checked ? '✔' : '✕';
+        }
     </script>
 </body>
 

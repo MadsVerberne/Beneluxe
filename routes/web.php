@@ -19,7 +19,8 @@ Route::get('/contact', function () {
 
 Route::get('/huisjes/create', [HuisjeController::class, 'create'])->name('huisjes.create');
 Route::post('/huisjes', [HuisjeController::class, 'store'])->name('huisjes.store');
-
+Route::get('/huisjes/{huisje}/edit', [HuisjeController::class, 'edit'])->name('huisjes.edit');
+Route::put('/huisjes/{huisje}', [HuisjeController::class, 'update'])->name('huisjes.update');
 Route::get('/huisjes', [HuisjeController::class, 'index'])->name('huisjes.index');
 Route::get('/huisjes/{huisje}', [HuisjeController::class, 'show'])->name('huisjes.show');
 

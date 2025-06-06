@@ -1541,7 +1541,7 @@
     <div class="gallery">
         @foreach ($huisje->fotos as $foto)
             @if ($huisje->fotos->first())
-                <img src="{{ asset('img/' . $huisje->fotos->first()->foto_url) }}" alt="Foto"
+                <img src="{{  asset('storage/' . $foto->foto_url) }}" alt="Foto"
                     style="max-width: 200px; margin-right: 10px;">
             @endif
         @endforeach
