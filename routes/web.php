@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\HuisjeController;
+use App\Http\Controllers\accommodatieController;
 use App\Http\Controllers\ProfileController;
-use App\Models\Huisje;
+use App\Models\accommodatie;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -17,12 +17,12 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-Route::get('/huisjes/create', [HuisjeController::class, 'create'])->name('huisjes.create');
-Route::post('/huisjes', [HuisjeController::class, 'store'])->name('huisjes.store');
-Route::get('/huisjes/{huisje}/edit', [HuisjeController::class, 'edit'])->name('huisjes.edit');
-Route::put('/huisjes/{huisje}', [HuisjeController::class, 'update'])->name('huisjes.update');
-Route::get('/huisjes', [HuisjeController::class, 'index'])->name('huisjes.index');
-Route::get('/huisjes/{huisje}', [HuisjeController::class, 'show'])->name('huisjes.show');
+Route::get('/accommodaties/create', [accommodatieController::class, 'create'])->name('accommodaties.create');
+Route::post('/accommodaties', [accommodatieController::class, 'store'])->name('accommodaties.store');
+Route::get('/accommodaties/{accommodatie}/edit', [accommodatieController::class, 'edit'])->name('accommodaties.edit');
+Route::put('/accommodaties/{accommodatie}', [accommodatieController::class, 'update'])->name('accommodaties.update');
+Route::get('/accommodaties', [accommodatieController::class, 'index'])->name('accommodaties.index');
+Route::get('/accommodaties/{accommodatie}', [accommodatieController::class, 'show'])->name('accommodaties.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

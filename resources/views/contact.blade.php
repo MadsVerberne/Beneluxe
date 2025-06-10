@@ -64,6 +64,14 @@
     @extends('layouts.app')
 
     @section('content')
+    <section class="heroother">
+        <div class="heroother-content">
+            <h1>Contact</h1>
+        </div>
+    </section>
+    <div class="contact">
+        <h2>Contact</h2>
+    </div>
     @endsection
 </body>
 

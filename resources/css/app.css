@@ -154,7 +154,7 @@
 .populairehuizen {
     display: flex;
     flex-direction: column;
-    padding: 100px;
+    padding: 100px 100px 50px 100px;
     background-color: #f9f7f1;
 }
 
@@ -206,7 +206,7 @@ footer {
     display: flex;
     flex-direction: column;
     background-color: #f9f7f1;
-    padding: 100px 100px 30px;
+    padding: 70px 100px 30px;
 }
 
 footer h2 {
@@ -272,8 +272,8 @@ footer h2 {
 .bestemmingen {
     display: flex;
     flex-direction: column;
-    padding: 100px;
-    margin-top: 100px;
+    padding: 50px 100px 300px 100px;
+    background-color: #f9f7f1;
 }
 
 .bestemmingen h2 {
@@ -336,7 +336,7 @@ footer h2 {
   text-align: center;
   margin-top: 100px;
   padding: 2rem 1rem;
-  margin-bottom: -190px;
+  margin-top: -170px;
 }
 
 .usp h2 {
@@ -394,3 +394,116 @@ footer h2 {
 }
 
 /* CTA */
+.calltoactionhome {
+    position: relative;
+    background-image: url('/public/img/CTA.jpg'); /* vervang met jouw afbeelding */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 140px 100px 140px 100px;
+    padding: 300px 100px 100px 100px;
+}
+
+.cta-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55); /* donkere tint */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+}
+
+.cta-content {
+    z-index: 2;
+    max-width: 800px;
+}
+
+.cta-content h2 {
+    font-size: 42px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.cta-content p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 12px 28px;
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: 500;
+    margin-top: 30px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    transition: 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #F5C144;
+    text-decoration: none;
+    color: white;
+}
+
+/* About */
+.heroother {
+    position: relative;
+    height: 60vh;
+    background: url("/public/img/Hero.jpeg") no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.heroother::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.heroother-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.heroother h1 {
+    font-size: 78px;
+    font-weight: 500;
+    font-family: playfair;
+    line-height: 1.1;
+    margin-bottom: 60px;
+    margin-top: 150px;
+    color: #f9f7f1;
+}
+
+.about {
+    padding: 100px;
+}
+
+/* Contact */
+.contact {
+    padding: 100px;
+}
+
+/* Accommodaties */
+.accommodaties {
+    padding: 100px;
+}

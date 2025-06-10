@@ -9,12 +9,12 @@
         <div class="footercol2">
             <h2>Snelle Links</h2>
             <a href="/">Home</a>
-            <a href="/huisjes">Huizen</a>
+            <a href="/accommodaties">Accommodaties</a>
             <a href="/about">Over ons</a>
             <a href="/contact">Contact</a>
         </div>
         <div class="footercol3">
-            <h2>Landen</h2>
+            <h2>Bestemmingen</h2>
             <div class="icona">
                 <span class="fi fi-nl"></span>
                 <a href="/">Nederland</a>

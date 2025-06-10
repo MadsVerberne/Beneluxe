@@ -10,6 +10,6 @@ class Voorzieningen extends Model
 
     public function huisjes()
     {
-        return $this->belongsToMany(Huisje::class);
+        return $this->belongsToMany(accommodatie::class);
     }
 }
