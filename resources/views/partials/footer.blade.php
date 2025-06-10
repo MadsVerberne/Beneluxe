@@ -32,7 +32,7 @@
             <h2>Contact</h2>
             <div class="icona">
                 <i class="bi bi-envelope-fill"></i>
-                <a href="mailto:91489@roc-teraa.nl">91489@roc-teraa.nl</a>
+                <a href="mailto:91489@roc-teraa.nl">info@beneluxe.nl</a>
             </div>
             <div class="icona">
                 <i class="bi bi-telephone-fill"></i>

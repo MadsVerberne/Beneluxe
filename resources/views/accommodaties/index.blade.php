@@ -35,7 +35,15 @@
         </div>
     </section>
     <div class="accommodaties">
-        <h2>Accommodaties</h2>
+        <div class="accommodatiesnederland">
+            <h2>Nederland</h2>
+        </div>
+        <div class="accommodatiesbelgie">
+            <h2>België</h2>
+        </div>
+        <div class="accommodatiesluxemburg">
+            <h2>Luxemburg</h2>
+        </div>
     </div>
     @endsection
 </body>
