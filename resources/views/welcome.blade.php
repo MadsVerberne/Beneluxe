@@ -166,7 +166,7 @@
                 <img src="/img/ico/Eenvoudig Boeken.png" alt="">
                 <div class="usptext">
                     <h3>Eenvoudig boeken</h3>
-                    <p>Reserveer je vakantiehuisje in een paar klikken</p>
+                    <p>Reserveer je vakantieaccommodatie in een paar klikken</p>
                 </div>
             </div>
             <div class="usptegel">

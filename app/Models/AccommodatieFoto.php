@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class HuisjeFoto extends Model
+class AccommodatieFoto extends Model
 {
-    protected $table = 'huisjes_foto';
+    protected $table = 'accommodaties_foto';
 
     protected $fillable = [
         'foto_url',
@@ -16,6 +16,6 @@ class HuisjeFoto extends Model
 
     public function accommodatie()
     {
-        return $this->belongsTo(accommodatie::class, 'huisje_id');
+        return $this->belongsTo(accommodatie::class, 'accommodatie_id');
     }
 }

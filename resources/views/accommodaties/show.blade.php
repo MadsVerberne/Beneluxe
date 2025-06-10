@@ -1522,32 +1522,32 @@
 </head>
 
 <body>
-    <h1>{{ $huisje->titel }}</h1>
-    <p><strong>Locatie:</strong> {{ $huisje->locatie }}</p>
-    <p><strong>Prijs per nacht:</strong> €{{ $huisje->prijs_per_nacht }}</p>
-    <p>{{ $huisje->beschrijving }}</p>
-    @if ($huisje->voorzieningen->count())
+    <h1>{{ $accommodatie->titel }}</h1>
+    <p><strong>Locatie:</strong> {{ $accommodatie->locatie }}</p>
+    <p><strong>Prijs per nacht:</strong> €{{ $accommodatie->prijs_per_nacht }}</p>
+    <p>{{ $accommodatie->beschrijving }}</p>
+    @if ($accommodatie->voorzieningen->count())
         <h3>Voorzieningen:</h3>
         <ul>
-            @foreach ($huisje->voorzieningen as $voorziening)
+            @foreach ($accommodatie->voorzieningen as $voorziening)
                 <li>{{ $voorziening->naam }}</li>
             @endforeach
         </ul>
     @else
-        <p><em>Geen voorzieningen opgegeven voor dit huisje.</em></p>
+        <p><em>Geen voorzieningen opgegeven voor deze accommodatie.</em></p>
     @endif
 
 
     <div class="gallery">
-        @foreach ($huisje->fotos as $foto)
-            @if ($huisje->fotos->first())
+        @foreach ($accommodatie->fotos as $foto)
+            @if ($accommodatie->fotos->first())
                 <img src="{{  asset('storage/' . $foto->foto_url) }}" alt="Foto"
                     style="max-width: 200px; margin-right: 10px;">
             @endif
         @endforeach
     </div>
 
-    <a href="{{ route('huisjes.index') }}">← Terug naar overzicht</a>
+    <a href="{{ route('accommodaties.index') }}">← Terug naar overzicht</a>
 </body>
 
 

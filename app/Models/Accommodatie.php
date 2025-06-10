@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class accommodatie extends Model
 {
-    protected $table = 'huisjes';
+    protected $table = 'accommodaties';
 
     protected $fillable = [
         'titel',
@@ -20,11 +20,11 @@ class accommodatie extends Model
 
     public function fotos()
     {
-        return $this->hasMany(HuisjeFoto::class, 'huisje_id')->orderBy('volgorde');
+        return $this->hasMany(AccommodatieFoto::class, 'accommodatie_id')->orderBy('volgorde');
     }
 
     public function voorzieningen()
     {
-        return $this->belongsToMany(Voorzieningen::class, 'huisje_voorziening', 'huisje_id', 'voorziening_id');
+        return $this->belongsToMany(Voorzieningen::class, 'accommodaties_voorziening', 'accommodatie_id', 'voorziening_id');
     }
 }

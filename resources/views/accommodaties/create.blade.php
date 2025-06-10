@@ -1524,7 +1524,7 @@
 
 <body>
     <div class="container mx-auto max-w-xl py-6">
-        <h1 class="text-2xl font-bold mb-4">Nieuw Huisje Aanmaken</h1>
+        <h1 class="text-2xl font-bold mb-4">Nieuw accommodatie Aanmaken</h1>
 
         @if ($errors->any())
             <div class="bg-red-100 text-red-700 p-4 rounded mb-4">
@@ -1537,7 +1537,7 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ route('huisjes.store') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('accommodaties.store') }}" enctype="multipart/form-data">
             @csrf
 
             <div class="mb-4">

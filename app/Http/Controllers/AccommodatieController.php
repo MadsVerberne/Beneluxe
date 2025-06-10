@@ -7,7 +7,7 @@ use App\Models\Voorzieningen;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
-class HuisjeController extends Controller
+class AccommodatieController extends Controller
 {
     // Overzicht van alle accommodaties
     public function index()
@@ -104,7 +104,7 @@ class HuisjeController extends Controller
             'voorzieningen.*' => 'exists:voorzieningen,id',
             'fotos.*' => 'nullable|image|max:5120', // max 5MB per foto
             'verwijder_fotos' => 'array',
-            'verwijder_fotos.*' => 'integer|exists:huisjes_foto,id',
+            'verwijder_fotos.*' => 'integer|exists:accommodaties_foto,id',
             'foto_volgorde' => 'nullable|string', // optioneel als je wilt aanpassen
         ]);
 

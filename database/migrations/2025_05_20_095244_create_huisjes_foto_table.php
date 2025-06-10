@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('huisjes_foto', function (Blueprint $table) {
+        Schema::create('accommodaties_foto', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('huisje_id')->constrained('huisjes')->onDelete('cascade');
+            $table->foreignId('accommodatie_id')->constrained('accommodaties')->onDelete('cascade');
             $table->string('foto_url');
             $table->integer('volgorde')->default(0);
             $table->timestamps();
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('huisjes_foto');
+        Schema::dropIfExists('accommodaties_foto');
     }
 };

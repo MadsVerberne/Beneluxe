@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('beschikbaarheid_blokkades', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('huisje_id')->constrained('huisjes')->onDelete('cascade');
+            $table->foreignId('accommodatie_id')->constrained('accommodaties')->onDelete('cascade');
             $table->date('van_datum');
             $table->date('tot_datum');
             $table->string('reden')->nullable();

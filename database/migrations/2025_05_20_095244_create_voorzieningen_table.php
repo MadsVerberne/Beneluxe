@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('boekingen', function (Blueprint $table) {
             $table->id();
             $table->foreignId('gebruiker_id')->constrained('gebruikers')->onDelete('cascade');
-            $table->foreignId('huisje_id')->constrained('huisjes')->onDelete('cascade');
+            $table->foreignId('accommodatie_id')->constrained('accommodaties')->onDelete('cascade');
             $table->date('van_datum');
             $table->date('tot_datum');
             $table->string('status'); // bijv. bevestigd, geannuleerd, etc.

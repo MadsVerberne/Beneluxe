@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Huisje Bewerken</title>
+    <title>accommodatie Bewerken</title>
     <link rel="icon" type="image/x-icon" href="img/Favicon.png" />
 
     <!-- Fonts -->
@@ -1523,7 +1523,7 @@
 
 <body>
     <div class="container mx-auto max-w-xl py-6">
-        <h1 class="text-2xl font-bold mb-4">Huisje Bewerken</h1>
+        <h1 class="text-2xl font-bold mb-4">accommodatie Bewerken</h1>
 
         @if ($errors->any())
             <div class="bg-red-100 text-red-700 p-4 rounded mb-4">
@@ -1536,49 +1536,49 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ route('huisjes.update', $huisje) }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('accommodaties.update', $accommodatie) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
             <div class="mb-4">
                 <label class="block font-medium">Titel</label>
                 <input type="text" name="titel" class="w-full border rounded p-2"
-                    value="{{ old('titel', $huisje->titel) }}" />
+                    value="{{ old('titel', $accommodatie->titel) }}" />
             </div>
 
             <div class="mb-4">
                 <label class="block font-medium">Beschrijving</label>
-                <textarea name="beschrijving" class="w-full border rounded p-2">{{ old('beschrijving', $huisje->beschrijving) }}</textarea>
+                <textarea name="beschrijving" class="w-full border rounded p-2">{{ old('beschrijving', $accommodatie->beschrijving) }}</textarea>
             </div>
 
             <div class="mb-4">
                 <label class="block font-medium">Locatie</label>
                 <input type="text" name="locatie" class="w-full border rounded p-2"
-                    value="{{ old('locatie', $huisje->locatie) }}" />
+                    value="{{ old('locatie', $accommodatie->locatie) }}" />
             </div>
 
             <div class="mb-4">
                 <label class="block font-medium">Aantal bedden</label>
                 <input type="number" name="aantal_bedden" class="w-full border rounded p-2"
-                    value="{{ old('aantal_bedden', $huisje->aantal_bedden) }}" />
+                    value="{{ old('aantal_bedden', $accommodatie->aantal_bedden) }}" />
             </div>
 
             <div class="mb-4">
                 <label class="block font-medium">Aantal badkamers</label>
                 <input type="number" name="aantal_badkamers" class="w-full border rounded p-2"
-                    value="{{ old('aantal_badkamers', $huisje->aantal_badkamers) }}" />
+                    value="{{ old('aantal_badkamers', $accommodatie->aantal_badkamers) }}" />
             </div>
 
             <div class="mb-4">
                 <label class="block font-medium">Aantal personen</label>
                 <input type="number" name="aantal_personen" class="w-full border rounded p-2"
-                    value="{{ old('aantal_personen', $huisje->aantal_personen) }}" />
+                    value="{{ old('aantal_personen', $accommodatie->aantal_personen) }}" />
             </div>
 
             <div class="mb-4">
                 <label class="block font-medium">Prijs per nacht (€)</label>
                 <input type="number" step="0.01" name="prijs_per_nacht" class="w-full border rounded p-2"
-                    value="{{ old('prijs_per_nacht', $huisje->prijs_per_nacht) }}" />
+                    value="{{ old('prijs_per_nacht', $accommodatie->prijs_per_nacht) }}" />
             </div>
 
             <div class="mb-4">
@@ -1587,20 +1587,20 @@
                     @foreach ($voorzieningen as $voorziening)
                         <label class="flex items-center">
                             <input type="checkbox" name="voorzieningen[]" value="{{ $voorziening->id }}"
-                                {{ in_array($voorziening->id, old('voorzieningen', $huisje->voorzieningen->pluck('id')->toArray())) ? 'checked' : '' }}>
+                                {{ in_array($voorziening->id, old('voorzieningen', $accommodatie->voorzieningen->pluck('id')->toArray())) ? 'checked' : '' }}>
                             <span class="ml-2">{{ $voorziening->naam }}</span>
                         </label>
                     @endforeach
                 </div>
             </div>
 
-            @if ($huisje->fotos->count())
+            @if ($accommodatie->fotos->count())
                 <div class="mb-6">
                     <label class="block font-medium mb-2">Bestaande foto's (versleep om te sorteren, klik ✕ om te
                         verwijderen)</label>
                     <input type="hidden" name="bestaande_foto_volgorde" id="bestaande_foto_volgorde">
                     <ul id="bestaande-foto-lijst" class="space-y-2">
-                        @foreach ($huisje->fotos->sortBy('volgorde') as $foto)
+                        @foreach ($accommodatie->fotos->sortBy('volgorde') as $foto)
                             <li data-id="{{ $foto->id }}"
                                 class="relative border rounded overflow-hidden group bg-white p-1">
                                 <img src="{{ asset('storage/' . $foto->foto_url) }}" alt="Foto {{ $loop->iteration }}"
