@@ -72,7 +72,7 @@
                 <input id="bestemming-autocomplete" class="search-field" placeholder="Bestemming"></input>
                 <input class="search-field" placeholder="Datum"></input>
                 <input class="search-field" placeholder="Gasten"></input>
-                <button type="submit">Zoeken</button>
+                <a href="/results" type="submit">Zoeken</a>
             </form>
         </div>
     </section>
@@ -141,21 +141,27 @@
                     <span class="fi fi-nl"></span>
                     <h3>Nederland</h3>
                 </div>
-                <img src="/img/Nederland.jpg" alt="Nederland">
+                <a href="/accommodaties#nederland">
+                    <img src="/img/Nederland.jpg" alt="Nederland">
+                </a>
             </div>
             <div class="bestemmingbe bestemming-tegel">
                 <div class="overlay">
                     <span class="fi fi-be"></span>
                     <h3>België</h3>
                 </div>
-                <img src="/img/België.jpg" alt="België">
+                <a href="/accommodaties#belgie">
+                    <img src="/img/België.jpg" alt="België">
+                </a>
             </div>
             <div class="bestemminglu bestemming-tegel">
                 <div class="overlay">
                     <span class="fi fi-lu"></span>
                     <h3>Luxemburg</h3>
                 </div>
-                <img src="/img/Luxemburg.jpg" alt="Luxemburg">
+                <a href="/accommodaties#luxemburg">
+                    <img src="/img/Luxemburg.jpg" alt="Luxemburg">
+                </a>
             </div>
         </div>
     </div>

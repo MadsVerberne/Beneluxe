@@ -17,6 +17,10 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
+Route::get('/results', function () {
+    return view('results');
+});
+
 Route::get('/accommodaties/create', [accommodatieController::class, 'create'])->name('accommodaties.create');
 Route::post('/accommodaties', [accommodatieController::class, 'store'])->name('accommodaties.store');
 Route::get('/accommodaties/{accommodatie}/edit', [accommodatieController::class, 'edit'])->name('accommodaties.edit');

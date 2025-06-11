@@ -36,8 +36,11 @@
     </section>
     <div class="accommodaties">
         <!-- NEDERLAND -->
-        <div class="accommodatiesnederland">
-            <h2>Nederland</h2>
+        <div class="accommodatiesnederland" id="nederland">
+            <div class="flagandnametop">
+                <span class="fi fi-nl"></span>
+                <h2>Nederland</h2>
+            </div>
             <div class="accommodatierow">
                 <div class="accommodatiecol">
                     <img src="/img/Populairehuizen1.jpg" alt="Accommodatie 1">
@@ -175,8 +178,11 @@
         </div>
 
         <!-- BELGIË -->
-        <div class="accommodatiesbelgie">
-            <h2>België</h2>
+        <div class="accommodatiesbelgie" id="belgie">
+            <div class="flagandname">
+                <span class="fi fi-be"></span>
+                <h2>België</h2>
+            </div>
             <div class="accommodatierow">
                 <div class="accommodatiecol">
                     <img src="/img/Populairehuizen2.png" alt="Accommodatie 11">
@@ -314,8 +320,11 @@
         </div>
 
         <!-- LUXEMBURG -->
-        <div class="accommodatiesluxemburg">
-            <h2>Luxemburg</h2>
+        <div class="accommodatiesluxemburg" id="luxemburg">
+            <div class="flagandname">
+                <span class="fi fi-lu"></span>
+                <h2>Luxemburg</h2>
+            </div>
             <div class="accommodatierow">
                 <div class="accommodatiecol">
                     <img src="/img/Populairehuizen3.png" alt="Accommodatie 21">
