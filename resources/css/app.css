@@ -112,16 +112,18 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     width: 700px;
     margin: 0 auto;
+    border: none;
 }
 
 .search-field {
     flex: 1;
     padding: 20px 24px;
     font-size: 1rem;
-    color: #555555f3;
+    color: #000000;
     font-weight: 400;
     width: 175px;
-    border-right: 1px solid #dcdcdc;
+    border-right: 1px solid;
+    border-color: #aaaaaa31;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -393,7 +395,7 @@ footer h2 {
   text-align: left;
 }
 
-/* CTA */
+/* CTA home */
 .calltoactionhome {
     position: relative;
     background-image: url('/public/img/CTA.jpg'); /* vervang met jouw afbeelding */
@@ -508,14 +510,218 @@ footer h2 {
     padding: 100px;
 }
 
-.accommodatiesnederland {
-
+.accommodatiesnederland h2 {
+    font-family: Playfair;
+    font-size: 48px;
+    font-weight: 500;
 }
 
-.accommodatiesbelgie {
-
+.accommodatiesbelgie h2 {
+    font-family: Playfair;
+    font-size: 48px;
+    font-weight: 500;
+    margin-top: 70px;
 }
 
-.accommodatiesluxemburg {
-    
+.accommodatiesluxemburg h2 {
+    font-family: Playfair;
+    font-size: 48px;
+    font-weight: 500;
+    margin-top: 70px;
+}
+
+.accommodatierow {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.accommodatiecol {
+    width: 18%;
+    margin-bottom: 40px;
+}
+
+.accommodatiecol img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.accommodatiecol h3 {
+    font-size: 18px;
+    margin-top: 8px;
+    font-weight: 700;
+}
+
+.accommodatiecol span {
+    font-weight: 400;
+}
+
+.accommodatiecol h4 {
+    font-size: 18px;
+    margin-top: 6px;
+    font-weight: 700;
+}
+
+.ratingstars i {
+    color: #F5C144;
+}
+
+.ratingstars {
+    margin: 5px 0px;
+}
+
+/* CTA accommodaties */
+.calltoactionaccommodaties {
+    position: relative;
+    background-image: url('/public/img/CTA.jpg'); /* vervang met jouw afbeelding */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 0px 100px 140px 100px;
+    padding: 300px 100px 100px 100px;
+}
+
+/* LOGIN/REGISTER */
+  .logintile {
+    width: 450px;
+    height: 500px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.650);
+    border-radius: 10px;
+  }
+  
+  .loginandclose {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .loginandclose h2 {
+    font-size: 30px;
+    font-family: playfair;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+
+  .loginandclose i {
+    font-size: 40px;
+    margin-top: 7px;
+    cursor: pointer;
+  }
+
+  .logintile form {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 10px 0px 10px;
+  }
+
+  .logintile form button {
+    background-color: #F5C144;
+    border: none;
+    color: white;
+    font-size: 20px;
+    height: 55px;
+    border-radius: 5px;
+    margin: 20px 0px 10px 0px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.3s ease;
+  }
+
+  .logintile form button:hover {
+    background-color: #d9a319;
+  }
+
+  .logintile p {
+    color: #f5c144;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  .logintile form input {
+    height: 45px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px solid black;
+  }
+
+  .logintile form label {
+    font-weight: 600;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+
+  .registerareabox {
+    background-color: #EAEAEA;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 25px 10px 10px 10px;
+    border-radius: 10px;
+  }
+
+  .registerareabox h3 {
+    font-weight: 900;
+    color: #f5c144;
+  }
+
+  .registerareabox p {
+    margin-top: 10px;
+    color: black;
+    text-decoration: none;
+  }
+
+  .registerareabox #h3register {
+    margin-top: 20px;
+    color: #000000;
+    font-weight: 900;
+  }
+
+  .registerareabox a {
+    color: #CCA403;
+    text-decoration: none;
+    justify-content: center;
+    font-size: 16px;
+    margin: 20px 0px 20px 0px;
+  }
+
+  /* Backdrop overlay */
+  #overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    display: none; /* Hidden by default */
+  }
+
+/* Login Tile */
+.logintile {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  background-color: white;
+}
+
+.logintile .loginandclose {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logintile .loginandclose i {
+  cursor: pointer;
 }

@@ -14,6 +14,6 @@
     </nav>
 
     <div class="header-button">
-        <button>Inloggen</button>
+        <button id="openlogin">Inloggen</button>
     </div>
 </header>
