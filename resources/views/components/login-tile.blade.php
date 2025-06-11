@@ -35,20 +35,4 @@
     </div>
 </div>
 
-<div id="overlay" style="display: none;"></div>
-
-
-<script>
-    window.onload = function() {
-        @if ($errors->any() || session('error'))
-            @if (request()->routeIs('register'))
-                document.getElementById('registertile').style.display = 'block';
-                document.getElementById('overlay').style.display = 'block';
-            @elseif (request()->routeIs('login'))
-                document.getElementById('logintile').style.display = 'block';
-                document.getElementById('overlay').style.display = 'block';
-            @endif
-        @endif
-    }
-</script>
 

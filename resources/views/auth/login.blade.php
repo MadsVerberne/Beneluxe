@@ -1,47 +1,111 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+    <title>Beneluxe</title>
+    <link rel="icon" type="image/x-icon" href="img/Favicon.png">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <!-- Flag icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.3.2/css/flag-icons.min.css" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
+
+    <!-- Styles / Scripts -->
+    @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @endif
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3QTFxyf8eFM1-O3P3ELImq3ILRx2RTCg&libraries=places">
+    </script>
+    <script>
+        function initAutocomplete() {
+            const input = document.getElementById("bestemming-autocomplete");
+            const autocomplete = new google.maps.places.Autocomplete(input);
+
+            autocomplete.addListener("place_changed", function() {
+                const place = autocomplete.getPlace();
+
+                if (!place.geometry) {
+                    console.log("Geen details gevonden voor de locatie.");
+                    return;
+                }
+
+                const lat = place.geometry.location.lat();
+                const lng = place.geometry.location.lng();
+                const address = place.formatted_address;
+                const placeId = place.place_id;
+                const types = place.types.join(", ");
+
+                // Print naar console
+                console.log("Adres:", address);
+                console.log("Latitude:", lat);
+                console.log("Longitude:", lng);
+                console.log("Place ID:", placeId);
+                console.log("Types:", types);
+            });
+        }
+
+        window.onload = initAutocomplete;
+    </script>
+</head>
+
+<body>
+
+    @extends('layouts.app')
+
+    @section('content')
+        <section class="heroother">
+            <div class="heroother-content">
+                <h1>Login</h1>
+            </div>
+        </section>
+        <div class="about">
+            <div class="logintile" id="logintile">
+
+
+                {{-- Foutmeldingen tonen --}}
+                @if ($errors->any())
+                    <div class="error-message">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                <form action="{{ route('login') }}" method="POST">
+                    @csrf
+                    {{-- Email Address --}}
+                    <label for="email">E-mail *</label>
+                    <input type="email" id="email" name="email" required>
+                    {{-- Password --}}
+                    <label for="password">Wachtwoord *</label>
+                    <input type="password" id="password" name="password" required>
+                    <p>Wachtwoord vergeten?</p>
+                    <button type="submit">LOGIN</button>
+                </form>
+                <div class="registerareabox">
+                    <h3 id="h3register">NIEUW BIJ BENELUXE?</h3>
+                    <p>Maak nu een account aan en verhuur of boek direct!</p>
+                    <a href="{{route('register')}}">
+                        <h3 id="showregister">REGISTREREN</h3>
+                    </a>
+                </div>
+            </div>
         </div>
+    @endsection
+</body>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+</html>

@@ -21,10 +21,15 @@ Route::get('/results', function () {
     return view('results');
 });
 
-Route::get('/accommodaties/create', [accommodatieController::class, 'create'])->name('accommodaties.create');
-Route::post('/accommodaties', [accommodatieController::class, 'store'])->name('accommodaties.store');
-Route::get('/accommodaties/{accommodatie}/edit', [accommodatieController::class, 'edit'])->name('accommodaties.edit');
-Route::put('/accommodaties/{accommodatie}', [accommodatieController::class, 'update'])->name('accommodaties.update');
+// Routes met auth middleware
+Route::middleware('auth')->group(function () {
+    Route::get('/accommodaties/create', [accommodatieController::class, 'create'])->name('accommodaties.create');
+    Route::post('/accommodaties', [accommodatieController::class, 'store'])->name('accommodaties.store');
+    Route::get('/accommodaties/{accommodatie}/edit', [accommodatieController::class, 'edit'])->name('accommodaties.edit');
+    Route::put('/accommodaties/{accommodatie}', [accommodatieController::class, 'update'])->name('accommodaties.update');
+});
+
+// Publieke accommodatie-routes
 Route::get('/accommodaties', [accommodatieController::class, 'index'])->name('accommodaties.index');
 Route::get('/accommodaties/{accommodatie}', [accommodatieController::class, 'show'])->name('accommodaties.show');
 

@@ -19,7 +19,10 @@
                 <i class="bi bi-person-circle"></i>
             </a>
         @else
-            <button id="openlogin">Inloggen</button>
+            <a href="{{route('login')}}">
+                {{-- <button id="openlogin">Inloggen</button> --}}
+                <button id="">Inloggen</button>
+            </a>
         @endauth
     </div>
 

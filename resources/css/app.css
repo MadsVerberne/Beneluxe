@@ -623,7 +623,7 @@ footer h2 {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.650);
     border-radius: 10px;
   }
-  
+
   .loginandclose {
     display: flex;
     justify-content: space-between;
@@ -734,16 +734,14 @@ footer h2 {
     display: none; /* Hidden by default */
   }
 
-/* Login Tile */
+/* Login Tile
 .logintile {
-  display: none;
-  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 9999;
   background-color: white;
-}
+} */
 
 .logintile .loginandclose {
   display: flex;

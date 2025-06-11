@@ -1,52 +1,114 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
-        </div>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+    <title>Beneluxe</title>
+    <link rel="icon" type="image/x-icon" href="img/Favicon.png">
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
+    <!-- Bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+    <!-- Flag icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.3.2/css/flag-icons.min.css" />
 
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
 
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
+    <!-- Styles / Scripts -->
+    @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @endif
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3QTFxyf8eFM1-O3P3ELImq3ILRx2RTCg&libraries=places">
+    </script>
+    <script>
+        function initAutocomplete() {
+            const input = document.getElementById("bestemming-autocomplete");
+            const autocomplete = new google.maps.places.Autocomplete(input);
 
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
+            autocomplete.addListener("place_changed", function() {
+                const place = autocomplete.getPlace();
 
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
+                if (!place.geometry) {
+                    console.log("Geen details gevonden voor de locatie.");
+                    return;
+                }
 
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+                const lat = place.geometry.location.lat();
+                const lng = place.geometry.location.lng();
+                const address = place.formatted_address;
+                const placeId = place.place_id;
+                const types = place.types.join(", ");
+
+                // Print naar console
+                console.log("Adres:", address);
+                console.log("Latitude:", lat);
+                console.log("Longitude:", lng);
+                console.log("Place ID:", placeId);
+                console.log("Types:", types);
+            });
+        }
+
+        window.onload = initAutocomplete;
+    </script>
+</head>
+
+<body>
+
+    @extends('layouts.app')
+
+    @section('content')
+        <section class="heroother">
+            <div class="heroother-content">
+                <h1>Registreren</h1>
+            </div>
+        </section>
+        <div class="about">
+            <div class="logintile" id="registertile">
+
+                {{-- Foutmeldingen tonen --}}
+                @if ($errors->any() && request()->routeIs('register'))
+                    <div class="error-message" style="color: red; margin-bottom: 1rem;">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                <form action="{{ route('register') }}" method="POST">
+                    @csrf
+                    {{-- Name --}}
+                    <label for="name">Name *</label>
+                    <input type="text" id="name" name="name" required>
+                    {{-- Email --}}
+                    <label for="email">E-mail *</label>
+                    <input type="email" id="email" name="email" required>
+                    {{-- Password --}}
+                    <label for="password">Wachtwoord *</label>
+                    <input type="password" id="password" name="password" required>
+                    {{-- Confirm Password --}}
+                    <label for="password_confirmation">Wachtwoord Bevestigen *</label>
+                    <input type="password" id="password_confirmation" name="password_confirmation" required>
+                    <button type="submit">REGISTREREN</button>
+                </form>
+                <div class="registerareabox">
+                    <h3 id="h3register">AL EEN ACCOUNT?</h3>
+                    <p>Log direct in en bekijk jouw reserveringen.</p>
+                    <a href="{{route('login')}}">
+                        <h3 id="showlogin">LOGIN</h3>
+                    </a>
+                </div>
+            </div>
+        @endsection
+</body>
+
+</html>
