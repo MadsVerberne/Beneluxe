@@ -3,10 +3,24 @@
         <h2>LOGIN</h2>
         <i class='bx bx-x' id="closelogin"></i>
     </div>
-    <form action="{{ route('login') }}" method="post">
+
+    {{-- Foutmeldingen tonen --}}
+    @if ($errors->any())
+        <div class="error-message">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <form action="{{ route('login') }}" method="POST">
         @csrf
+        {{-- Email Address --}}
         <label for="email">E-mail *</label>
         <input type="email" id="email" name="email" required>
+        {{-- Password --}}
         <label for="password">Wachtwoord *</label>
         <input type="password" id="password" name="password" required>
         <p>Wachtwoord vergeten?</p>
@@ -22,3 +36,19 @@
 </div>
 
 <div id="overlay" style="display: none;"></div>
+
+
+<script>
+    window.onload = function() {
+        @if ($errors->any() || session('error'))
+            @if (request()->routeIs('register'))
+                document.getElementById('registertile').style.display = 'block';
+                document.getElementById('overlay').style.display = 'block';
+            @elseif (request()->routeIs('login'))
+                document.getElementById('logintile').style.display = 'block';
+                document.getElementById('overlay').style.display = 'block';
+            @endif
+        @endif
+    }
+</script>
+

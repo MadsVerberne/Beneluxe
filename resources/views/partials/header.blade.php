@@ -14,6 +14,14 @@
     </nav>
 
     <div class="header-button">
-        <button id="openlogin">Inloggen</button>
+        @auth
+            <a href="{{ route('dashboard') }}">
+                <i class="bi bi-person-circle"></i>
+            </a>
+        @else
+            <button id="openlogin">Inloggen</button>
+        @endauth
     </div>
+
+
 </header>
