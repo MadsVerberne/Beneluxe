@@ -514,6 +514,138 @@ footer h2 {
 /* Contact */
 .contact {
     padding: 100px;
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 30px 30px 20px 30px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
+
+.contact h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.contact .form-group label {
+    font-weight: 500;
+    color: #34495e;
+}
+
+.contact .form-control {
+    border-radius: 6px;
+    border: 1px solid #ced4da;
+    margin-bottom: 15px;
+    transition: border-color 0.2s;
+}
+
+.contact .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0,123,255,0.08);
+}
+
+.contact-container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    padding: 30px 30px 20px 30px;
+}
+
+.contact-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.contact-header h2 {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.contact-header p {
+    color: #555;
+    margin-top: 10px;
+}
+
+.contact-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: space-between;
+}
+
+.contact-form {
+    flex: 1 1 320px;
+    min-width: 280px;
+    margin-bottom: 20px;
+}
+
+.contact-form .form-group label {
+    font-weight: 500;
+    color: #34495e;
+}
+
+.contact-form .form-control {
+    border-radius: 6px;
+    border: 1px solid #ced4da;
+    margin-bottom: 15px;
+    transition: border-color 0.2s;
+}
+
+.contact-form .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0,123,255,0.08);
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    background: #007bff;
+    border: none;
+    color: #fff;
+    transition: background 0.2s;
+}
+
+.btn-submit:hover {
+    background: #0056b3;
+}
+
+.contact-info {
+    flex: 1 1 260px;
+    min-width: 220px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.contact-info h4 {
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.contact-info .map-image {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+@media (max-width: 800px) {
+    .contact-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .contact-info, .contact-form {
+        min-width: 0;
+    }
 }
 
 /* Accommodaties */
