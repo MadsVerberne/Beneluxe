@@ -72,11 +72,9 @@
         </section>
         <div class="about">
             <div class="logintile" id="logintile">
-
-
                 {{-- Foutmeldingen tonen --}}
-                @if ($errors->any())
-                    <div class="error-message">
+                @if ($errors->any() && request()->routeIs('login'))
+                    <div class="error-message" style="color: red; margin-bottom: 1rem;">
                         <ul>
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
@@ -99,7 +97,7 @@
                 <div class="registerareabox">
                     <h3 id="h3register">NIEUW BIJ BENELUXE?</h3>
                     <p>Maak nu een account aan en verhuur of boek direct!</p>
-                    <a href="{{route('register')}}">
+                    <a href="{{ route('register') }}">
                         <h3 id="showregister">REGISTREREN</h3>
                     </a>
                 </div>

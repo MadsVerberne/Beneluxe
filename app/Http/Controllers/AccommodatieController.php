@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\accommodatie;
+use App\Models\Beschikbaarheid;
 use App\Models\Voorzieningen;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AccommodatieController extends Controller
 {
+    use AuthorizesRequests;
     // Overzicht van alle accommodaties
     public function index()
     {
@@ -48,6 +52,7 @@ class AccommodatieController extends Controller
         ]);
 
         $accommodatie = accommodatie::create([
+            'gebruiker_id' => Auth::id(),
             'titel' => $validated['titel'],
             'beschrijving' => $validated['beschrijving'],
             'locatie' => $validated['locatie'],
@@ -83,15 +88,19 @@ class AccommodatieController extends Controller
     }
 
     // Formulier om een bestaand accommodatie te bewerken
-    public function edit(accommodatie $accommodatie)
+    public function edit(Accommodatie $accommodatie)
     {
+        $this->authorize('update', $accommodatie);
+
         $voorzieningen = Voorzieningen::all();
         return view('accommodaties.edit', compact('accommodatie', 'voorzieningen'));
     }
 
     // accommodatie bijwerken
-    public function update(Request $request, accommodatie $accommodatie)
+    public function update(Request $request, Accommodatie $accommodatie)
     {
+        $this->authorize('update', $accommodatie);
+
         $validated = $request->validate([
             'titel' => 'required|string|max:255',
             'beschrijving' => 'required|string',
@@ -178,5 +187,28 @@ class AccommodatieController extends Controller
 
 
         return redirect()->route('accommodaties.index')->with('success', 'accommodatie succesvol bijgewerkt!');
+    }
+
+    public function beschikbaarheidToevoegen(Request $request, Accommodatie $accommodatie)
+    {
+        $request->validate([
+            'van_datum' => 'required|date|before_or_equal:tot_datum',
+            'tot_datum' => 'required|date|after_or_equal:van_datum',
+        ]);
+
+        $accommodatie->beschikbaarheden()->create([
+            'van_datum' => $request->van_datum,
+            'tot_datum' => $request->tot_datum,
+        ]);
+
+        return back()->with('success', 'Beschikbaarheidsperiode toegevoegd.');
+    }
+
+    public function beschikbaarheidVerwijderen($id)
+    {
+        $periode = Beschikbaarheid::findOrFail($id);
+        $periode->delete();
+
+        return back()->with('success', 'Periode verwijderd.');
     }
 }

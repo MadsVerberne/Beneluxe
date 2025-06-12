@@ -9,6 +9,7 @@ class accommodatie extends Model
     protected $table = 'accommodaties';
 
     protected $fillable = [
+        'gebruiker_id',
         'titel',
         'beschrijving',
         'locatie',
@@ -26,5 +27,15 @@ class accommodatie extends Model
     public function voorzieningen()
     {
         return $this->belongsToMany(Voorzieningen::class, 'accommodaties_voorziening', 'accommodatie_id', 'voorziening_id');
+    }
+
+    public function gebruiker()
+    {
+        return $this->belongsTo(User::class, 'gebruiker_id');
+    }
+
+    public function beschikbaarheden()
+    {
+        return $this->hasMany(Beschikbaarheid::class);
     }
 }

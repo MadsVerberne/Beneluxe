@@ -47,4 +47,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function accommodaties()
+    {
+        return $this->hasMany(Accommodatie::class, 'gebruiker_id');
+    }
 }

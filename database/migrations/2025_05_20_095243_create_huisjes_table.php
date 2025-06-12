@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('accommodaties', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('gebruiker_id')->constrained('users')->onDelete('cascade');
             $table->string('titel');
             $table->text('beschrijving')->nullable();
             $table->string('locatie')->nullable();
