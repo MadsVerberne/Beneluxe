@@ -192,17 +192,32 @@ class AccommodatieController extends Controller
     public function beschikbaarheidToevoegen(Request $request, Accommodatie $accommodatie)
     {
         $request->validate([
-            'van_datum' => 'required|date|before_or_equal:tot_datum',
-            'tot_datum' => 'required|date|after_or_equal:van_datum',
+            'van_datum' => ['required', 'date', 'before_or_equal:tot_datum'],
+            'tot_datum' => ['required', 'date', 'after_or_equal:van_datum'],
         ]);
 
+        // Controleer op overlapping met bestaande periodes
+        $overlap = $accommodatie->beschikbaarheden()
+            ->where(function ($query) use ($request) {
+                $query->where('van_datum', '<=', $request->input('tot_datum'))
+                    ->where('tot_datum', '>', $request->input('van_datum'));
+            })
+            ->exists();
+
+        if ($overlap) {
+            return back()
+                ->withErrors(['Deze periode overlapt met een bestaande beschikbaarheid.'])
+                ->withInput();
+        }
+
         $accommodatie->beschikbaarheden()->create([
-            'van_datum' => $request->van_datum,
-            'tot_datum' => $request->tot_datum,
+            'van_datum' => $request->input('van_datum'),
+            'tot_datum' => $request->input('tot_datum'),
         ]);
 
         return back()->with('success', 'Beschikbaarheidsperiode toegevoegd.');
     }
+
 
     public function beschikbaarheidVerwijderen($id)
     {

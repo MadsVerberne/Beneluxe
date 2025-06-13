@@ -1,3 +1,23 @@
+@php
+    $beschikbaarheden = $accommodatie->beschikbaarheden->map(function ($periode) {
+        return [
+            'title' => 'Beschikbaar',
+            'start' => $periode->van_datum,
+            // Let op: FullCalendar gebruikt de einddatum exclusief, daarom +1 dag
+            'end' => \Carbon\Carbon::parse($periode->tot_datum)->addDay()->format('Y-m-d'),
+        ];
+    });
+@endphp
+
+<script>
+    window.beschikbaarheden = @json($beschikbaarheden);
+</script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.css" />
+
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.js"></script>
+
+
 @extends('layouts.app')
 
 @section('content')
@@ -5,6 +25,7 @@
         <div class="heroother-content">
             <h1>Accommodatie aanpassen</h1>
         </div>
+
     </section>
 
     <div class="about py-6">
@@ -92,11 +113,13 @@
                 {{-- Bestaande foto's --}}
                 @if ($accommodatie->fotos->count())
                     <div class="mb-6">
-                        <label class="block font-medium mb-2">Bestaande foto's (versleep om te sorteren, klik ✕ om te verwijderen)</label>
+                        <label class="block font-medium mb-2">Bestaande foto's (versleep om te sorteren, klik ✕ om te
+                            verwijderen)</label>
                         <input type="hidden" name="bestaande_foto_volgorde" id="bestaande_foto_volgorde">
                         <ul id="bestaande-foto-lijst" class="space-y-2">
                             @foreach ($accommodatie->fotos->sortBy('volgorde') as $foto)
-                                <li data-id="{{ $foto->id }}" class="relative border rounded overflow-hidden group bg-white p-1">
+                                <li data-id="{{ $foto->id }}"
+                                    class="relative border rounded overflow-hidden group bg-white p-1">
                                     <img src="{{ asset('storage/' . $foto->foto_url) }}" alt="Foto {{ $loop->iteration }}"
                                         class="w-full h-32 object-cover transition-opacity duration-300" />
                                     <button type="button"
@@ -104,7 +127,8 @@
                                         onclick="toggleDelete(this)" title="Verwijderen">
                                         ✕
                                     </button>
-                                    <input type="checkbox" name="verwijder_fotos[]" value="{{ $foto->id }}" class="hidden" />
+                                    <input type="checkbox" name="verwijder_fotos[]" value="{{ $foto->id }}"
+                                        class="hidden" />
                                 </li>
                             @endforeach
                         </ul>
@@ -126,7 +150,8 @@
             <div class="mt-10">
                 <h4 class="mb-3 font-semibold">Beschikbare periodes toevoegen</h4>
 
-                <form method="POST" action="{{ route('accommodaties.beschikbaarheid.toevoegen', $accommodatie->id) }}" class="flex flex-wrap gap-4 mb-4">
+                <form method="POST" action="{{ route('accommodaties.beschikbaarheid.toevoegen', $accommodatie->id) }}"
+                    class="flex flex-wrap gap-4 mb-4">
                     @csrf
                     <div>
                         <label for="van_datum" class="block">Van</label>
@@ -137,10 +162,11 @@
                         <input type="date" name="tot_datum" class="form-control border rounded p-2" required>
                     </div>
                     <div class="flex items-end">
-                        <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Toevoegen</button>
+                        <button type="submit"
+                            class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Toevoegen</button>
                     </div>
                 </form>
-
+                <div id="calendar" class="border p-4 rounded mb-6"></div>
                 <h5 class="mb-2 font-semibold">Huidige periodes</h5>
                 <table class="table-auto w-full border">
                     <thead class="bg-gray-200">
@@ -156,7 +182,8 @@
                                 <td class="p-2">{{ $periode->van_datum }}</td>
                                 <td class="p-2">{{ $periode->tot_datum }}</td>
                                 <td class="p-2">
-                                    <form method="POST" action="{{ route('accommodaties.beschikbaarheid.verwijderen', $periode->id) }}">
+                                    <form method="POST"
+                                        action="{{ route('accommodaties.beschikbaarheid.verwijderen', $periode->id) }}">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="text-red-600 hover:text-red-800"
@@ -166,7 +193,8 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="3" class="p-2 text-center text-gray-500">Er zijn nog geen periodes toegevoegd.</td>
+                                <td colspan="3" class="p-2 text-center text-gray-500">Er zijn nog geen periodes
+                                    toegevoegd.</td>
                             </tr>
                         @endforelse
                     </tbody>
@@ -175,6 +203,30 @@
 
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                locale: 'nl',
+                firstDay: 1,
+                selectable: true,
+                select: function(info) {
+                    document.querySelector('input[name="van_datum"]').value = info.startStr;
+                    document.querySelector('input[name="tot_datum"]').value = new Date(info.end)
+                        .toISOString().split('T')[0];
+                },
+                headerToolbar: {
+                    left: '',
+                    center: 'title',
+                    right: 'prev,next'
+                },
+                events: window.beschikbaarheden,
+            });
+            calendar.render();
+        });
+    </script>
+
 
     {{-- Sortable.js & Foto preview scripts --}}
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
