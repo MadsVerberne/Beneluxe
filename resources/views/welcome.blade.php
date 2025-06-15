@@ -9,7 +9,7 @@
                     <input id="bestemming-autocomplete" class="search-field" placeholder="Bestemming"></input>
                     <input class="search-field" placeholder="Datum"></input>
                     <input class="search-field" placeholder="Gasten"></input>
-                    <a href="/results" type="submit">Zoeken</a>
+                    <a href="{{route('accommodaties.results')}}" type="submit">Zoeken</a>
                 </form>
             </div>
         </section>

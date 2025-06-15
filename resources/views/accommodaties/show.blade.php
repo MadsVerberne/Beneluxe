@@ -31,7 +31,9 @@
                     @endif
                 @endforeach
             </div>
-
+            <a href="{{route('accommodaties.boeken')}}">
+                <button class="bg-blue p-4 border-2">Boek deze accommodatie!</button>
+            </a>
             <a href="{{ route('accommodaties.index') }}">← Terug naar overzicht</a>
     </div>
 @endsection
