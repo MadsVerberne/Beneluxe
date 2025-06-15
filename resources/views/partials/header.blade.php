@@ -19,7 +19,7 @@
                 <i class="bi bi-person-circle"></i>
             </a>
         @else
-            <a href="{{route('login')}}">
+            <a href="{{ route('login') }}">
                 {{-- <button id="openlogin">Inloggen</button> --}}
                 <button id="">Inloggen</button>
             </a>

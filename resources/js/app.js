@@ -1,6 +1,6 @@
-import './bootstrap';
+import "./bootstrap";
 
-import Alpine from 'alpinejs';
+import Alpine from "alpinejs";
 
 window.Alpine = Alpine;
 
@@ -65,3 +65,136 @@ Alpine.start();
 //     }
 // });
 
+// Google Maps API
+function initAutocomplete() {
+    const input = document.getElementById("bestemming-autocomplete");
+
+    if (!input) {
+        console.error(
+            "Input element met id 'bestemming-autocomplete' niet gevonden."
+        );
+        return;
+    }
+
+    const autocomplete = new google.maps.places.Autocomplete(input);
+
+    autocomplete.addListener("place_changed", function () {
+        const place = autocomplete.getPlace();
+
+        if (!place.geometry) {
+            console.log("Geen details gevonden voor de locatie.");
+            return;
+        }
+
+        const lat = place.geometry.location.lat();
+        const lng = place.geometry.location.lng();
+        const address = place.formatted_address;
+        const placeId = place.place_id;
+        const types = place.types?.join(", ");
+
+        // Print in de console
+        console.log("Adres:", address);
+        console.log("Latitude:", lat);
+        console.log("Longitude:", lng);
+        console.log("Place ID:", placeId);
+        console.log("Types:", types);
+    });
+}
+
+window.initAutocomplete = initAutocomplete;
+
+//Fotos opslaan en sorteren
+document.addEventListener("DOMContentLoaded", () => {
+    const input = document.getElementById("fotos-input");
+    const previewList = document.getElementById("photo-preview-list");
+    const fotoVolgordeInput = document.getElementById("foto_volgorde");
+    let fileList = [];
+
+    if (input && previewList && fotoVolgordeInput) {
+        // Check of de elementen bestaan op deze pagina
+        input.addEventListener("change", () => {
+            fileList = Array.from(input.files);
+            renderPreview();
+        });
+
+        function renderPreview() {
+            previewList.innerHTML = "";
+            fileList.forEach((file, index) => {
+                const li = document.createElement("li");
+                li.className =
+                    "flex items-center gap-4 bg-gray-100 p-2 rounded";
+                li.dataset.index = index;
+
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const img = document.createElement("img");
+                    img.src = e.target.result;
+                    img.className = "w-20 h-20 object-cover rounded";
+
+                    const deleteBtn = document.createElement("button");
+                    deleteBtn.textContent = "✕";
+                    deleteBtn.className = "text-red-500 text-lg ml-auto";
+                    deleteBtn.onclick = () => {
+                        fileList.splice(index, 1);
+                        renderPreview();
+                    };
+
+                    li.appendChild(img);
+                    li.appendChild(deleteBtn);
+                    previewList.appendChild(li);
+                    updateOrder();
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        function updateOrder() {
+            const order = Array.from(previewList.children).map(
+                (li) => li.dataset.index
+            );
+            fotoVolgordeInput.value = order.join(",");
+        }
+
+        new Sortable(previewList, {
+            animation: 150,
+            onEnd: updateOrder,
+        });
+    }
+});
+
+// Sortable voor bestaande foto’s
+document.addEventListener("DOMContentLoaded", () => {
+    const bestaandeLijst = document.getElementById("bestaande-foto-lijst");
+    const bestaandeVolgorde = document.getElementById(
+        "bestaande_foto_volgorde"
+    );
+
+    if (bestaandeLijst) {
+        new Sortable(bestaandeLijst, {
+            animation: 150,
+            onEnd: () => {
+                const ids = [...bestaandeLijst.children].map(
+                    (li) => li.dataset.id
+                );
+                bestaandeVolgorde.value = ids.join(",");
+            },
+        });
+
+        // Initialiseer de volgorde bij het laden
+        const ids = [...bestaandeLijst.children].map((li) => li.dataset.id);
+        bestaandeVolgorde.value = ids.join(",");
+    }
+});
+
+// Verwijderen foto’s
+window.toggleDelete = function (button) {
+    const li = button.closest("li");
+    const checkbox = li.querySelector('input[type="checkbox"]');
+    checkbox.checked = !checkbox.checked;
+
+    li.classList.toggle("opacity-50", checkbox.checked);
+    li.classList.toggle("bg-red-100", checkbox.checked);
+    button.classList.toggle("bg-red-600", !checkbox.checked);
+    button.classList.toggle("bg-gray-400", checkbox.checked);
+    button.textContent = checkbox.checked ? "✔" : "✕";
+};

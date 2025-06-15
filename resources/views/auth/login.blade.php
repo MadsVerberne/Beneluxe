@@ -1,109 +1,42 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@extends('layouts.app')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Beneluxe</title>
-    <link rel="icon" type="image/x-icon" href="img/Favicon.png">
-
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <!-- Bootstrap icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-
-    <!-- Flag icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.3.2/css/flag-icons.min.css" />
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
-
-    <!-- Styles / Scripts -->
-    @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @endif
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3QTFxyf8eFM1-O3P3ELImq3ILRx2RTCg&libraries=places">
-    </script>
-    <script>
-        function initAutocomplete() {
-            const input = document.getElementById("bestemming-autocomplete");
-            const autocomplete = new google.maps.places.Autocomplete(input);
-
-            autocomplete.addListener("place_changed", function() {
-                const place = autocomplete.getPlace();
-
-                if (!place.geometry) {
-                    console.log("Geen details gevonden voor de locatie.");
-                    return;
-                }
-
-                const lat = place.geometry.location.lat();
-                const lng = place.geometry.location.lng();
-                const address = place.formatted_address;
-                const placeId = place.place_id;
-                const types = place.types.join(", ");
-
-                // Print naar console
-                console.log("Adres:", address);
-                console.log("Latitude:", lat);
-                console.log("Longitude:", lng);
-                console.log("Place ID:", placeId);
-                console.log("Types:", types);
-            });
-        }
-
-        window.onload = initAutocomplete;
-    </script>
-</head>
-
-<body>
-
-    @extends('layouts.app')
-
-    @section('content')
-        <section class="heroother">
-            <div class="heroother-content">
-                <h1>Login</h1>
-            </div>
-        </section>
-        <div class="about">
-            <div class="logintile" id="logintile">
-                {{-- Foutmeldingen tonen --}}
-                @if ($errors->any() && request()->routeIs('login'))
-                    <div class="error-message" style="color: red; margin-bottom: 1rem;">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-
-                <form action="{{ route('login') }}" method="POST">
-                    @csrf
-                    {{-- Email Address --}}
-                    <label for="email">E-mail *</label>
-                    <input type="email" id="email" name="email" required>
-                    {{-- Password --}}
-                    <label for="password">Wachtwoord *</label>
-                    <input type="password" id="password" name="password" required>
-                    <p>Wachtwoord vergeten?</p>
-                    <button type="submit">LOGIN</button>
-                </form>
-                <div class="registerareabox">
-                    <h3 id="h3register">NIEUW BIJ BENELUXE?</h3>
-                    <p>Maak nu een account aan en verhuur of boek direct!</p>
-                    <a href="{{ route('register') }}">
-                        <h3 id="showregister">REGISTREREN</h3>
-                    </a>
+@section('content')
+    <section class="heroother">
+        <div class="heroother-content">
+            <h1>Login</h1>
+        </div>
+    </section>
+    <div class="about">
+        <div class="logintile" id="logintile">
+            {{-- Foutmeldingen tonen --}}
+            @if ($errors->any() && request()->routeIs('login'))
+                <div class="error-message" style="color: red; margin-bottom: 1rem;">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
+            @endif
+
+            <form action="{{ route('login') }}" method="POST">
+                @csrf
+                {{-- Email Address --}}
+                <label for="email">E-mail *</label>
+                <input type="email" id="email" name="email" required>
+                {{-- Password --}}
+                <label for="password">Wachtwoord *</label>
+                <input type="password" id="password" name="password" required>
+                <p>Wachtwoord vergeten?</p>
+                <button type="submit">LOGIN</button>
+            </form>
+            <div class="registerareabox">
+                <h3 id="h3register">NIEUW BIJ BENELUXE?</h3>
+                <p>Maak nu een account aan en verhuur of boek direct!</p>
+                <a href="{{ route('register') }}">
+                    <h3 id="showregister">REGISTREREN</h3>
+                </a>
             </div>
         </div>
-    @endsection
-</body>
-
-</html>
+    </div>
+@endsection
