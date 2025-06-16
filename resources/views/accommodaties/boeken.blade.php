@@ -1,53 +1,71 @@
-    @extends('layouts.app')
+<script>
+    window.beschikbaarheden = @json($beschikbaarheden);
+</script>
 
-    @section('content')
-        <section class="heroother">
-            <div class="heroother-content">
-                <h1>Boeken</h1>
-            </div>
-        </section>
-        {{-- Beschikbaarheid --}}
-        <div class="mt-10">
-            <h4 class="mb-3 font-semibold">Beschikbare periodes toevoegen</h4>
+@extends('layouts.app')
 
-            <form method="POST" class="flex flex-wrap gap-4 mb-4">
-                @csrf
-                <div>
-                    <label for="van_datum" class="block">Van</label>
-                    <input type="date" name="van_datum" class="form-control border rounded p-2" required>
-                </div>
-                <div>
-                    <label for="tot_datum" class="block">Tot</label>
-                    <input type="date" name="tot_datum" class="form-control border rounded p-2" required>
-                </div>
-                <div class="flex items-end">
-                    <button type="submit"
-                        class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Toevoegen</button>
-                </div>
-            </form>
-            <div id="calendar" class="border p-4 rounded mb-6 size-[40rem]"></div>
+@section('content')
+    <section class="heroother">
+        <div class="heroother-content">
+            <h1>Boeken voor {{ $accommodatie->titel }}</h1>
         </div>
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                var calendarEl = document.getElementById('calendar');
-                var calendar = new FullCalendar.Calendar(calendarEl, {
-                    initialView: 'dayGridMonth',
-                    locale: 'nl',
-                    firstDay: 1,
-                    selectable: true,
-                    select: function(info) {
-                        document.querySelector('input[name="van_datum"]').value = info.startStr;
-                        document.querySelector('input[name="tot_datum"]').value = new Date(info.end)
-                            .toISOString().split('T')[0];
-                    },
-                    headerToolbar: {
-                        left: '',
-                        center: 'title',
-                        right: 'prev,next'
-                    },
-                    events: window.beschikbaarheden,
+    </section>
+
+    <div id="calendar" class="border p-4 rounded mb-6 size-[40rem]"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var beschikbaarheden = window.beschikbaarheden;
+
+            function isWithinAvailability(start, end) {
+                // Check if the range falls entirely within a single available period
+                return beschikbaarheden.some(function(periode) {
+                    return new Date(periode.start) <= start && new Date(periode.end) >= end;
                 });
-                calendar.render();
+            }
+
+            var calendar = new FullCalendar.Calendar(document.getElementById('calendar'), {
+                initialView: 'dayGridMonth',
+                locale: 'nl',
+                firstDay: 1,
+                selectable: true,
+                select: function(info) {
+                    var start = info.start;
+                    var end = new Date(info.end);
+                    end.setDate(end.getDate() - 1); // FullCalendar's select is exclusive
+
+                    if (isWithinAvailability(start, end)) {
+                        // Update hidden fields and displayed dates
+                        document.querySelector('input[name="van_datum"]').value = start.toISOString()
+                            .split('T')[0];
+                        document.querySelector('input[name="tot_datum"]').value = end.toISOString()
+                            .split('T')[0];
+
+                        document.getElementById('selected-van-datum').innerText = start.toISOString()
+                            .split('T')[0];
+                        document.getElementById('selected-tot-datum').innerText = end.toISOString()
+                            .split('T')[0];
+                    } else {
+                        alert('De geselecteerde periode is helaas niet beschikbaar');
+                    }
+                },
+                events: beschikbaarheden
             });
-        </script>
-    @endsection
+
+            calendar.render();
+        });
+    </script>
+
+    <form action="{{ route('boeken.store') }}" method="POST">
+        @csrf
+        <input type="hidden" name="accommodatie_id" value="{{ $accommodatie->id }}">
+        <input type="hidden" name="van_datum">
+        <input type="hidden" name="tot_datum">
+        <p>Geselecteerde aankomstdatum: <span id="selected-van-datum"></span></p>
+        <p>Geselecteerde vertrekdatum: <span id="selected-tot-datum"></span></p>
+
+        <button type="submit" class="bg-blue-600 text-white p-2 rounded">
+            Boek nu
+        </button>
+    </form>
+@endsection
