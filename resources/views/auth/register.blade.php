@@ -6,7 +6,7 @@
             <h1>Registreren</h1>
         </div>
     </section>
-    <div class="about">
+    <div class="login">
         <div class="logintile" id="registertile">
 
             {{-- Foutmeldingen tonen --}}
@@ -39,7 +39,7 @@
             <div class="registerareabox">
                 <h3 id="h3register">AL EEN ACCOUNT?</h3>
                 <p>Log direct in en bekijk jouw reserveringen.</p>
-                <a href="{{ route('login') }}">
+                <a href="/login">
                     <h3 id="showlogin">LOGIN</h3>
                 </a>
             </div>

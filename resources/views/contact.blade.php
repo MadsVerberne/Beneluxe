@@ -8,7 +8,6 @@
         </section>
         <div class="contact-container">
             <div class="contact-header">
-                <h2>Contact</h2>
                 <p>Heb je vragen of opmerkingen? Laat het ons weten via onderstaand formulier, we nemen zo snel mogelijk
                     contact met je op.</p>
             </div>
@@ -34,13 +33,16 @@
                     <button type="submit" class="btn-submit">Verzenden</button>
                 </form>
 
-                <div class="contact-info">
-                    <h4>Adres</h4>
-                    <img src="https://via.placeholder.com/300x200?text=Kaart+hier" alt="Kaart" class="map-image">
-                    <p><strong>Straatnaam 1</strong><br>1234 AB Plaats</p>
-                    <p><strong>Telefoon:</strong> 012-34567899</p>
-                    <p><strong>Email:</strong> info@voorbeeldsite.nl</p>
+                <div class="register-cta-box">
+                    <div class="cta-overlay">
+                        <div class="cta-content">
+                            <h2>Word verhuurder via Beneluxe</h2>
+                            <p>Bereik eenvoudig duizenden gasten in Nederland, België en Luxemburg.<br>Wij regelen de rest.</p>
+                            <a href="/register" class="cta-button">Registreer nu</a>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
     @endsection

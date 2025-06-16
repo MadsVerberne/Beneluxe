@@ -3,10 +3,10 @@
 @section('content')
     <section class="heroother">
         <div class="heroother-content">
-            <h1>Login</h1>
+            <h1>Inloggen</h1>
         </div>
     </section>
-    <div class="about">
+    <div class="login">
         <div class="logintile" id="logintile">
             {{-- Foutmeldingen tonen --}}
             @if ($errors->any() && request()->routeIs('login'))

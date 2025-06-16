@@ -158,6 +158,7 @@
     background-color: #d9a319;
 }
 
+
 /* main */
 .populairehuizen {
     display: flex;
@@ -241,7 +242,10 @@ footer h2 {
     width: 100px;
 }
 
-.footercol1, .footercol2, .footercol3, .footercol4 {
+.footercol1,
+.footercol2,
+.footercol3,
+.footercol4 {
     display: flex;
     flex-direction: column;
 }
@@ -346,10 +350,10 @@ footer h2 {
 
 /* USP's */
 .usp {
-  text-align: center;
-  margin-top: 100px;
-  padding: 2rem 1rem;
-  margin-top: -170px;
+    text-align: center;
+    margin-top: 100px;
+    padding: 2rem 1rem;
+    margin-top: -170px;
 }
 
 .usp h2 {
@@ -360,56 +364,57 @@ footer h2 {
 }
 
 .usp {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .usp-tegels-container {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    width: 100%;
 }
 
 .usptegel {
-  display: flex;
-  align-items: center;
-  border: 1px solid #ccc;
-  background-color: white;
-  border-radius: 10px;
-  padding: 1rem 1.5rem;
-  max-width: 350px;
-  width: 100%;
-  gap: 1rem;
-  box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    background-color: white;
+    border-radius: 10px;
+    padding: 1rem 1.5rem;
+    max-width: 350px;
+    width: 100%;
+    gap: 1rem;
+    box-sizing: border-box;
 }
 
 .usptegel img {
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
 }
 
 .usptext h3 {
-  font-weight: 700;
-  font-size: 1.25rem;
-  margin: 0 0 0.3rem 0;
-  text-align: left;
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin: 0 0 0.3rem 0;
+    text-align: left;
 }
 
 .usptext p {
-  margin: 0;
-  font-weight: 400;
-  font-size: 1rem;
-  color: #555;
-  text-align: left;
+    margin: 0;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #555;
+    text-align: left;
 }
 
 /* CTA home */
 .calltoactionhome {
     position: relative;
-    background-image: url('/public/img/CTA.jpg'); /* vervang met jouw afbeelding */
+    background-image: url('/public/img/CTA.jpg');
+    /* vervang met jouw afbeelding */
     background-size: cover;
     background-position: center;
     color: white;
@@ -426,7 +431,8 @@ footer h2 {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.55); /* donkere tint */
+    background: rgba(0, 0, 0, 0.55);
+    /* donkere tint */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -507,6 +513,109 @@ footer h2 {
     color: #f9f7f1;
 }
 
+
+/* Search bar results */
+.search-bar-results {
+    display: flex;
+    background-color: #f9f7f1;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 700px;
+    margin: 0 auto;
+    border: none;
+    margin-top: 60px;
+    margin-bottom: -90px;
+    /* schuift de search bar omhoog, half over hero */
+
+    position: relative;
+    z-index: 10;
+    /* zorgt dat search bar boven overlay komt */
+}
+
+
+.search-field {
+    flex: 1;
+    padding: 20px 24px;
+    font-size: 1rem;
+    color: #000000;
+    font-weight: 400;
+    width: 175px;
+    border-right: 1px solid;
+    border-color: #aaaaaa31;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-field:last-of-type {
+    border-right: none;
+}
+
+.search-field:focus {
+    outline: none;
+}
+
+.search-bar-results a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5c144;
+    color: white;
+    border: none;
+    padding: 0 42px;
+    font-weight: 600;
+    font-size: 18px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+.search-bar-results a:hover {
+    background-color: #d9a319;
+}
+
+/* hero results */
+.heroresults {
+    position: relative;
+    height: 60vh;
+    background: url("/public/img/Hero.jpeg") no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+.heroresults::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.heroresults-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.heroresults h1 {
+    font-size: 78px;
+    font-weight: 500;
+    font-family: playfair;
+    line-height: 1.1;
+    margin-bottom: 60px;
+    margin-top: 150px;
+    color: #f9f7f1;
+}
+
 .about {
     padding: 100px;
 }
@@ -516,10 +625,10 @@ footer h2 {
     padding: 100px;
     max-width: 500px;
     margin: 40px auto;
-    padding: 30px 30px 20px 30px;
+    padding: 100px;
     background: #fff;
     border-radius: 12px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
 }
 
 .contact h2 {
@@ -543,16 +652,16 @@ footer h2 {
 
 .contact .form-control:focus {
     border-color: #007bff;
-    box-shadow: 0 0 0 2px rgba(0,123,255,0.08);
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.08);
 }
 
 .contact-container {
     max-width: 900px;
-    margin: 40px auto;
+    margin: 100px auto;
     background: #fff;
     border-radius: 12px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-    padding: 30px 30px 20px 30px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    padding: 50px 100px;
 }
 
 .contact-header {
@@ -596,8 +705,8 @@ footer h2 {
 }
 
 .contact-form .form-control:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 0 2px rgba(0,123,255,0.08);
+    border-color: #f5c144;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.08);
 }
 
 .btn-submit {
@@ -606,44 +715,89 @@ footer h2 {
     border-radius: 6px;
     font-weight: 600;
     letter-spacing: 1px;
-    background: #007bff;
+    background: #f5c144;
     border: none;
     color: #fff;
     transition: background 0.2s;
 }
 
 .btn-submit:hover {
-    background: #0056b3;
+    background: #CCA403;
 }
 
-.contact-info {
-    flex: 1 1 260px;
-    min-width: 220px;
-    background: #f8f9fa;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
+.register-cta-box {
+    position: relative;
+    background-image: url('/public/img/CTA.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
     text-align: center;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 0;
+    padding: 150px 30px 80px 30px;
+    flex: 1 1 250px;
+    min-width: 220px;
+    max-width: 100%;
 }
 
-.contact-info h4 {
-    margin-bottom: 15px;
-    color: #2c3e50;
-}
-
-.contact-info .map-image {
+.register-cta-box .cta-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    max-width: 300px;
-    border-radius: 6px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55);
+    /* donkere tint */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.register-cta-box .cta-content {
+    z-index: 2;
+    max-width: 600px;
+}
+
+.register-cta-box .cta-content h2 {
+    font-size: 24px;
+    font-weight: 600;
     margin-bottom: 15px;
 }
+
+.register-cta-box .cta-content p {
+    font-size: 16px;
+    margin-bottom: 25px;
+}
+
+.register-cta-box .cta-button {
+    display: inline-block;
+    padding: 10px 22px;
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: 500;
+    margin-top: 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.register-cta-box .cta-button:hover {
+    background-color: #F5C144;
+    color: white;
+    text-decoration: none;
+}
+
 
 @media (max-width: 800px) {
     .contact-content {
         flex-direction: column;
         gap: 20px;
     }
-    .contact-info, .contact-form {
+
+    .register-cta-box,
+    .contact-form {
         min-width: 0;
     }
 }
@@ -737,7 +891,8 @@ footer h2 {
 /* CTA accommodaties */
 .calltoactionaccommodaties {
     position: relative;
-    background-image: url('/public/img/CTA.jpg'); /* vervang met jouw afbeelding */
+    background-image: url('/public/img/CTA.jpg');
+    /* vervang met jouw afbeelding */
     background-size: cover;
     background-position: center;
     color: white;
@@ -749,38 +904,53 @@ footer h2 {
 }
 
 /* LOGIN/REGISTER */
-  .logintile {
-    width: 450px;
-    height: 500px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.650);
-    border-radius: 10px;
-  }
+.login {
+    display: flex;
+    justify-content: center;
+    padding: 100px;
+}
 
-  .loginandclose {
+.logintile {
+    width: 500px;
+    height: 500px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.10);
+    border-radius: 10px;
+    padding: 30px;
+}
+
+#registertile {
+    width: 500px;
+    height: auto;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.10);
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.loginandclose {
     display: flex;
     justify-content: space-between;
-  }
+}
 
-  .loginandclose h2 {
+.loginandclose h2 {
     font-size: 30px;
     font-family: playfair;
     margin-left: 10px;
     margin-top: 10px;
-  }
+}
 
-  .loginandclose i {
+.loginandclose i {
     font-size: 40px;
     margin-top: 7px;
     cursor: pointer;
-  }
+}
 
-  .logintile form {
+.logintile form {
     display: flex;
     flex-direction: column;
     margin: 0px 10px 0px 10px;
-  }
+}
 
-  .logintile form button {
+.logintile form button {
     background-color: #F5C144;
     border: none;
     color: white;
@@ -791,34 +961,34 @@ footer h2 {
     cursor: pointer;
     font-weight: 500;
     transition: 0.3s ease;
-  }
+}
 
-  .logintile form button:hover {
+.logintile form button:hover {
     background-color: #d9a319;
-  }
+}
 
-  .logintile p {
+.logintile p {
     color: #f5c144;
     text-decoration: underline;
     cursor: pointer;
     margin-top: 10px;
-  }
+}
 
-  .logintile form input {
+.logintile form input {
     height: 45px;
     padding-left: 10px;
     padding-right: 10px;
     border: 1px solid black;
-  }
+}
 
-  .logintile form label {
+.logintile form label {
     font-weight: 600;
     font-size: 16px;
     margin-top: 10px;
     margin-bottom: 5px;
-  }
+}
 
-  .registerareabox {
+.registerareabox {
     background-color: #EAEAEA;
     display: flex;
     flex-direction: column;
@@ -826,35 +996,35 @@ footer h2 {
     justify-content: center;
     margin: 25px 10px 10px 10px;
     border-radius: 10px;
-  }
+}
 
-  .registerareabox h3 {
+.registerareabox h3 {
     font-weight: 900;
     color: #f5c144;
-  }
+}
 
-  .registerareabox p {
+.registerareabox p {
     margin-top: 10px;
     color: black;
     text-decoration: none;
-  }
+}
 
-  .registerareabox #h3register {
+.registerareabox #h3register {
     margin-top: 20px;
     color: #000000;
     font-weight: 900;
-  }
+}
 
-  .registerareabox a {
+.registerareabox a {
     color: #CCA403;
     text-decoration: none;
     justify-content: center;
     font-size: 16px;
     margin: 20px 0px 20px 0px;
-  }
+}
 
-  /* Backdrop overlay */
-  #overlay {
+/* Backdrop overlay */
+#overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -863,29 +1033,145 @@ footer h2 {
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(5px);
     z-index: 1000;
-    display: none; /* Hidden by default */
-  }
-
-/* Login Tile
-.logintile {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 9999;
-  background-color: white;
-} */
+    display: none;
+    /* Hidden by default */
+}
 
 .logintile .loginandclose {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logintile .loginandclose i {
-  cursor: pointer;
+    cursor: pointer;
 }
 
-/* Results */
+/* Algemene sectiestyling */
 .results {
     padding: 100px;
+}
+
+.results h2 {
+    font-size: 28px;
+}
+
+.results h2 span {
+    font-weight: 700;
+}
+
+/* Lijst van accommodatietegels */
+.accommodatie-lijst {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 50px;
+}
+
+/* Tegelstructuur */
+.accommodatie-tegel-verticaal {
+    display: flex;
+    gap: 20px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+    transition: transform 0.3s ease;
+}
+
+.accommodatie-tegel-verticaal img {
+    width: 280px;
+    height: 240px;
+    object-fit: cover;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.accommodatie-tegel-verticaal img:hover {
+    transform: scale(1.05);
+}
+
+/* Info-blok */
+.accommodatie-tegel-verticaal .info {
+    padding: 15px 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+
+.accommodatie-tegel-verticaal h3 {
+    font-size: 24px;
+    margin-bottom: 5px;
+    color: #000000;
+    font-weight: 700;
+}
+
+.accommodatie-tegel-verticaal h3 a {
+    color: #000000;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.accommodatie-tegel-verticaal h3 a:hover {
+    color: #F5C144;
+}
+
+.accommodatie-tegel-verticaal p {
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: #555;
+}
+
+/* Extra faciliteiten-info */
+.accommodatie-tegel-verticaal .extra-info {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+/* Beoordeling */
+.ratingstars {
+    color: #F5C144;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+/* Prijs prominent weergegeven */
+.accommodatie-tegel-verticaal .prijs {
+    font-size: 24px;
+    font-weight: 400;
+    color: #000;
+    margin-top: auto;
+    margin-bottom: 0px;
+    display: flex;
+}
+
+.accommodatie-tegel-verticaal .prijs span {
+    font-weight: 600;
+}
+
+/* Knop onderin de tegel */
+.actie-knop {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    margin: 15px;
+}
+
+.bekijk-btn {
+    background-color: #F5C144;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.bekijk-btn:hover {
+    background-color: #e0ad3a;
+    color: #fff;
 }

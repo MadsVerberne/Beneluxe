@@ -19,7 +19,7 @@ Route::get('/contact', function () {
 
 Route::get('/results', function () {
     return view('accommodaties.results');
-});
+})->name('accommodaties.results');
 
 // Route met auth middleware
 Route::middleware('auth')->group(function () {
