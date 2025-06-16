@@ -17,10 +17,13 @@
         document.addEventListener('DOMContentLoaded', function() {
             var beschikbaarheden = window.beschikbaarheden;
 
-            function isWithinAvailability(start, end) {
-                // Check if the range falls entirely within a single available period
+            function toUTC(date) {
+                return new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+            }
+
+            function isWithinAvailability(start, lastNight) {
                 return beschikbaarheden.some(function(periode) {
-                    return new Date(periode.start) <= start && new Date(periode.end) >= end;
+                    return new Date(periode.start) <= start && lastNight < new Date(periode.end);
                 });
             }
 
@@ -30,21 +33,17 @@
                 firstDay: 1,
                 selectable: true,
                 select: function(info) {
-                    var start = info.start;
-                    var end = new Date(info.end);
-                    end.setDate(end.getDate() - 1); // FullCalendar's select is exclusive
+                    var start = toUTC(info.start);
+                    var end = toUTC(info.end);
+                    var lastNight = new Date(end);
+                    lastNight.setUTCDate(end.getUTCDate() - 1);
 
-                    if (isWithinAvailability(start, end)) {
+                    if (isWithinAvailability(start, lastNight)) {
                         // Update hidden fields and displayed dates
-                        document.querySelector('input[name="van_datum"]').value = start.toISOString()
-                            .split('T')[0];
-                        document.querySelector('input[name="tot_datum"]').value = end.toISOString()
-                            .split('T')[0];
-
-                        document.getElementById('selected-van-datum').innerText = start.toISOString()
-                            .split('T')[0];
-                        document.getElementById('selected-tot-datum').innerText = end.toISOString()
-                            .split('T')[0];
+                        document.querySelector('input[name="van_datum"]').value = start.toISOString().split('T')[0];
+                        document.querySelector('input[name="tot_datum"]').value = lastNight.toISOString().split('T')[0];
+                        document.getElementById('selected-van-datum').innerText = start.toISOString().split('T')[0];
+                        document.getElementById('selected-tot-datum').innerText = lastNight.toISOString().split('T')[0];
                     } else {
                         alert('De geselecteerde periode is helaas niet beschikbaar');
                     }
