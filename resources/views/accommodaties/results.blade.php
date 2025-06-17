@@ -15,52 +15,58 @@
     <div class="results">
         <h2><span>Antwerpen:</span> 2 accommodaties gevonden</h2>
         <div class="accommodatie-lijst">
-            
             <div class="accommodatie-tegel-verticaal">
-                <img src="/img/Populairehuizen2.png" alt="Charmant huisje">
-                <div class="info">
-                    <h3><a href="/show">Charmant huisje in Antwerpen</a></h3>
-                    <p>Antwerpen, België</p>
-
-                    <div class="ratingstars">
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-half"></i>
-                    </div>
-
-                    <p class="extra-info">2 slaapkamers · Max. 4 gasten · 60m² · Eigen tuin</p>
-
-                    <p class="prijs"><span>€150</span>&nbsp;· 5 nachten</p>
-
+                <div class="img-wrapper">
+                    <a href="#">
+                        <img src="/img/Populairehuizen2.png" alt="Charmant huisje">
+                    </a>
                 </div>
-                <div class="actie-knop">
-                        <a href="/show" class="bekijk-btn">Bekijk beschikbaarheid</a>
-                </div>
-            </div>
-
-            <div class="accommodatie-tegel-verticaal">
-                <img src="/img/Populairehuizen2.png" alt="Charmant huisje">
                 <div class="info">
                     <h3><a href="#">Charmant huisje in Antwerpen</a></h3>
                     <p>Antwerpen, België</p>
 
                     <div class="ratingstars">
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
                         <i class="bi bi-star-half"></i>
                     </div>
 
                     <p class="extra-info">2 slaapkamers · Max. 4 gasten · 60m² · Eigen tuin</p>
 
                     <p class="prijs"><span>€150</span>&nbsp;· 5 nachten</p>
-
                 </div>
                 <div class="actie-knop">
-                        <a href="#" class="bekijk-btn">Bekijk beschikbaarheid</a>
+                    <a href="#" class="bekijk-btn">Bekijk beschikbaarheid</a>
                 </div>
             </div>
+            <div class="accommodatie-tegel-verticaal">
+                <div class="img-wrapper">
+                    <a href="#">
+                        <img src="/img/Populairehuizen2.png" alt="Charmant huisje">
+                    </a>
+                </div>
+                <div class="info">
+                    <h3><a href="#">Charmant huisje in Antwerpen</a></h3>
+                    <p>Antwerpen, België</p>
 
+                    <div class="ratingstars">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-half"></i>
+                    </div>
+
+                    <p class="extra-info">2 slaapkamers · Max. 4 gasten · 60m² · Eigen tuin</p>
+
+                    <p class="prijs"><span>€150</span>&nbsp;· 5 nachten</p>
+                </div>
+                <div class="actie-knop">
+                    <a href="#" class="bekijk-btn">Bekijk beschikbaarheid</a>
+                </div>
+            </div>
         </div>
-
     </div>
     @endsection

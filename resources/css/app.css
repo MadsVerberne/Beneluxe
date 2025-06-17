@@ -475,6 +475,11 @@ footer h2 {
 }
 
 /* About */
+.about {
+    padding: 100px;
+}
+
+
 .heroother {
     position: relative;
     height: 60vh;
@@ -614,10 +619,6 @@ footer h2 {
     margin-bottom: 60px;
     margin-top: 150px;
     color: #f9f7f1;
-}
-
-.about {
-    padding: 100px;
 }
 
 /* Contact */
@@ -1034,7 +1035,6 @@ footer h2 {
     backdrop-filter: blur(5px);
     z-index: 1000;
     display: none;
-    /* Hidden by default */
 }
 
 .logintile .loginandclose {
@@ -1079,17 +1079,25 @@ footer h2 {
     transition: transform 0.3s ease;
 }
 
-.accommodatie-tegel-verticaal img {
-    width: 280px;
-    height: 240px;
-    object-fit: cover;
-    flex-shrink: 0;
-    transition: transform 0.3s ease;
+.img-wrapper {
+  width: 280px;
+  height: 240px;
+  overflow: hidden;
+  border-radius: 10px 0 0 10px;
+  flex-shrink: 0;
 }
 
-.accommodatie-tegel-verticaal img:hover {
-    transform: scale(1.05);
+.img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
+
+.img-wrapper img:hover {
+  transform: scale(1.1);
+}
+
 
 /* Info-blok */
 .accommodatie-tegel-verticaal .info {
@@ -1174,4 +1182,5 @@ footer h2 {
 .bekijk-btn:hover {
     background-color: #e0ad3a;
     color: #fff;
+    text-decoration: none;
 }
