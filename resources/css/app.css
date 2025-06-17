@@ -477,8 +477,24 @@ footer h2 {
 /* About */
 .about {
     padding: 100px;
+    display: flex;
+    gap: 50px;
 }
 
+.aboutinfo h2 {
+    font-family: Playfair;
+    font-size: 48px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.aboutinfo span {
+    font-weight: 700;
+}
+
+.about img {
+    border-radius: 10px;
+}
 
 .heroother {
     position: relative;
@@ -1183,4 +1199,15 @@ footer h2 {
     background-color: #e0ad3a;
     color: #fff;
     text-decoration: none;
+}
+
+/* Header dashboard icon */
+.header-button i {
+    font-size: 42px;
+    color: #f5c144;
+    transition: 0.3s ease;
+}
+
+.header-button i:hover {
+    color: #CCA403;
 }
