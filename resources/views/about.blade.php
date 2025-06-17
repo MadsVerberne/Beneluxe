@@ -7,7 +7,7 @@
             </div>
         </section>
         <div class="about">
-            <img src="/img/Populairehuizen1.jpg" alt="">
+            <img src="/img/Hero.jpeg" alt="Beneluxe logo">
             <div class="aboutinfo">
                 <h2>Meer over Beneluxe</h2>
                 <p><span>Welkom bij Beneluxe</span> — dé plek waar je de mooiste vakantiehuizen en unieke verblijven in Nederland, België en Luxemburg ontdekt.

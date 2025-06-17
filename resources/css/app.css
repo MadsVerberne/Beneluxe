@@ -494,6 +494,8 @@ footer h2 {
 
 .about img {
     border-radius: 10px;
+    width: 600px;
+    height: auto;
 }
 
 .heroother {
