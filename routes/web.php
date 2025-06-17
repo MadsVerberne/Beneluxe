@@ -53,3 +53,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__ . '/auth.php';
+
+use App\Http\Controllers\ContactController;
+
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+

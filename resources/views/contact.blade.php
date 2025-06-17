@@ -12,7 +12,7 @@
                     contact met je op.</p>
             </div>
             <div class="contact-content">
-                <form method="POST" action="#" class="contact-form">
+                <form method="POST" action="{{ route('contact.store') }}" class="contact-form">
                     @csrf
                     <div class="form-group">
                         <label for="email">E-mailadres</label>
