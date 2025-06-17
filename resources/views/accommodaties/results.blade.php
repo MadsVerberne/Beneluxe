@@ -3,7 +3,7 @@
     @section('content')
     <section class="heroresults">
         <div class="heroresults-content">
-            <h1>Antwerpen · 2 - 14 juli</h1>
+            <h1 class="fade-in">Antwerpen · 2 - 14 juli</h1>
         </div>
         <form class="search-bar-results">
             <input id="bestemming-autocomplete" class="search-field" placeholder="Bestemming"></input>

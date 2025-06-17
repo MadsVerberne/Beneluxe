@@ -3,7 +3,7 @@
 @section('content')
     <section class="heroother">
         <div class="heroother-content">
-            <h1>Registreren</h1>
+            <h1 class="fade-in">Registreren</h1>
         </div>
     </section>
     <div class="login">

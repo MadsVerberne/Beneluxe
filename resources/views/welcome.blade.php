@@ -3,7 +3,7 @@
     @section('content')
         <section class="hero">
             <div class="hero-content">
-                <h1>Vakantiehuizen in<br>Nederland, België<br>en Luxemburg</h1>
+                <h1 class="fade-in">Vakantiehuizen in<br>Nederland, België<br>en Luxemburg</h1>
 
                 <form class="search-bar">
                     <input id="bestemming-autocomplete" class="search-field" placeholder="Bestemming"></input>
