@@ -1,5 +1,5 @@
 <script>
-    window.beschikbaarheden = @json($beschikbaarheden);
+    window.beschikbaarheden = json($beschikbaarheden);
 </script>
 
 @extends('layouts.app')
@@ -7,7 +7,7 @@
 @section('content')
     <section class="heroother">
         <div class="heroother-content">
-            <h1>Boeken voor {{ $accommodatie->titel }}</h1>
+            <h1 class="fade-in">Boeken voor {{ $accommodatie->titel }}</h1>
         </div>
     </section>
 

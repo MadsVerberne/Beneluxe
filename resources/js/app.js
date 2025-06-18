@@ -198,3 +198,55 @@ window.toggleDelete = function (button) {
     button.classList.toggle("bg-gray-400", checkbox.checked);
     button.textContent = checkbox.checked ? "✔" : "✕";
 };
+
+document.addEventListener('DOMContentLoaded', function() {
+    const slides = document.querySelector('.carousel-slides');
+    if (!slides) return; // als er geen carousel is, doe niks
+    const slideCount = slides.children.length;
+    let currentIndex = 0;
+
+    function updateCarousel() {
+        slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    document.querySelector('.carousel-prev').addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+        updateCarousel();
+    });
+
+    document.querySelector('.carousel-next').addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % slideCount;
+        updateCarousel();
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const track = document.querySelector('.carousel-track');
+    const slides = Array.from(track.children);
+    const nextButton = document.querySelector('.carousel-btn.next');
+    const prevButton = document.querySelector('.carousel-btn.prev');
+    const slideWidth = slides[0].getBoundingClientRect().width;
+
+    // Zet slides op juiste positie
+    slides.forEach((slide, index) => {
+        slide.style.left = slideWidth * index + 'px';
+    });
+
+    let currentIndex = 0;
+
+    function moveToSlide(targetIndex) {
+        const amountToMove = slides[targetIndex].style.left;
+        track.style.transform = 'translateX(-' + amountToMove + ')';
+        currentIndex = targetIndex;
+    }
+
+    nextButton.addEventListener('click', () => {
+        const targetIndex = (currentIndex + 1) % slides.length;
+        moveToSlide(targetIndex);
+    });
+
+    prevButton.addEventListener('click', () => {
+        const targetIndex = (currentIndex - 1 + slides.length) % slides.length;
+        moveToSlide(targetIndex);
+    });
+});

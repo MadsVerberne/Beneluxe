@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Beneluxe</title>
-    <link rel="icon" type="image/x-icon" href="img/Favicon.png">
+    <link rel="icon" type="image/png" href="{{ asset('img/Favicon.png') }}">
     <!-- Styles & Fonts -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">

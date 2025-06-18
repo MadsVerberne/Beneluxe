@@ -10,7 +10,7 @@
 @endphp
 
 <script>
-    window.beschikbaarheden = @json($beschikbaarheden);
+    window.beschikbaarheden = json($beschikbaarheden);
 </script>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.css" />
@@ -23,7 +23,7 @@
 @section('content')
     <section class="heroother">
         <div class="heroother-content">
-            <h1>Accommodatie aanpassen</h1>
+            <h1 class="fade-in">Accommodatie aanpassen</h1>
         </div>
 
     </section>
