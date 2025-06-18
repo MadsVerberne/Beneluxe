@@ -17,15 +17,15 @@
             <h2>Bestemmingen</h2>
             <div class="icona">
                 <span class="fi fi-nl"></span>
-                <a href="/">Nederland</a>
+                <a href="/accommodaties#nederland">Nederland</a>
             </div>
             <div class="icona">
                 <span class="fi fi-be"></span>
-                <a href="/">België</a>
+                <a href="/accommodaties#belgie">België</a>
             </div>
             <div class="icona">
                 <span class="fi fi-lu"></span>
-                <a href="/">Luxemburg</a>
+                <a href="/accommodaties#luxemburg">Luxemburg</a>
             </div>
         </div>
         <div class="footercol4">
