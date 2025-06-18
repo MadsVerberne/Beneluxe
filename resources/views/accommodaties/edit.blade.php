@@ -31,7 +31,7 @@
     <div class="about py-6">
         <div class="container mx-auto max-w-xl">
 
-            <h1 class="text-2xl font-bold mb-4">Accommodatie bewerken</h1>
+            <h1 class="text-2xl font-bold mb-4">Accommodatie bewerken<i class="bi bi-chevron-down"></i></h1>
 
             {{-- Validatiefouten --}}
             @if ($errors->any())
@@ -45,106 +45,118 @@
                 </div>
             @endif
 
+            <!-- Toggle-knop -->
+            <button type="button" onclick="toggleFormVisibility()"
+                class="bg-gray-500 text-white px-4 py-2 rounded mb-4 hover:bg-gray-600">
+                Toon/Bewerk accommodatie
+            </button>
+
             {{-- Formulier --}}
-            <form method="POST" action="{{ route('accommodaties.update', $accommodatie) }}" enctype="multipart/form-data">
-                @csrf
-                @method('PUT')
+            <div id="accommodatie-form-container" class="hidden transition-all duration-300 ease-in-out">
+                <form method="POST" action="{{ route('accommodaties.update', $accommodatie) }}"
+                    enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
 
-                {{-- Titel --}}
-                <div class="mb-4">
-                    <label class="block font-medium">Titel</label>
-                    <input type="text" name="titel" class="w-full border rounded p-2"
-                        value="{{ old('titel', $accommodatie->titel) }}" />
-                </div>
-
-                {{-- Beschrijving --}}
-                <div class="mb-4">
-                    <label class="block font-medium">Beschrijving</label>
-                    <textarea name="beschrijving" class="w-full border rounded p-2">{{ old('beschrijving', $accommodatie->beschrijving) }}</textarea>
-                </div>
-
-                {{-- Locatie --}}
-                <div class="mb-4">
-                    <label class="block font-medium">Locatie</label>
-                    <input type="text" name="locatie" class="w-full border rounded p-2"
-                        value="{{ old('locatie', $accommodatie->locatie) }}" />
-                </div>
-
-                {{-- Aantal bedden, badkamers, personen --}}
-                <div class="mb-4">
-                    <label class="block font-medium">Aantal bedden</label>
-                    <input type="number" name="aantal_bedden" class="w-full border rounded p-2"
-                        value="{{ old('aantal_bedden', $accommodatie->aantal_bedden) }}" />
-                </div>
-
-                <div class="mb-4">
-                    <label class="block font-medium">Aantal badkamers</label>
-                    <input type="number" name="aantal_badkamers" class="w-full border rounded p-2"
-                        value="{{ old('aantal_badkamers', $accommodatie->aantal_badkamers) }}" />
-                </div>
-
-                <div class="mb-4">
-                    <label class="block font-medium">Aantal personen</label>
-                    <input type="number" name="aantal_personen" class="w-full border rounded p-2"
-                        value="{{ old('aantal_personen', $accommodatie->aantal_personen) }}" />
-                </div>
-
-                {{-- Prijs --}}
-                <div class="mb-4">
-                    <label class="block font-medium">Prijs per nacht (€)</label>
-                    <input type="number" step="0.01" name="prijs_per_nacht" class="w-full border rounded p-2"
-                        value="{{ old('prijs_per_nacht', $accommodatie->prijs_per_nacht) }}" />
-                </div>
-
-                {{-- Voorzieningen --}}
-                <div class="mb-4">
-                    <label class="block font-medium mb-2">Voorzieningen</label>
-                    <div class="grid grid-cols-2 gap-2">
-                        @foreach ($voorzieningen as $voorziening)
-                            <label class="flex items-center">
-                                <input type="checkbox" name="voorzieningen[]" value="{{ $voorziening->id }}"
-                                    {{ in_array($voorziening->id, old('voorzieningen', $accommodatie->voorzieningen->pluck('id')->toArray())) ? 'checked' : '' }}>
-                                <span class="ml-2">{{ $voorziening->naam }}</span>
-                            </label>
-                        @endforeach
+                    {{-- Titel --}}
+                    <div class="mb-4">
+                        <label class="block font-medium">Titel</label>
+                        <input type="text" name="titel" class="w-full border rounded p-2"
+                            value="{{ old('titel', $accommodatie->titel) }}" />
                     </div>
-                </div>
 
-                {{-- Bestaande foto's --}}
-                @if ($accommodatie->fotos->count())
-                    <div class="mb-6">
-                        <label class="block font-medium mb-2">Bestaande foto's (versleep om te sorteren, klik ✕ om te
-                            verwijderen)</label>
-                        <input type="hidden" name="bestaande_foto_volgorde" id="bestaande_foto_volgorde">
-                        <ul id="bestaande-foto-lijst" class="space-y-2">
-                            @foreach ($accommodatie->fotos->sortBy('volgorde') as $foto)
-                                <li data-id="{{ $foto->id }}"
-                                    class="relative border rounded overflow-hidden group bg-white p-1">
-                                    <img src="{{ asset('storage/' . $foto->foto_url) }}" alt="Foto {{ $loop->iteration }}"
-                                        class="w-full h-32 object-cover transition-opacity duration-300" />
-                                    <button type="button"
-                                        class="absolute top-1 right-1 bg-red-600 text-white rounded px-2 py-1 text-sm opacity-75 hover:opacity-100"
-                                        onclick="toggleDelete(this)" title="Verwijderen">
-                                        ✕
-                                    </button>
-                                    <input type="checkbox" name="verwijder_fotos[]" value="{{ $foto->id }}"
-                                        class="hidden" />
-                                </li>
+                    {{-- Beschrijving --}}
+                    <div class="mb-4">
+                        <label class="block font-medium">Beschrijving</label>
+                        <textarea name="beschrijving" class="w-full border rounded p-2">{{ old('beschrijving', $accommodatie->beschrijving) }}</textarea>
+                    </div>
+
+                    {{-- Locatie --}}
+                    <div class="mb-4">
+                        <label class="block font-medium">Locatie</label>
+                        <input type="text" name="locatie" class="w-full border rounded p-2"
+                            value="{{ old('locatie', $accommodatie->locatie) }}" />
+                    </div>
+
+                    {{-- Aantal bedden, badkamers, personen --}}
+                    <div class="mb-4">
+                        <label class="block font-medium">Aantal bedden</label>
+                        <input type="number" name="aantal_bedden" class="w-full border rounded p-2"
+                            value="{{ old('aantal_bedden', $accommodatie->aantal_bedden) }}" />
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="block font-medium">Aantal badkamers</label>
+                        <input type="number" name="aantal_badkamers" class="w-full border rounded p-2"
+                            value="{{ old('aantal_badkamers', $accommodatie->aantal_badkamers) }}" />
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="block font-medium">Aantal personen</label>
+                        <input type="number" name="aantal_personen" class="w-full border rounded p-2"
+                            value="{{ old('aantal_personen', $accommodatie->aantal_personen) }}" />
+                    </div>
+
+                    {{-- Prijs --}}
+                    <div class="mb-4">
+                        <label class="block font-medium">Prijs per nacht (€)</label>
+                        <input type="number" step="0.01" name="prijs_per_nacht" class="w-full border rounded p-2"
+                            value="{{ old('prijs_per_nacht', $accommodatie->prijs_per_nacht) }}" />
+                    </div>
+
+                    {{-- Voorzieningen --}}
+                    <div class="mb-4">
+                        <label class="block font-medium mb-2">Voorzieningen</label>
+                        <div class="grid grid-cols-2 gap-2">
+                            @foreach ($voorzieningen as $voorziening)
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="voorzieningen[]" value="{{ $voorziening->id }}"
+                                        {{ in_array($voorziening->id, old('voorzieningen', $accommodatie->voorzieningen->pluck('id')->toArray())) ? 'checked' : '' }}>
+                                    <span class="ml-2">{{ $voorziening->naam }}</span>
+                                </label>
                             @endforeach
-                        </ul>
+                        </div>
                     </div>
-                @endif
 
-                {{-- Nieuwe foto's uploaden --}}
-                <div id="photo-upload-area" class="mb-6">
-                    <label class="block font-medium mb-2">Nieuwe foto's uploaden (sleep om te sorteren)</label>
-                    <input type="file" name="fotos[]" multiple id="fotos-input" class="w-full border rounded p-2 mb-2" />
-                    <input type="hidden" name="foto_volgorde" id="foto_volgorde" />
-                    <ul id="photo-preview-list" class="space-y-2"></ul>
-                </div>
+                    {{-- Bestaande foto's --}}
+                    @if ($accommodatie->fotos->count())
+                        <div class="mb-6">
+                            <label class="block font-medium mb-2">Bestaande foto's (versleep om te sorteren, klik ✕ om te
+                                verwijderen)</label>
+                            <input type="hidden" name="bestaande_foto_volgorde" id="bestaande_foto_volgorde">
+                            <ul id="bestaande-foto-lijst" class="space-y-2">
+                                @foreach ($accommodatie->fotos->sortBy('volgorde') as $foto)
+                                    <li data-id="{{ $foto->id }}"
+                                        class="relative border rounded overflow-hidden group bg-white p-1">
+                                        <img src="{{ asset('storage/' . $foto->foto_url) }}"
+                                            alt="Foto {{ $loop->iteration }}"
+                                            class="w-full h-32 object-cover transition-opacity duration-300" />
+                                        <button type="button"
+                                            class="absolute top-1 right-1 bg-red-600 text-white rounded px-2 py-1 text-sm opacity-75 hover:opacity-100"
+                                            onclick="toggleDelete(this)" title="Verwijderen">
+                                            ✕
+                                        </button>
+                                        <input type="checkbox" name="verwijder_fotos[]" value="{{ $foto->id }}"
+                                            class="hidden" />
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
 
-                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Opslaan</button>
-            </form>
+                    {{-- Nieuwe foto's uploaden --}}
+                    <div id="photo-upload-area" class="mb-6">
+                        <label class="block font-medium mb-2">Nieuwe foto's uploaden (sleep om te sorteren)</label>
+                        <input type="file" name="fotos[]" multiple id="fotos-input"
+                            class="w-full border rounded p-2 mb-2" />
+                        <input type="hidden" name="foto_volgorde" id="foto_volgorde" />
+                        <ul id="photo-preview-list" class="space-y-2"></ul>
+                    </div>
+
+                    <button type="submit"
+                        class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Opslaan</button>
+                </form>
+            </div>
 
             {{-- Beschikbaarheid --}}
             <div class="mt-10">
@@ -225,5 +237,10 @@
             });
             calendar.render();
         });
+
+        function toggleFormVisibility() {
+            const container = document.getElementById('accommodatie-form-container');
+            container.classList.toggle('hidden');
+        }
     </script>
 @endsection
