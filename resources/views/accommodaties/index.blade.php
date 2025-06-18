@@ -14,279 +14,53 @@
                     <h2>Nederland</h2>
                 </div>
                 <div class="accommodatierow">
-                    <div class="accommodatiecol">
-                        <img src="/img/Populairehuizen1.jpg" alt="Accommodatie 1">
-                        <h3>Strandhuis Zandvoort</h3>
-                        <p>Zandvoort</p>
-                        <div class="ratingstars">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
-                            <i class="bi bi-star"></i>
-                        </div>
-                        <h4>€140 · <span>2 nachten</span></h4>
-                    </div>
-                    <div class="accommodatiecol">
-                        <img src="/img/Populairehuizen1.jpg" alt="Accommodatie 2">
-                        <h3>Strandhuis Zandvoort</h3>
-                        <p>Zandvoort</p>
-                        <div class="ratingstars">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
-                            <i class="bi bi-star"></i>
-                        </div>
-                        <h4>€140 · <span>2 nachten</span></h4>
-                    </div>
-                    <div class="accommodatiecol">
-                        <img src="/img/Populairehuizen1.jpg" alt="Accommodatie 3">
-                        <h3>Strandhuis Zandvoort</h3>
-                        <p>Zandvoort</p>
-                        <div class="ratingstars">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
-                            <i class="bi bi-star"></i>
-                        </div>
-                        <h4>€140 · <span>2 nachten</span></h4>
-                    </div>
-                    <div class="accommodatiecol">
-                        <img src="/img/Populairehuizen1.jpg" alt="Accommodatie 4">
-                        <h3>Strandhuis Zandvoort</h3>
-                        <p>Zandvoort</p>
-                        <div class="ratingstars">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
-                            <i class="bi bi-star"></i>
-                        </div>
-                        <h4>€140 · <span>2 nachten</span></h4>
-                    </div>
-                    <div class="accommodatiecol">
-                        <img src="/img/Populairehuizen1.jpg" alt="Accommodatie 5">
-                        <h3>Strandhuis Zandvoort</h3>
-                        <p>Zandvoort</p>
-                        <div class="ratingstars">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
-                            <i class="bi bi-star"></i>
-                        </div>
-                        <h4>€140 · <span>2 nachten</span></h4>
-                    </div>
-                </div>
-                <div class="accommodatierow">
-                    <div class="accommodatiecol">
-                        <img src="/img/Populairehuizen1.jpg" alt="Accommodatie 6">
-                        <h3>Strandhuis Zandvoort</h3>
-                        <p>Zandvoort</p>
-                        <div class="ratingstars">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
-                            <i class="bi bi-star"></i>
-                        </div>
-                        <h4>€140 · <span>2 nachten</span></h4>
-                    </div>
-                    <div class="accommodatiecol">
-                        <img src="/img/Populairehuizen1.jpg" alt="Accommodatie 7">
-                        <h3>Strandhuis Zandvoort</h3>
-                        <p>Zandvoort</p>
-                        <div class="ratingstars">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
-                            <i class="bi bi-star"></i>
-                        </div>
-                        <h4>€140 · <span>2 nachten</span></h4>
-                    </div>
-                    <div class="accommodatiecol">
-                        <img src="/img/Populairehuizen1.jpg" alt="Accommodatie 8">
-                        <h3>Strandhuis Zandvoort</h3>
-                        <p>Zandvoort</p>
-                        <div class="ratingstars">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
-                            <i class="bi bi-star"></i>
-                        </div>
-                        <h4>€140 · <span>2 nachten</span></h4>
-                    </div>
-                    <div class="accommodatiecol">
-                        <img src="/img/Populairehuizen1.jpg" alt="Accommodatie 9">
-                        <h3>Strandhuis Zandvoort</h3>
-                        <p>Zandvoort</p>
-                        <div class="ratingstars">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
-                            <i class="bi bi-star"></i>
-                        </div>
-                        <h4>€140 · <span>2 nachten</span></h4>
-                    </div>
-                    <div class="accommodatiecol">
-                        <img src="/img/Populairehuizen1.jpg" alt="Accommodatie 10">
-                        <h3>Strandhuis Zandvoort</h3>
-                        <p>Zandvoort</p>
-                        <div class="ratingstars">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
-                            <i class="bi bi-star"></i>
-                        </div>
-                        <h4>€140 · <span>2 nachten</span></h4>
-                    </div>
-                </div>
-            </div>
+                    @foreach ($accommodatiesNederland as $accommodatie)
+                        <a href="{{ route('accommodaties.show', $accommodatie->id) }}" class="accommodatiecol"
+                            style="text-decoration: none; color: inherit;">
+                            <img src="{{ asset('storage/' . $accommodatie->fotos->first()->foto_url) }}"
+                                alt="Accommodatie {{ $loop->iteration }}">
 
-            <!-- BELGIË -->
-            <div class="accommodatiesbelgie" id="belgie">
-                <div class="flagandname">
-                    <span class="fi fi-be"></span>
-                    <h2>België</h2>
+                            <h3>{{ $accommodatie->titel }}</h3>
+                            <p>{{ $accommodatie->locatie }}</p>
+                            <div class="ratingstars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                                <i class="bi bi-star"></i>
+                            </div>
+                            <h4>€{{ $accommodatie->prijs_per_nacht }} · <span>{{ $accommodatie->aantal_personen }}
+                                    personen</span></h4>
+                        </a>
+                    @endforeach
                 </div>
-                <div class="accommodatierow">
-                    <div class="accommodatiecol">
-                        <img src="/img/Populairehuizen2.png" alt="Accommodatie 11">
-                        <h3>Strandhuis Zandvoort</h3>
-                        <p>Zandvoort</p>
-                        <div class="ratingstars">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
-                            <i class="bi bi-star"></i>
-                        </div>
-                        <h4>€140 · <span>2 nachten</span></h4>
+
+                <!-- BELGIË -->
+                <div class="accommodatiesbelgie" id="belgie">
+                    <div class="flagandname">
+                        <span class="fi fi-be"></span>
+                        <h2>België</h2>
                     </div>
-                    <div class="accommodatiecol">
-                        <img src="/img/Populairehuizen2.png" alt="Accommodatie 12">
-                        <h3>Strandhuis Zandvoort</h3>
-                        <p>Zandvoort</p>
-                        <div class="ratingstars">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
-                            <i class="bi bi-star"></i>
-                        </div>
-                        <h4>€140 · <span>2 nachten</span></h4>
-                    </div>
-                    <div class="accommodatiecol">
-                        <img src="/img/Populairehuizen2.png" alt="Accommodatie 13">
-                        <h3>Strandhuis Zandvoort</h3>
-                        <p>Zandvoort</p>
-                        <div class="ratingstars">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
-                            <i class="bi bi-star"></i>
-                        </div>
-                        <h4>€140 · <span>2 nachten</span></h4>
-                    </div>
-                    <div class="accommodatiecol">
-                        <img src="/img/Populairehuizen2.png" alt="Accommodatie 14">
-                        <h3>Strandhuis Zandvoort</h3>
-                        <p>Zandvoort</p>
-                        <div class="ratingstars">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
-                            <i class="bi bi-star"></i>
-                        </div>
-                        <h4>€140 · <span>2 nachten</span></h4>
-                    </div>
-                    <div class="accommodatiecol">
-                        <img src="/img/Populairehuizen2.png" alt="Accommodatie 15">
-                        <h3>Strandhuis Zandvoort</h3>
-                        <p>Zandvoort</p>
-                        <div class="ratingstars">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
-                            <i class="bi bi-star"></i>
-                        </div>
-                        <h4>€140 · <span>2 nachten</span></h4>
-                    </div>
-                </div>
-                <div class="accommodatierow">
-                    <div class="accommodatiecol">
-                        <img src="/img/Populairehuizen2.png" alt="Accommodatie 16">
-                        <h3>Strandhuis Zandvoort</h3>
-                        <p>Zandvoort</p>
-                        <div class="ratingstars">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
-                            <i class="bi bi-star"></i>
-                        </div>
-                        <h4>€140 · <span>2 nachten</span></h4>
-                    </div>
-                    <div class="accommodatiecol">
-                        <img src="/img/Populairehuizen2.png" alt="Accommodatie 17">
-                        <h3>Strandhuis Zandvoort</h3>
-                        <p>Zandvoort</p>
-                        <div class="ratingstars">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
-                            <i class="bi bi-star"></i>
-                        </div>
-                        <h4>€140 · <span>2 nachten</span></h4>
-                    </div>
-                    <div class="accommodatiecol">
-                        <img src="/img/Populairehuizen2.png" alt="Accommodatie 18">
-                        <h3>Strandhuis Zandvoort</h3>
-                        <p>Zandvoort</p>
-                        <div class="ratingstars">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
-                            <i class="bi bi-star"></i>
-                        </div>
-                        <h4>€140 · <span>2 nachten</span></h4>
-                    </div>
-                    <div class="accommodatiecol">
-                        <img src="/img/Populairehuizen2.png" alt="Accommodatie 19">
-                        <h3>Strandhuis Zandvoort</h3>
-                        <p>Zandvoort</p>
-                        <div class="ratingstars">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
-                            <i class="bi bi-star"></i>
-                        </div>
-                        <h4>€140 · <span>2 nachten</span></h4>
-                    </div>
-                    <div class="accommodatiecol">
-                        <img src="/img/Populairehuizen2.png" alt="Accommodatie 20">
-                        <h3>Strandhuis Zandvoort</h3>
-                        <p>Zandvoort</p>
-                        <div class="ratingstars">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
-                            <i class="bi bi-star"></i>
-                        </div>
-                        <h4>€140 · <span>2 nachten</span></h4>
+                    <div class="accommodatierow">
+                        @foreach ($accommodatiesBelgie as $accommodatie)
+                            <a href="{{ route('accommodaties.show', $accommodatie->id) }}" class="accommodatiecol"
+                                style="text-decoration: none; color: inherit;">
+                                <img src="{{ asset('storage/' . $accommodatie->fotos->first()->foto_url) }}"
+                                    alt="Accommodatie {{ $loop->iteration }}">
+
+                                <h3>{{ $accommodatie->titel }}</h3>
+                                <p>{{ $accommodatie->locatie }}</p>
+                                <div class="ratingstars">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-half"></i>
+                                    <i class="bi bi-star"></i>
+                                </div>
+                                <h4>€{{ $accommodatie->prijs_per_nacht }} · <span>{{ $accommodatie->aantal_personen }}
+                                        personen</span></h4>
+                            </a>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -298,139 +72,27 @@
                     <h2>Luxemburg</h2>
                 </div>
                 <div class="accommodatierow">
-                    <div class="accommodatiecol">
-                        <img src="/img/Populairehuizen3.png" alt="Accommodatie 21">
-                        <h3>Strandhuis Zandvoort</h3>
-                        <p>Zandvoort</p>
-                        <div class="ratingstars">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
-                            <i class="bi bi-star"></i>
-                        </div>
-                        <h4>€140 · <span>2 nachten</span></h4>
-                    </div>
-                    <div class="accommodatiecol">
-                        <img src="/img/Populairehuizen3.png" alt="Accommodatie 22">
-                        <h3>Strandhuis Zandvoort</h3>
-                        <p>Zandvoort</p>
-                        <div class="ratingstars">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
-                            <i class="bi bi-star"></i>
-                        </div>
-                        <h4>€140 · <span>2 nachten</span></h4>
-                    </div>
-                    <div class="accommodatiecol">
-                        <img src="/img/Populairehuizen3.png" alt="Accommodatie 23">
-                        <h3>Strandhuis Zandvoort</h3>
-                        <p>Zandvoort</p>
-                        <div class="ratingstars">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
-                            <i class="bi bi-star"></i>
-                        </div>
-                        <h4>€140 · <span>2 nachten</span></h4>
-                    </div>
-                    <div class="accommodatiecol">
-                        <img src="/img/Populairehuizen3.png" alt="Accommodatie 24">
-                        <h3>Strandhuis Zandvoort</h3>
-                        <p>Zandvoort</p>
-                        <div class="ratingstars">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
-                            <i class="bi bi-star"></i>
-                        </div>
-                        <h4>€140 · <span>2 nachten</span></h4>
-                    </div>
-                    <div class="accommodatiecol">
-                        <img src="/img/Populairehuizen3.png" alt="Accommodatie 25">
-                        <h3>Strandhuis Zandvoort</h3>
-                        <p>Zandvoort</p>
-                        <div class="ratingstars">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
-                            <i class="bi bi-star"></i>
-                        </div>
-                        <h4>€140 · <span>2 nachten</span></h4>
-                    </div>
+                    @foreach ($accommodatiesLuxemburg as $accommodatie)
+                        <a href="{{ route('accommodaties.show', $accommodatie->id) }}" class="accommodatiecol"
+                            style="text-decoration: none; color: inherit;">
+                            <img src="{{ asset('storage/' . $accommodatie->fotos->first()->foto_url) }}"
+                                alt="Accommodatie {{ $loop->iteration }}">
+
+                            <h3>{{ $accommodatie->titel }}</h3>
+                            <p>{{ $accommodatie->locatie }}</p>
+                            <div class="ratingstars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                                <i class="bi bi-star"></i>
+                            </div>
+                            <h4>€{{ $accommodatie->prijs_per_nacht }} · <span>{{ $accommodatie->aantal_personen }}
+                                    personen</span></h4>
+                        </a>
+                    @endforeach
                 </div>
-                <div class="accommodatierow">
-                    <div class="accommodatiecol">
-                        <img src="/img/Populairehuizen3.png" alt="Accommodatie 26">
-                        <h3>Strandhuis Zandvoort</h3>
-                        <p>Zandvoort</p>
-                        <div class="ratingstars">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
-                            <i class="bi bi-star"></i>
-                        </div>
-                        <h4>€140 · <span>2 nachten</span></h4>
-                    </div>
-                    <div class="accommodatiecol">
-                        <img src="/img/Populairehuizen3.png" alt="Accommodatie 27">
-                        <h3>Strandhuis Zandvoort</h3>
-                        <p>Zandvoort</p>
-                        <div class="ratingstars">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
-                            <i class="bi bi-star"></i>
-                        </div>
-                        <h4>€140 · <span>2 nachten</span></h4>
-                    </div>
-                    <div class="accommodatiecol">
-                        <img src="/img/Populairehuizen3.png" alt="Accommodatie 28">
-                        <h3>Strandhuis Zandvoort</h3>
-                        <p>Zandvoort</p>
-                        <div class="ratingstars">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
-                            <i class="bi bi-star"></i>
-                        </div>
-                        <h4>€140 · <span>2 nachten</span></h4>
-                    </div>
-                    <div class="accommodatiecol">
-                        <img src="/img/Populairehuizen3.png" alt="Accommodatie 29">
-                        <h3>Strandhuis Zandvoort</h3>
-                        <p>Zandvoort</p>
-                        <div class="ratingstars">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
-                            <i class="bi bi-star"></i>
-                        </div>
-                        <h4>€140 · <span>2 nachten</span></h4>
-                    </div>
-                    <div class="accommodatiecol">
-                        <img src="/img/Populairehuizen3.png" alt="Accommodatie 30">
-                        <h3>Strandhuis Zandvoort</h3>
-                        <p>Zandvoort</p>
-                        <div class="ratingstars">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
-                            <i class="bi bi-star"></i>
-                        </div>
-                        <h4>€140 · <span>2 nachten</span></h4>
-                    </div>
-                </div>
+
             </div>
         </div>
         <section class="calltoactionaccommodaties">

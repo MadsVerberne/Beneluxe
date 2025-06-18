@@ -16,8 +16,11 @@ class AccommodatieController extends Controller
     // Overzicht van alle accommodaties
     public function index()
     {
-        $accommodaties = accommodatie::all();
-        return view('accommodaties.index', compact('accommodaties'));
+        $accommodatiesNederland = Accommodatie::where('locatie', 'like', '%, Nederland')->get();
+        $accommodatiesBelgie = Accommodatie::where('locatie', 'like', '%, België')->get();
+        $accommodatiesLuxemburg = Accommodatie::where('locatie', 'like', '%, Luxemburg')->get();
+
+        return view('accommodaties.index', compact('accommodatiesNederland', 'accommodatiesBelgie', 'accommodatiesLuxemburg'));
     }
 
     // Detailpagina van één accommodatie

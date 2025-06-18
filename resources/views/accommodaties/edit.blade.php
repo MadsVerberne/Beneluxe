@@ -11,6 +11,7 @@
 
 <script>
     window.beschikbaarheden = @json($beschikbaarheden);
+    console.log(window.beschikbaarheden);
 </script>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.css" />
@@ -30,9 +31,6 @@
 
     <div class="about py-6">
         <div class="container mx-auto max-w-xl">
-
-            <h1 class="text-2xl font-bold mb-4">Accommodatie bewerken<i class="bi bi-chevron-down"></i></h1>
-
             {{-- Validatiefouten --}}
             @if ($errors->any())
                 <div class="bg-red-100 text-red-700 p-4 rounded mb-4">
@@ -45,11 +43,16 @@
                 </div>
             @endif
 
-            <!-- Toggle-knop -->
+            <!-- Toggle met chevron -->
             <button type="button" onclick="toggleFormVisibility()"
-                class="bg-gray-500 text-white px-4 py-2 rounded mb-4 hover:bg-gray-600">
-                Toon/Bewerk accommodatie
+                class="flex items-center justify-between w-full bg-gray-200 px-4 py-2 rounded mb-4 hover:bg-gray-300">
+                <span class="font-semibold">Toon / Bewerk accommodatie</span>
+                <svg id="chevron-icon" class="w-5 h-5 transition-transform duration-300 transform" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
             </button>
+
 
             {{-- Formulier --}}
             <div id="accommodatie-form-container" class="hidden transition-all duration-300 ease-in-out">
