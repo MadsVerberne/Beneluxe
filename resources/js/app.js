@@ -220,33 +220,89 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    const track = document.querySelector('.carousel-track');
-    const slides = Array.from(track.children);
-    const nextButton = document.querySelector('.carousel-btn.next');
-    const prevButton = document.querySelector('.carousel-btn.prev');
+const track = document.querySelector('.carousel-track');
+const slides = Array.from(track.children);
+const nextButton = document.querySelector('.carousel-btn.next');
+const prevButton = document.querySelector('.carousel-btn.prev');
+
+let currentIndex = 0;
+
+const currentDisplay = document.getElementById('carousel-current');
+const totalDisplay = document.getElementById('carousel-total');
+
+totalDisplay.textContent = slides.length;
+
+function updateCarousel() {
     const slideWidth = slides[0].getBoundingClientRect().width;
+    track.style.transform = 'translateX(-' + (slideWidth * currentIndex) + 'px)';
+    currentDisplay.textContent = currentIndex + 1;
+}
 
-    // Zet slides op juiste positie
-    slides.forEach((slide, index) => {
-        slide.style.left = slideWidth * index + 'px';
+nextButton.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % slides.length;
+    updateCarousel();
+});
+
+prevButton.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    updateCarousel();
+});
+
+// init
+updateCarousel();
+
+document.addEventListener('DOMContentLoaded', () => {
+  const slides = document.querySelectorAll('.carousel-slide img');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = lightbox.querySelector('.lightbox-img');
+  const closeBtn = document.getElementById('lightbox-close');
+  const prevBtn = document.getElementById('lightbox-prev');
+  const nextBtn = document.getElementById('lightbox-next');
+
+  let currentIndex = 0;
+
+  // Open lightbox bij klik op een afbeelding
+  slides.forEach((img, index) => {
+    img.addEventListener('click', () => {
+      currentIndex = index;
+      openLightbox();
     });
+  });
 
-    let currentIndex = 0;
+  function openLightbox() {
+    lightbox.style.display = 'flex';
+    updateLightboxImage();
+  }
 
-    function moveToSlide(targetIndex) {
-        const amountToMove = slides[targetIndex].style.left;
-        track.style.transform = 'translateX(-' + amountToMove + ')';
-        currentIndex = targetIndex;
+  function closeLightbox() {
+    lightbox.style.display = 'none';
+  }
+
+  function updateLightboxImage() {
+    lightboxImg.src = slides[currentIndex].src;
+    lightboxImg.alt = slides[currentIndex].alt;
+  }
+
+  function showPrev() {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    updateLightboxImage();
+  }
+
+  function showNext() {
+    currentIndex = (currentIndex + 1) % slides.length;
+    updateLightboxImage();
+  }
+
+  closeBtn.addEventListener('click', closeLightbox);
+  prevBtn.addEventListener('click', showPrev);
+  nextBtn.addEventListener('click', showNext);
+
+  // Optioneel: sluit lightbox ook met ESC toets
+  document.addEventListener('keydown', (e) => {
+    if (lightbox.style.display === 'flex') {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') showPrev();
+      if (e.key === 'ArrowRight') showNext();
     }
-
-    nextButton.addEventListener('click', () => {
-        const targetIndex = (currentIndex + 1) % slides.length;
-        moveToSlide(targetIndex);
-    });
-
-    prevButton.addEventListener('click', () => {
-        const targetIndex = (currentIndex - 1 + slides.length) % slides.length;
-        moveToSlide(targetIndex);
-    });
+  });
 });

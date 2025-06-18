@@ -23,17 +23,30 @@
                         <img src="/img/Populairehuizen1.jpg" alt="Foto 1">
                     </li>
                     <li class="carousel-slide">
-                        <img src="/img/Populairehuizen1.jpg" alt="Foto 2">
+                        <img src="/img/Populairehuizen2.png" alt="Foto 2">
                     </li>
                     <li class="carousel-slide">
-                        <img src="/img/Populairehuizen1.jpg" alt="Foto 3">
+                        <img src="/img/Populairehuizen3.png" alt="Foto 3">
                     </li>
                 </ul>
             </div>
+            <div class="carousel-counter">
+                <span id="carousel-current">1</span> / <span id="carousel-total">3</span>
+            </div>
+
             <button class="carousel-btn next">
                 <i class="bi bi-chevron-right"></i>
             </button>
         </div>
+        <div class="lightbox" id="lightbox">
+            <button class="lightbox-close" id="lightbox-close">&times;</button>
+            <button class="lightbox-nav lightbox-prev" id="lightbox-prev">&#10094;</button>
+            <img src="" alt="Vergrote foto" class="lightbox-img" />
+            <button class="lightbox-nav lightbox-next" id="lightbox-next">&#10095;</button>
+            <div class="lightbox-counter" id="lightbox-counter">1 / 3</div>
+        </div>
+
+
         <div class="price-summary-card">
             <div class="price-summary-header">
                 <span class="price-per-night">€ 242</span> <span class="per-night-text">· 1 nacht</span>
@@ -198,4 +211,5 @@
         </div>
     </div>
 </section>
+
 @endsection
