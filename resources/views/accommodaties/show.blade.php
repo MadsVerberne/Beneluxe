@@ -3,14 +3,14 @@
 @section('content')
 <section class="heroother">
     <div class="heroother-content">
-        <h1 class="fade-in">Titel van accommodatie</h1>
+        <h1 class="fade-in">Strandhuis Zandvoort</h1>
     </div>
 </section>
 <div class="show">
-    <h2>Titel van accommodatie</h2>
+    <h2>Strandhuis Zandvoort</h2>
     <div class="locationaccommodatie">
         <i class="bi bi-geo-alt-fill"></i>
-        <h3>Vlijmen, Nederland</h3>
+        <h3>Zandvoort, Nederland</h3>
     </div>
     <div class="row1">
         <div class="carousel">
@@ -134,8 +134,12 @@
         <h2>Bekijk ook deze accommodaties</h2>
         <div class="accommodatierow">
             <div class="accommodatiecol">
-                <img src="/img/Populairehuizen1.jpg" alt="Accommodatie 1">
-                <h3>Strandhuis Zandvoort</h3>
+                <a href="#">
+                    <img src="/img/Populairehuizen1.jpg" alt="Accommodatie 1">
+                </a>
+                <a href="#">
+                    <h3>Strandhuis Zandvoort</h3>
+                </a>
                 <p>Zandvoort</p>
                 <div class="ratingstars">
                     <i class="bi bi-star-fill"></i>
@@ -147,8 +151,12 @@
                 <h4>€140 · <span>2 nachten</span></h4>
             </div>
             <div class="accommodatiecol">
-                <img src="/img/Populairehuizen1.jpg" alt="Accommodatie 2">
-                <h3>Strandhuis Zandvoort</h3>
+                <a href="#">
+                    <img src="/img/Populairehuizen1.jpg" alt="Accommodatie 2">
+                </a>
+                <a href="#">
+                    <h3>Strandhuis Zandvoort</h3>
+                </a>
                 <p>Zandvoort</p>
                 <div class="ratingstars">
                     <i class="bi bi-star-fill"></i>
@@ -160,8 +168,12 @@
                 <h4>€140 · <span>2 nachten</span></h4>
             </div>
             <div class="accommodatiecol">
-                <img src="/img/Populairehuizen1.jpg" alt="Accommodatie 3">
-                <h3>Strandhuis Zandvoort</h3>
+                <a href="#">
+                    <img src="/img/Populairehuizen1.jpg" alt="Accommodatie 3">
+                </a>
+                <a href="#">
+                    <h3>Strandhuis Zandvoort</h3>
+                </a>
                 <p>Zandvoort</p>
                 <div class="ratingstars">
                     <i class="bi bi-star-fill"></i>
@@ -173,8 +185,12 @@
                 <h4>€140 · <span>2 nachten</span></h4>
             </div>
             <div class="accommodatiecol">
-                <img src="/img/Populairehuizen1.jpg" alt="Accommodatie 4">
-                <h3>Strandhuis Zandvoort</h3>
+                <a href="#">
+                    <img src="/img/Populairehuizen1.jpg" alt="Accommodatie 4">
+                </a>
+                <a href="#">
+                    <h3>Strandhuis Zandvoort</h3>
+                </a>
                 <p>Zandvoort</p>
                 <div class="ratingstars">
                     <i class="bi bi-star-fill"></i>
@@ -186,8 +202,12 @@
                 <h4>€140 · <span>2 nachten</span></h4>
             </div>
             <div class="accommodatiecol">
-                <img src="/img/Populairehuizen1.jpg" alt="Accommodatie 5">
-                <h3>Strandhuis Zandvoort</h3>
+                <a href="#">
+                    <img src="/img/Populairehuizen1.jpg" alt="Accommodatie 5">
+                </a>
+                <a href="#">
+                    <h3>Strandhuis Zandvoort</h3>
+                </a>
                 <p>Zandvoort</p>
                 <div class="ratingstars">
                     <i class="bi bi-star-fill"></i>
@@ -201,13 +221,13 @@
         </div>
     </div>
 </div>
-<section class="calltoactionaccommodaties">
+<section class="calltoactionshow">
     <div class="cta-overlay">
         <div class="cta-content">
             <h2>Wil jij je accommodatie verhuren via Beneluxe?</h2>
             <p>Neem contact op en bereik eenvoudig duizenden potentiële gasten in Nederland, België en Luxemburg.
                 Wij regelen de rest.</p>
-            <a href="/contact" class="cta-button">Neem contact op</a>
+            <a href="/register" class="cta-button">Registreer nu</a>
         </div>
     </div>
 </section>

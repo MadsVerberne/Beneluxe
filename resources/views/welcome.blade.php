@@ -17,8 +17,12 @@
             <h2>Populaire huizen</h2>
             <div class="populairehuizenrow">
                 <div class="populairehuizencol">
-                    <img src="/img/Populairehuizen1.jpg" alt="Populairehuizen1">
-                    <h3>Vakantiehuis aan het strand</h3>
+                    <a href="#">
+                        <img src="/img/Populairehuizen1.jpg" alt="Populairehuizen1">
+                    </a>
+                    <a href="#">
+                        <h3>Vakantiehuis aan het strand</h3>
+                    </a>
                     <p>Egmond aan zee</p>
                     <div class="ratingstars">
                         <i class="bi bi-star-fill"></i>
@@ -30,8 +34,12 @@
                     <h4>€90 · <span>2 nachten</span></h4>
                 </div>
                 <div class="populairehuizencol">
-                    <img src="/img/Populairehuizen2.png" alt="Populairehuizen2">
-                    <h3>Chalet in de bossen</h3>
+                    <a href="#">
+                        <img src="/img/Populairehuizen2.png" alt="Populairehuizen2">
+                    </a>
+                    <a href="#">
+                        <h3>Chalet in de bossen</h3>
+                    </a>
                     <p>Durbuy, België</p>
                     <div class="ratingstars">
                         <i class="bi bi-star-fill"></i>
@@ -43,8 +51,12 @@
                     <h4>€120 · <span>3 nachten</span></h4>
                 </div>
                 <div class="populairehuizencol">
-                    <img src="/img/Populairehuizen3.png" alt="Populairehuizen3">
-                    <h3>Villa Luxemburg</h3>
+                    <a href="#">
+                        <img src="/img/Populairehuizen3.png" alt="Populairehuizen3">
+                    </a>
+                    <a href="#">
+                        <h3>Villa Luxemburg</h3>
+                    </a>
                     <p>Schieren, Luxemburg</p>
                     <div class="ratingstars">
                         <i class="bi bi-star-fill"></i>
@@ -56,8 +68,12 @@
                     <h4>€410 · <span>7 nachten</span></h4>
                 </div>
                 <div class="populairehuizencol">
-                    <img src="/img/Populairehuizen4.jpg" alt="Populairehuizen4">
-                    <h3>Boshuisje Limburg</h3>
+                    <a href="#">
+                        <img src="/img/Populairehuizen4.jpg" alt="Populairehuizen4">
+                    </a>
+                    <a href="#">
+                        <h3>Boshuisje Limburg</h3>
+                    </a>
                     <p>Beek, Limburg</p>
                     <div class="ratingstars">
                         <i class="bi bi-star-fill"></i>
@@ -134,7 +150,7 @@
                     <h2>Wil jij je accommodatie verhuren via Beneluxe?</h2>
                     <p>Neem contact op en bereik eenvoudig duizenden potentiële gasten in Nederland, België en Luxemburg.
                         Wij regelen de rest.</p>
-                    <a href="/contact" class="cta-button">Neem contact op</a>
+                    <a href="/register" class="cta-button">Registreer nu</a>
                 </div>
             </div>
         </section>

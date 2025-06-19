@@ -10,6 +10,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 /* Header */
 .header {
     position: absolute;
@@ -197,6 +201,27 @@
     font-size: 20px;
     margin-top: 10px;
     font-weight: 700;
+    transition: 0.3s ease;
+    text-decoration: none;
+}
+
+.populairehuizencol a {
+    color: black;
+    transition: 0.3s ease;
+}
+
+.populairehuizencol a img {
+    transition: transform 0.3s ease;
+}
+
+.populairehuizencol a img:hover {
+    transform: scale(0.95);
+}
+
+
+.populairehuizencol a:hover {
+    color: #f5c144;
+    text-decoration: none;
 }
 
 .populairehuizencol span {
@@ -446,7 +471,6 @@ footer h2 {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.55);
-    /* donkere tint */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -883,19 +907,33 @@ footer h2 {
 .accommodatiecol {
     width: 18%;
     margin-bottom: 40px;
-}
-
-.accommodatiecol img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
+    overflow: hidden;
     border-radius: 10px;
 }
 
-.accommodatiecol h3 {
+.accommodatiecol a img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.accommodatiecol a img:hover {
+    transform: scale(0.95);
+}
+
+.accommodatiecol a {
     font-size: 18px;
-    margin-top: 8px;
     font-weight: 700;
+    transition: 0.3s ease;
+}
+
+.accommodatiecol a:hover {
+    color: #f5c144;
+    text-decoration: none;
 }
 
 .accommodatiecol span {
@@ -920,14 +958,27 @@ footer h2 {
 .calltoactionaccommodaties {
     position: relative;
     background-image: url('/public/img/CTA.jpg');
-    /* vervang met jouw afbeelding */
     background-size: cover;
     background-position: center;
     color: white;
     text-align: center;
     border-radius: 20px;
     overflow: hidden;
-    margin: 0px 100px 140px 100px;
+    margin: 100px 100px 50px 100px;
+    padding: 300px 100px 100px 100px;
+}
+
+/* CTA show */
+.calltoactionshow {
+    position: relative;
+    background-image: url('/public/img/CTA.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 0px 100px 100px 100px;
     padding: 300px 100px 100px 100px;
 }
 
@@ -1307,7 +1358,6 @@ footer h2 {
 .carousel-counter {
     position: absolute;
     bottom: 10px;
-    /* of top: 10px */
     right: 15px;
     background-color: rgba(0, 0, 0, 0.6);
     color: white;
@@ -1320,7 +1370,6 @@ footer h2 {
 
 .lightbox {
     display: none;
-    /* start uitgeschakeld */
     position: fixed;
     top: 0;
     left: 0;
@@ -1340,7 +1389,6 @@ footer h2 {
     bottom: 0;
     background: rgba(0, 0, 0, 0.8);
     display: none;
-    /* VERBERGEN */
     justify-content: center;
     align-items: center;
     z-index: 9999;
@@ -1348,13 +1396,13 @@ footer h2 {
 
 .lightbox.show {
     display: flex;
-    /* TOON */
 }
 
 .lightbox-img {
-    max-width: 90%;
-    max-height: 80vh;
-    box-shadow: 0 0 15px black;
+    max-width: 100%;
+    max-height: 500px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.20);
 }
 
 .lightbox-close {
@@ -1367,7 +1415,6 @@ footer h2 {
     border: none;
     cursor: pointer;
 }
-
 
 .lightbox-nav {
     position: fixed;
@@ -1390,6 +1437,12 @@ footer h2 {
 .lightbox-next {
     right: 20px;
 }
+
+.lightbox-nav:focus, .lightbox-close:focus {
+    outline: none;
+    box-shadow: none;
+}
+
 
 @keyframes fadeIn {
     from {
