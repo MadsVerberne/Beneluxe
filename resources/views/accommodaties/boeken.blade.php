@@ -1,6 +1,10 @@
 <script>
+<<<<<<< HEAD
     window.beschikbaarheden = @json($beschikbaarheden);
     console.log(window.beschikbaarheden);
+=======
+    window.beschikbaarheden = json($beschikbaarheden);
+>>>>>>> d54b2d9d79924ec3bbf848083a3e0a62501dbf4c
 </script>
 
 <style>
@@ -37,7 +41,7 @@
 @section('content')
     <section class="heroother">
         <div class="heroother-content">
-            <h1>Boeken voor {{ $accommodatie->titel }}</h1>
+            <h1 class="fade-in">Boeken voor {{ $accommodatie->titel }}</h1>
         </div>
     </section>
 
