@@ -3,6 +3,9 @@
 use App\Http\Controllers\accommodatieController;
 use App\Http\Controllers\BoekenController;
 use App\Http\Controllers\ProfileController;
+use App\Models\accommodatie;
+use App\Models\Boeken;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -48,13 +51,20 @@ Route::middleware('auth')->group(function () {
 Route::get('/accommodaties', [accommodatieController::class, 'index'])->name('accommodaties.index');
 Route::get('/accommodaties/{accommodatie}', [accommodatieController::class, 'show'])->name('accommodaties.show');
 
+
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $user = Auth::user(); // ✅ haalt de ingelogde gebruiker op
+
+    $accommodaties = $user->accommodaties;
+    $boekingen = $user->boekingen()->with('accommodatie')->get();
+
+    return view('dashboard', compact('accommodaties', 'boekingen'));
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
 
 require __DIR__ . '/auth.php';
 
 use App\Http\Controllers\ContactController;
 
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
-

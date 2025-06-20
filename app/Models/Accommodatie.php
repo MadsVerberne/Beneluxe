@@ -38,4 +38,9 @@ class accommodatie extends Model
     {
         return $this->hasMany(Beschikbaarheid::class);
     }
+
+    public function boekingen()
+    {
+        return $this->hasMany(\App\Models\Boeken::class, 'accommodatie_id');
+    }
 }

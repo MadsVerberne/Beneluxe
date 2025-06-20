@@ -26,8 +26,8 @@ class AccommodatieController extends Controller
     // Detailpagina van één accommodatie
     public function show(accommodatie $accommodatie)
     {
-        $voorzieningen = Voorzieningen::all();
-        return view('accommodaties.show', compact('accommodatie', 'voorzieningen'));
+        $accommodaties = accommodatie::all();
+        return view('accommodaties.show', compact('accommodaties'));
     }
 
     // Formulier om nieuw accommodatie aan te maken

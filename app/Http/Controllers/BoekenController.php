@@ -12,13 +12,22 @@ class BoekenController extends Controller
 {
     public function create($accommodatieId)
     {
-        $accommodatie = Accommodatie::with('beschikbaarheden')->findOrFail($accommodatieId);
+        $accommodatie = Accommodatie::with(['beschikbaarheden', 'boekingen'])->findOrFail($accommodatieId);
 
         $gegroepeerdeBeschikbaarheden = $this->groepeerBeschikbaarheden($accommodatie->beschikbaarheden);
+
+        // Haal boekingen op en formatteer ze voor de kalender
+        $boekingen = $accommodatie->boekingen->map(function ($boeking) {
+            return [
+                'start' => $boeking->van_datum,
+                'end' => Carbon::parse($boeking->tot_datum)->addDay()->format('Y-m-d'),
+            ];
+        });
 
         return view('accommodaties.boeken', [
             'accommodatie' => $accommodatie,
             'beschikbaarheden' => $gegroepeerdeBeschikbaarheden,
+            'boekingen' => $boekingen,
         ]);
     }
 
@@ -30,16 +39,27 @@ class BoekenController extends Controller
             'tot_datum' => 'required|date|after:van_datum',
         ]);
 
-        $boeking = Boeken::create([
+        // Stap 1: Haal de accommodatie op
+        $accommodatie = Accommodatie::findOrFail($request->accommodatie_id);
+
+        // Stap 2: Bereken het aantal nachten
+        $van = Carbon::parse($request->van_datum);
+        $tot = Carbon::parse($request->tot_datum);
+        $nachten = $van->diffInDays($tot) + 1;
+
+        // Stap 3: Bereken totaalprijs
+        $totaalPrijs = $nachten * $accommodatie->prijs_per_nacht;
+
+        // Stap 4: Boek de accommodatie
+        Boeken::create([
             'gebruiker_id' => Auth::id(),
             'accommodatie_id' => $request->accommodatie_id,
-            'van_datum' => $request->van_datum,
-            'tot_datum' => $request->tot_datum,
-            'status' => 'in_behandeling',
-            'totaal_prijs' => 0, // Optioneel: bereken dit op basis van tarief
+            'van_datum' => $van,
+            'tot_datum' => $tot,
+            'totaal_prijs' => $totaalPrijs,
         ]);
 
-        return redirect()->route('boekingen.show', $boeking->id);
+        return redirect()->route('dashboard')->with('success', 'Boeking succesvol aangemaakt.');
     }
 
     /**

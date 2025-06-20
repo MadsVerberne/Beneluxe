@@ -1,10 +1,6 @@
 <script>
-<<<<<<< HEAD
     window.beschikbaarheden = @json($beschikbaarheden);
-    console.log(window.beschikbaarheden);
-=======
-    window.beschikbaarheden = json($beschikbaarheden);
->>>>>>> d54b2d9d79924ec3bbf848083a3e0a62501dbf4c
+    window.boekingen = @json($boekingen);
 </script>
 
 <style>
@@ -33,6 +29,36 @@
     /* ✅ Geselecteerde (gesleepte) periode: zachte emerald kleur */
     .fc-highlight {
         background-color: rgba(16, 185, 129, 0.3) !important;
+    }
+
+    .fc-day-booked {
+        background-color: transparent !important;
+        position: relative;
+    }
+
+    .fc-day-booked::after {
+        content: '✗';
+        color: white;
+        font-weight: 900;
+        font-size: 1.6rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        user-select: none;
+        z-index: 10;
+        background-color: rgba(255, 0, 0, 0.85);
+        border-radius: 50%;
+        padding: 4px 7px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        line-height: 1;
+        text-align: center;
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 </style>
 
@@ -70,6 +96,15 @@
             function isWithinAvailability(start, lastNight) {
                 return beschikbaarheden.some(function(periode) {
                     return new Date(periode.start) <= start && lastNight < new Date(periode.end);
+                });
+            }
+
+            function isNotBooked(start, lastNight) {
+                return !window.boekingen.some(function(boeking) {
+                    const boekStart = new Date(boeking.start);
+                    const boekEnd = new Date(boeking.end); // exclusief
+
+                    return start < boekEnd && lastNight >= boekStart;
                 });
             }
 
@@ -129,6 +164,31 @@
                 return availableDays;
             }
 
+            // Nieuwe functie om per geboekte dag een event te maken met kruisje
+            function generateBookedDayEvents(boekingen) {
+                const oneDay = 1000 * 60 * 60 * 24;
+                let bookedEvents = [];
+
+                boekingen.forEach(boeking => {
+                    let current = new Date(boeking.start);
+                    const end = new Date(boeking.end); // exclusief
+
+                    while (current < end) {
+                        const dateISO = current.toISOString().split('T')[0];
+                        bookedEvents.push({
+                            title: '', // geen tekst zichtbaar
+                            start: dateISO,
+                            allDay: true,
+                            display: 'background',
+                            classNames: ['fc-day-booked']
+                        });
+                        current = new Date(current.getTime() + oneDay);
+                    }
+                });
+
+                return bookedEvents;
+            }
+
             function markAvailableDays(calendarEl, beschikbaarheden) {
                 const cells = calendarEl.querySelectorAll('.fc-daygrid-day');
                 cells.forEach(cell => {
@@ -183,9 +243,16 @@
                     right: ''
                 },
                 events: [
+                    // ❌ Niet-beschikbare dagen (lichtgrijs)
                     ...generateUnavailableRanges(beschikbaarheden, today, farFuture),
-                    ...generateAvailableRanges(beschikbaarheden)
+
+                    // ✅ Beschikbare dagen (lichtgroen)
+                    ...generateAvailableRanges(beschikbaarheden),
+
+                    // ❌ Geboekte dagen, per dag een kruisje
+                    ...generateBookedDayEvents(window.boekingen)
                 ],
+
                 datesSet: function() {
                     markAvailableDays(calendarEl, beschikbaarheden);
                 }

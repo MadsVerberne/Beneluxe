@@ -17,7 +17,6 @@ return new class extends Migration
             $table->foreignId('accommodatie_id')->constrained('accommodaties')->onDelete('cascade');
             $table->date('van_datum');
             $table->date('tot_datum');
-            $table->string('status'); // bijv. bevestigd, geannuleerd, etc.
             $table->decimal('totaal_prijs', 8, 2);
             $table->timestamps();
         });

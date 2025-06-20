@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Boeken extends Model
 {
+    protected $table = 'boekingen';
+
     protected $fillable = ['gebruiker_id', 'accommodatie_id', 'van_datum', 'tot_datum', 'status', 'totaal_prijs'];
 
     public function accommodatie()
