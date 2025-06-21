@@ -16,7 +16,6 @@ class BoekenController extends Controller
 
         $gegroepeerdeBeschikbaarheden = $this->groepeerBeschikbaarheden($accommodatie->beschikbaarheden);
 
-        // Haal boekingen op en formatteer ze voor de kalender
         $boekingen = $accommodatie->boekingen->map(function ($boeking) {
             return [
                 'start' => $boeking->van_datum,
@@ -39,28 +38,40 @@ class BoekenController extends Controller
             'tot_datum' => 'required|date|after:van_datum',
         ]);
 
-        // Stap 1: Haal de accommodatie op
         $accommodatie = Accommodatie::findOrFail($request->accommodatie_id);
 
-        // Stap 2: Bereken het aantal nachten
         $van = Carbon::parse($request->van_datum);
-        $tot = Carbon::parse($request->tot_datum);
-        $nachten = $van->diffInDays($tot) + 1;
+        $tot = Carbon::parse($request->tot_datum); // ⛔️ niet meer +1 dag doen
 
-        // Stap 3: Bereken totaalprijs
+        $nachten = $van->diffInDays($tot); // ⛔️ geen +1 dag
+
+        // ✅ Controle op overlap (voor [van, tot))
+        $overlap = Boeken::where('accommodatie_id', $accommodatie->id)
+            ->where(function ($query) use ($van, $tot) {
+                $query->where('van_datum', '<', $tot)
+                    ->where('tot_datum', '>', $van);
+            })
+            ->exists();
+
+        if ($overlap) {
+            return back()->withErrors([
+                'van_datum' => 'De geselecteerde periode overlapt met een bestaande boeking.',
+            ])->withInput();
+        }
+
         $totaalPrijs = $nachten * $accommodatie->prijs_per_nacht;
 
-        // Stap 4: Boek de accommodatie
         Boeken::create([
             'gebruiker_id' => Auth::id(),
-            'accommodatie_id' => $request->accommodatie_id,
+            'accommodatie_id' => $accommodatie->id,
             'van_datum' => $van,
-            'tot_datum' => $tot,
+            'tot_datum' => $tot, // ✅ correcte exclusieve datum
             'totaal_prijs' => $totaalPrijs,
         ]);
 
         return redirect()->route('dashboard')->with('success', 'Boeking succesvol aangemaakt.');
     }
+
 
     /**
      * Groepeert opeenvolgende beschikbaarheden tot één doorlopende periode.
@@ -84,7 +95,6 @@ class BoekenController extends Controller
 
             $laatste = &$gegroepeerd[count($gegroepeerd) - 1];
 
-            // Als de nieuwe startdatum gelijk is aan de vorige einddatum, voeg ze samen
             if ($laatste['end'] === $start) {
                 $laatste['end'] = $end;
             } else {
@@ -92,7 +102,6 @@ class BoekenController extends Controller
             }
         }
 
-        // Voeg 'title' toe om compatibel te blijven met FullCalendar
         return collect($gegroepeerd)->map(function ($periode) {
             return [
                 'title' => 'Beschikbaar',

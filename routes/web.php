@@ -31,6 +31,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/accommodaties', [accommodatieController::class, 'store'])->name('accommodaties.store');
     Route::get('/accommodaties/{accommodatie}/edit', [accommodatieController::class, 'edit'])->name('accommodaties.edit');
     Route::put('/accommodaties/{accommodatie}', [accommodatieController::class, 'update'])->name('accommodaties.update');
+    Route::delete('/accommodaties/{accommodatie}', [accommodatieController::class, 'destroy'])->name('accommodaties.destroy');
+
 
     Route::post('/accommodaties/{accommodatie}/beschikbaarheid', [AccommodatieController::class, 'beschikbaarheidToevoegen'])->name('accommodaties.beschikbaarheid.toevoegen');
     Route::delete('/accommodaties/beschikbaarheid/{id}', [AccommodatieController::class, 'beschikbaarheidVerwijderen'])->name('accommodaties.beschikbaarheid.verwijderen');
@@ -53,7 +55,7 @@ Route::get('/accommodaties/{accommodatie}', [accommodatieController::class, 'sho
 
 
 Route::get('/dashboard', function () {
-    $user = Auth::user(); // ✅ haalt de ingelogde gebruiker op
+    $user = Auth::user();
 
     $accommodaties = $user->accommodaties;
     $boekingen = $user->boekingen()->with('accommodatie')->get();

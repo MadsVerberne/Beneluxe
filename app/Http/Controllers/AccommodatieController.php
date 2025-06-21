@@ -24,11 +24,14 @@ class AccommodatieController extends Controller
     }
 
     // Detailpagina van één accommodatie
-    public function show(accommodatie $accommodatie)
+    public function show($id)
     {
-        $accommodaties = accommodatie::all();
-        return view('accommodaties.show', compact('accommodaties'));
+        $accommodatie = Accommodatie::with(['fotos', 'voorzieningen'])->findOrFail($id);
+        $suggesties = Accommodatie::where('id', '!=', $id)->inRandomOrder()->take(5)->get();
+
+        return view('accommodaties.show', compact('accommodatie', 'suggesties'));
     }
+
 
     // Formulier om nieuw accommodatie aan te maken
     public function create()
@@ -190,6 +193,26 @@ class AccommodatieController extends Controller
 
 
         return redirect()->route('accommodaties.index')->with('success', 'accommodatie succesvol bijgewerkt!');
+    }
+
+    public function destroy(Accommodatie $accommodatie)
+    {
+        $this->authorize('delete', $accommodatie);
+
+        // Foto's verwijderen uit storage en database
+        foreach ($accommodatie->fotos as $foto) {
+            Storage::disk('public')->delete($foto->foto_url);
+            $foto->delete();
+        }
+
+        // Relaties opruimen
+        $accommodatie->voorzieningen()->detach();
+        $accommodatie->beschikbaarheden()->delete();
+
+        // Verwijder de accommodatie zelf
+        $accommodatie->delete();
+
+        return redirect()->route('accommodaties.index')->with('success', 'Accommodatie succesvol verwijderd.');
     }
 
     public function beschikbaarheidToevoegen(Request $request, Accommodatie $accommodatie)

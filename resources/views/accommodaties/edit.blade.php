@@ -158,6 +158,14 @@
                     <button type="submit"
                         class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Opslaan</button>
                 </form>
+                <form action="{{ route('accommodaties.destroy', $accommodatie->id) }}" method="POST"
+                    onsubmit="return confirm('Weet je zeker dat je deze accommodatie wilt verwijderen?');">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="bg-red-500 text-white px-4 py-2 mt-3 rounded hover:bg-red-600">
+                        Verwijder Accommodatie
+                    </button>
+                </form>
             </div>
 
             {{-- Beschikbaarheid --}}
