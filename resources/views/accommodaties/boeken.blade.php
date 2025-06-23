@@ -75,16 +75,13 @@
 
     <form action="{{ route('boeken.store') }}" method="POST">
         @csrf
-        <div>
-            <input type="hidden" name="accommodatie_id" value="{{ $accommodatie->id }}">
-            <input type="hidden" name="van_datum">
-            <input type="hidden" name="tot_datum">
-            <p>Geselecteerde aankomstdatum: <span id="selected-van-datum"></span></p>
-            <p>Geselecteerde vertrekdatum: <span id="selected-tot-datum"></span></p>
-        </div>
+        <input type="hidden" name="accommodatie_id" value="{{ $accommodatie->id }}">
+        <input type="hidden" name="van_datum">
+        <input type="hidden" name="tot_datum">
+        <p>Geselecteerde aankomstdatum: <span id="selected-van-datum"></span></p>
+        <p>Geselecteerde vertrekdatum: <span id="selected-tot-datum"></span></p>
         <button type="submit" class="bg-blue-600 text-white p-2 rounded">Boek nu</button>
     </form>
-
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const beschikbaarheden = window.beschikbaarheden;
@@ -224,7 +221,11 @@
                     const lastNight = new Date(end);
                     lastNight.setUTCDate(end.getUTCDate() - 1);
 
-                    if (isWithinAvailability(start, lastNight)) {
+                    if (!isWithinAvailability(start, lastNight)) {
+                        alert('De geselecteerde periode is helaas niet beschikbaar.');
+                    } else if (!isNotBooked(start, lastNight)) {
+                        alert('De geselecteerde periode overlapt met een bestaande boeking.');
+                    } else {
                         document.querySelector('input[name="van_datum"]').value = start.toISOString()
                             .split('T')[0];
                         document.querySelector('input[name="tot_datum"]').value = lastNight
@@ -233,8 +234,6 @@
                             .split('T')[0];
                         document.getElementById('selected-tot-datum').innerText = lastNight
                             .toISOString().split('T')[0];
-                    } else {
-                        alert('De geselecteerde periode is helaas niet beschikbaar');
                     }
                 },
                 headerToolbar: {

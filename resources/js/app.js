@@ -199,6 +199,7 @@ window.toggleDelete = function (button) {
     button.textContent = checkbox.checked ? "✔" : "✕";
 };
 
+//Caurousel
 document.addEventListener('DOMContentLoaded', function() {
     const slides = document.querySelector('.carousel-slides');
     if (!slides) return; // als er geen carousel is, doe niks

@@ -32,8 +32,6 @@
     </main>
 
     @include('partials.footer')
-    @include('components.login-tile')
-    @include('components.register-tile')
 </body>
 
 </html>
