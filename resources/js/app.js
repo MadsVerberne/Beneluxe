@@ -6,102 +6,35 @@ window.Alpine = Alpine;
 
 Alpine.start();
 
-// document.addEventListener('DOMContentLoaded', () => {
-//     const loginTile = document.getElementById('logintile');
-//     const registerTile = document.getElementById('registertile');
-//     const overlay = document.getElementById('overlay');
-
-//     const loginButton = document.querySelector('.header-button button');
-//     const closeLogin = document.getElementById('closelogin');
-//     const closeRegister = document.getElementById('closeregister');
-//     const showRegister = document.getElementById('showregister');
-//     const showLogin = document.getElementById('showlogin');
-
-//     if (loginButton) {
-//         loginButton.addEventListener('click', () => {
-//             loginTile.style.display = 'block';
-//             overlay.style.display = 'block';
-//         });
-//     }
-
-//     if (closeLogin) {
-//         closeLogin.addEventListener('click', () => {
-//             loginTile.style.display = 'none';
-//             overlay.style.display = 'none';
-//         });
-//     }
-
-//     if (closeRegister) {
-//         closeRegister.addEventListener('click', () => {
-//             registerTile.style.display = 'none';
-//             overlay.style.display = 'none';
-//         });
-//     }
-
-//     if (showRegister) {
-//         showRegister.addEventListener('click', (e) => {
-//             e.preventDefault();
-//             loginTile.style.display = 'none';
-//             registerTile.style.display = 'block';
-//             overlay.style.display = 'block';
-//         });
-//     }
-
-//     if (showLogin) {
-//         showLogin.addEventListener('click', (e) => {
-//             e.preventDefault();
-//             registerTile.style.display = 'none';
-//             loginTile.style.display = 'block';
-//             overlay.style.display = 'block';
-//         });
-//     }
-
-//     if (overlay) {
-//         overlay.addEventListener('click', () => {
-//             loginTile.style.display = 'none';
-//             registerTile.style.display = 'none';
-//             overlay.style.display = 'none';
-//         });
-//     }
-// });
-
 // Google Maps API
-function initAutocomplete() {
+window.initAutocomplete = function () {
     const input = document.getElementById("bestemming-autocomplete");
-
-    if (!input) {
-        console.error(
-            "Input element met id 'bestemming-autocomplete' niet gevonden."
-        );
-        return;
-    }
+    if (!input) return;
 
     const autocomplete = new google.maps.places.Autocomplete(input);
-
-    autocomplete.addListener("place_changed", function () {
+    autocomplete.addListener("place_changed", () => {
         const place = autocomplete.getPlace();
-
-        if (!place.geometry) {
-            console.log("Geen details gevonden voor de locatie.");
-            return;
-        }
-
-        const lat = place.geometry.location.lat();
-        const lng = place.geometry.location.lng();
-        const address = place.formatted_address;
-        const placeId = place.place_id;
-        const types = place.types?.join(", ");
-
-        // Print in de console
-        console.log("Adres:", address);
-        console.log("Latitude:", lat);
-        console.log("Longitude:", lng);
-        console.log("Place ID:", placeId);
-        console.log("Types:", types);
+        if (!place.geometry) return;
+        console.log("Adres:", place.formatted_address);
+        console.log("Lat:", place.geometry.location.lat());
+        console.log("Lng:", place.geometry.location.lng());
     });
+};
+
+function loadGoogleMaps() {
+    if (document.getElementById("google-maps-script")) return;
+
+    const script = document.createElement("script");
+    script.id = "google-maps-script";
+    script.src =
+        "https://maps.googleapis.com/maps/api/js?key=AIzaSyB3QTFxyf8eFM1-O3P3ELImq3ILRx2RTCg&libraries=places&callback=initAutocomplete";
+    script.async = true;
+    script.defer = true;
+    document.head.appendChild(script);
 }
 
-window.initAutocomplete = initAutocomplete;
+// Load it after DOM ready
+document.addEventListener("DOMContentLoaded", loadGoogleMaps);
 
 //Fotos opslaan en sorteren
 document.addEventListener("DOMContentLoaded", () => {
@@ -200,8 +133,8 @@ window.toggleDelete = function (button) {
 };
 
 //Caurousel
-document.addEventListener('DOMContentLoaded', function() {
-    const slides = document.querySelector('.carousel-slides');
+document.addEventListener("DOMContentLoaded", function () {
+    const slides = document.querySelector(".carousel-slides");
     if (!slides) return; // als er geen carousel is, doe niks
     const slideCount = slides.children.length;
     let currentIndex = 0;
@@ -210,41 +143,41 @@ document.addEventListener('DOMContentLoaded', function() {
         slides.style.transform = `translateX(-${currentIndex * 100}%)`;
     }
 
-    document.querySelector('.carousel-prev').addEventListener('click', () => {
+    document.querySelector(".carousel-prev").addEventListener("click", () => {
         currentIndex = (currentIndex - 1 + slideCount) % slideCount;
         updateCarousel();
     });
 
-    document.querySelector('.carousel-next').addEventListener('click', () => {
+    document.querySelector(".carousel-next").addEventListener("click", () => {
         currentIndex = (currentIndex + 1) % slideCount;
         updateCarousel();
     });
 });
 
-const track = document.querySelector('.carousel-track');
+const track = document.querySelector(".carousel-track");
 const slides = Array.from(track.children);
-const nextButton = document.querySelector('.carousel-btn.next');
-const prevButton = document.querySelector('.carousel-btn.prev');
+const nextButton = document.querySelector(".carousel-btn.next");
+const prevButton = document.querySelector(".carousel-btn.prev");
 
 let currentIndex = 0;
 
-const currentDisplay = document.getElementById('carousel-current');
-const totalDisplay = document.getElementById('carousel-total');
+const currentDisplay = document.getElementById("carousel-current");
+const totalDisplay = document.getElementById("carousel-total");
 
 totalDisplay.textContent = slides.length;
 
 function updateCarousel() {
     const slideWidth = slides[0].getBoundingClientRect().width;
-    track.style.transform = 'translateX(-' + (slideWidth * currentIndex) + 'px)';
+    track.style.transform = "translateX(-" + slideWidth * currentIndex + "px)";
     currentDisplay.textContent = currentIndex + 1;
 }
 
-nextButton.addEventListener('click', () => {
+nextButton.addEventListener("click", () => {
     currentIndex = (currentIndex + 1) % slides.length;
     updateCarousel();
 });
 
-prevButton.addEventListener('click', () => {
+prevButton.addEventListener("click", () => {
     currentIndex = (currentIndex - 1 + slides.length) % slides.length;
     updateCarousel();
 });
@@ -252,58 +185,70 @@ prevButton.addEventListener('click', () => {
 // init
 updateCarousel();
 
-document.addEventListener('DOMContentLoaded', () => {
-  const slides = document.querySelectorAll('.carousel-slide img');
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = lightbox.querySelector('.lightbox-img');
-  const closeBtn = document.getElementById('lightbox-close');
-  const prevBtn = document.getElementById('lightbox-prev');
-  const nextBtn = document.getElementById('lightbox-next');
+document.addEventListener("DOMContentLoaded", () => {
+    const slides = document.querySelectorAll(".carousel-slide img");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = lightbox.querySelector(".lightbox-img");
+    const closeBtn = document.getElementById("lightbox-close");
+    const prevBtn = document.getElementById("lightbox-prev");
+    const nextBtn = document.getElementById("lightbox-next");
 
-  let currentIndex = 0;
+    let currentIndex = 0;
 
-  // Open lightbox bij klik op een afbeelding
-  slides.forEach((img, index) => {
-    img.addEventListener('click', () => {
-      currentIndex = index;
-      openLightbox();
+    // Open lightbox bij klik op een afbeelding
+    slides.forEach((img, index) => {
+        img.addEventListener("click", () => {
+            currentIndex = index;
+            openLightbox();
+        });
     });
-  });
 
-  function openLightbox() {
-    lightbox.style.display = 'flex';
-    updateLightboxImage();
-  }
-
-  function closeLightbox() {
-    lightbox.style.display = 'none';
-  }
-
-  function updateLightboxImage() {
-    lightboxImg.src = slides[currentIndex].src;
-    lightboxImg.alt = slides[currentIndex].alt;
-  }
-
-  function showPrev() {
-    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-    updateLightboxImage();
-  }
-
-  function showNext() {
-    currentIndex = (currentIndex + 1) % slides.length;
-    updateLightboxImage();
-  }
-
-  closeBtn.addEventListener('click', closeLightbox);
-  prevBtn.addEventListener('click', showPrev);
-  nextBtn.addEventListener('click', showNext);
-
-  // Optioneel: sluit lightbox ook met ESC toets
-  document.addEventListener('keydown', (e) => {
-    if (lightbox.style.display === 'flex') {
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft') showPrev();
-      if (e.key === 'ArrowRight') showNext();
+    function openLightbox() {
+        lightbox.style.display = "flex";
+        updateLightboxImage();
     }
-  });
+
+    function closeLightbox() {
+        lightbox.style.display = "none";
+    }
+
+    function updateLightboxImage() {
+        lightboxImg.src = slides[currentIndex].src;
+        lightboxImg.alt = slides[currentIndex].alt;
+    }
+
+    function showPrev() {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        updateLightboxImage();
+    }
+
+    function showNext() {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateLightboxImage();
+    }
+
+    closeBtn.addEventListener("click", closeLightbox);
+    prevBtn.addEventListener("click", showPrev);
+    nextBtn.addEventListener("click", showNext);
+
+    // Optioneel: sluit lightbox ook met ESC toets
+    document.addEventListener("keydown", (e) => {
+        if (lightbox.style.display === "flex") {
+            if (e.key === "Escape") closeLightbox();
+            if (e.key === "ArrowLeft") showPrev();
+            if (e.key === "ArrowRight") showNext();
+        }
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    flatpickr("#incheck-datum", {
+        dateFormat: "d-m-Y",
+        locale: "nl",
+    });
+
+    flatpickr("#uitcheck-datum", {
+        dateFormat: "d-m-Y",
+        locale: "nl",
+    });
 });

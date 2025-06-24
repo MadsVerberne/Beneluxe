@@ -1,5 +1,4 @@
     @extends('layouts.app')
-
     @section('content')
         <section class="hero">
             <div class="hero-content">
@@ -7,83 +6,37 @@
 
                 <form class="search-bar">
                     <input id="bestemming-autocomplete" class="search-field" placeholder="Bestemming"></input>
-                    <input class="search-field" placeholder="Datum"></input>
-                    <input class="search-field" placeholder="Gasten"></input>
-                    <a href="{{route('accommodaties.results')}}" type="submit">Zoeken</a>
+                    <input class="search-field" placeholder="Incheck datum" type="date"></input>
+                    <input class="search-field" placeholder="Uitcheck datum" type="date"></input>
+                    <input class="search-field" placeholder="Gasten" type="number"></input>
+                    <a href="{{ route('accommodaties.results') }}" type="submit">Zoeken</a>
                 </form>
             </div>
         </section>
         <div class="populairehuizen">
             <h2>Populaire huizen</h2>
-            <div class="populairehuizenrow">
-                <div class="populairehuizencol">
-                    <a href="#">
-                        <img src="/img/Populairehuizen1.jpg" alt="Populairehuizen1">
-                    </a>
-                    <a href="#">
-                        <h3>Vakantiehuis aan het strand</h3>
-                    </a>
-                    <p>Egmond aan zee</p>
-                    <div class="ratingstars">
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-half"></i>
+            <div class="accommodatierow">
+                @foreach ($accommodaties as $accommodatie)
+                    <div class="accommodatiecol">
+                        <a href="{{ route('accommodaties.show', $accommodatie->id) }}" style="text-decoration: none;">
+                            <img src="{{ asset('storage/' . $accommodatie->fotos->first()->foto_url) }}"
+                                alt="Accommodatie {{ $loop->iteration }}">
+                        </a>
+                        <a href="{{ route('accommodaties.show', $accommodatie->id) }}">
+                            {{ $accommodatie->titel }}
+                        </a>
+                        <p>{{ $accommodatie->locatie }}</p>
+                        <div class="ratingstars">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-half"></i>
+                            <i class="bi bi-star"></i>
+                        </div>
+                        <h4>€{{ $accommodatie->prijs_per_nacht }} · <span>{{ $accommodatie->aantal_personen }}
+                                personen</span></h4>
                     </div>
-                    <h4>€90 · <span>2 nachten</span></h4>
-                </div>
-                <div class="populairehuizencol">
-                    <a href="#">
-                        <img src="/img/Populairehuizen2.png" alt="Populairehuizen2">
-                    </a>
-                    <a href="#">
-                        <h3>Chalet in de bossen</h3>
-                    </a>
-                    <p>Durbuy, België</p>
-                    <div class="ratingstars">
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-half"></i>
-                    </div>
-                    <h4>€120 · <span>3 nachten</span></h4>
-                </div>
-                <div class="populairehuizencol">
-                    <a href="#">
-                        <img src="/img/Populairehuizen3.png" alt="Populairehuizen3">
-                    </a>
-                    <a href="#">
-                        <h3>Villa Luxemburg</h3>
-                    </a>
-                    <p>Schieren, Luxemburg</p>
-                    <div class="ratingstars">
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                    </div>
-                    <h4>€410 · <span>7 nachten</span></h4>
-                </div>
-                <div class="populairehuizencol">
-                    <a href="#">
-                        <img src="/img/Populairehuizen4.jpg" alt="Populairehuizen4">
-                    </a>
-                    <a href="#">
-                        <h3>Boshuisje Limburg</h3>
-                    </a>
-                    <p>Beek, Limburg</p>
-                    <div class="ratingstars">
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star"></i>
-                    </div>
-                    <h4>€220 · <span>5 nachten</span></h4>
-                </div>
+                @endforeach
             </div>
         </div>
         <div class="bestemmingen">

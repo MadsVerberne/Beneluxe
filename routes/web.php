@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    $accommodaties = Accommodatie::inRandomOrder()->take(5)->get(); // 5 random huizen
+    return view('welcome', compact('accommodaties'));
 });
 
 Route::get('/about', function () {
