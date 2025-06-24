@@ -21,10 +21,6 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-Route::get('/results', function () {
-    return view('accommodaties.results');
-})->name('accommodaties.results');
-
 // Route met auth middleware
 Route::middleware('auth')->group(function () {
 
@@ -53,6 +49,7 @@ Route::middleware('auth')->group(function () {
 // Publieke accommodatie-routes
 Route::get('/accommodaties', [accommodatieController::class, 'index'])->name('accommodaties.index');
 Route::get('/accommodaties/{accommodatie}', [accommodatieController::class, 'show'])->name('accommodaties.show');
+Route::get('/results', [accommodatieController::class, 'zoek'])->name('accommodaties.results');
 
 
 Route::get('/dashboard', function () {

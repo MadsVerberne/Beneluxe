@@ -3,13 +3,12 @@
         <section class="hero">
             <div class="hero-content">
                 <h1 class="fade-in">Vakantiehuizen in<br>Nederland, België<br>en Luxemburg</h1>
-
-                <form class="search-bar">
-                    <input id="bestemming-autocomplete" class="search-field" placeholder="Bestemming"></input>
-                    <input class="search-field" placeholder="Incheck datum" type="date"></input>
-                    <input class="search-field" placeholder="Uitcheck datum" type="date"></input>
-                    <input class="search-field" placeholder="Gasten" type="number"></input>
-                    <a href="{{ route('accommodaties.results') }}" type="submit">Zoeken</a>
+                <form class="search-bar" method="GET" action="{{ route('accommodaties.results') }}">
+                    <input name="locatie" id="bestemming-autocomplete" class="search-field" placeholder="Bestemming">
+                    <input name="incheck_datum" class="search-field" type="date" placeholder="Incheck datum">
+                    <input name="uitcheck_datum" class="search-field" type="date" placeholder="Uitcheck datum">
+                    <input name="gasten" class="search-field" type="number" placeholder="Gasten">
+                    <button type="submit">Zoeken</button>
                 </form>
             </div>
         </section>

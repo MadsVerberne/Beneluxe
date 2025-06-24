@@ -1,72 +1,67 @@
-    @extends('layouts.app')
+<pre>{{ var_dump($accommodaties ?? 'niet beschikbaar') }}</pre>
+@php
+    use Carbon\Carbon;
+    Carbon::setLocale('nl');
 
-    @section('content')
+@endphp
+
+@extends('layouts.app')
+
+@section('content')
     <section class="heroresults">
         <div class="heroresults-content">
-            <h1 class="fade-in">Antwerpen · 2 - 14 juli</h1>
+            <h1 class="fade-in">
+                {{ $locatie }} –
+                {{ Carbon::parse($incheck)->translatedFormat('j F') }} /
+                {{ Carbon::parse($uitcheck)->translatedFormat('j F') }}
+            </h1>
         </div>
-        <form class="search-bar-results">
-            <input id="bestemming-autocomplete" class="search-field" placeholder="Bestemming"></input>
-            <input class="search-field" placeholder="Datum"></input>
-            <input class="search-field" placeholder="Gasten"></input>
-            <a href="{{route('accommodaties.results')}}" type="submit">Zoeken</a>
+        <form class="search-bar-results" method="GET" action="{{ route('accommodaties.results') }}">
+            <input name="locatie" id="bestemming-autocomplete" class="search-field" placeholder="Bestemming"
+                value="{{ $locatie }}">
+            <input name="incheck_datum" class="search-field" type="date" placeholder="Incheck datum"
+                value="{{ $incheck }}">
+            <input name="uitcheck_datum" class="search-field" type="date" placeholder="Uitcheck datum"
+                value="{{ $uitcheck }}"></input>
+            <input name="gasten" class="search-field" type="number" placeholder="Gasten" value="{{ $gasten }}">
+            <button type="submit">Zoeken</button>
         </form>
     </section>
     <div class="results">
-        <h2><span>Antwerpen:</span> 2 accommodaties gevonden</h2>
+        <h2><span>{{ $locatie }}:</span> 2 accommodaties gevonden</h2>
         <div class="accommodatie-lijst">
-            <div class="accommodatie-tegel-verticaal">
-                <div class="img-wrapper">
-                    <a href="#">
-                        <img src="/img/Populairehuizen2.png" alt="Charmant huisje">
-                    </a>
-                </div>
-                <div class="info">
-                    <h3><a href="#">Charmant huisje in Antwerpen</a></h3>
-                    <p>Antwerpen, België</p>
-
-                    <div class="ratingstars">
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-half"></i>
+            @foreach ($accommodaties as $accommodatie)
+                <div class="accommodatie-tegel-verticaal">
+                    <div class="img-wrapper">
+                        <a href="{{ route('accommodaties.show', $accommodatie->id) }}" style="text-decoration: none;">
+                            <img src="{{ asset('storage/' . $accommodatie->fotos->first()->foto_url) }}"
+                                alt="Accommodatie {{ $loop->iteration }}">
+                        </a>
                     </div>
+                    <div class="info">
+                        <h3><a href="{{ route('accommodaties.show', $accommodatie->id) }}"
+                                style="text-decoration: none;">{{ $accommodatie->titel }}</a></h3>
+                        <p>{{ $accommodatie->locatie }}</p>
 
-                    <p class="extra-info">2 slaapkamers · Max. 4 gasten · 60m² · Eigen tuin</p>
+                        <div class="ratingstars">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-half"></i>
+                        </div>
 
-                    <p class="prijs"><span>€150</span>&nbsp;· 5 nachten</p>
-                </div>
-                <div class="actie-knop">
-                    <a href="#" class="bekijk-btn">Bekijk beschikbaarheid</a>
-                </div>
-            </div>
-            <div class="accommodatie-tegel-verticaal">
-                <div class="img-wrapper">
-                    <a href="#">
-                        <img src="/img/Populairehuizen2.png" alt="Charmant huisje">
-                    </a>
-                </div>
-                <div class="info">
-                    <h3><a href="#">Charmant huisje in Antwerpen</a></h3>
-                    <p>Antwerpen, België</p>
+                        <p class="extra-info">{{ $accommodatie->aantal_bedden }} bedden · Max.
+                            {{ $accommodatie->aantal_personen }} gasten · {{ $accommodatie->aantal_badkamers }} badkamers
+                        </p>
 
-                    <div class="ratingstars">
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-half"></i>
+                        <p class="prijs"><span>€{{ $accommodatie->prijs_per_nacht }}</span>&nbsp;· 5 nachten</p>
                     </div>
-
-                    <p class="extra-info">2 slaapkamers · Max. 4 gasten · 60m² · Eigen tuin</p>
-
-                    <p class="prijs"><span>€150</span>&nbsp;· 5 nachten</p>
+                    <div class="actie-knop">
+                        <a href="#" class="bekijk-btn">Bekijk beschikbaarheid</a>
+                    </div>
                 </div>
-                <div class="actie-knop">
-                    <a href="#" class="bekijk-btn">Bekijk beschikbaarheid</a>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
-    @endsection
+@endsection

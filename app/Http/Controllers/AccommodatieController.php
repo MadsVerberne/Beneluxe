@@ -252,4 +252,28 @@ class AccommodatieController extends Controller
 
         return back()->with('success', 'Periode verwijderd.');
     }
+
+    public function zoek(Request $request)
+    {
+        $locatie = $request->input('locatie');
+        $incheck = $request->input('incheck_datum');
+        $uitcheck = $request->input('uitcheck_datum');
+        $gasten = $request->input('gasten');
+
+        $accommodaties = Accommodatie::where('locatie', 'like', "%$locatie%")
+            ->where('aantal_personen', '>=', $gasten)
+            ->whereHas('beschikbaarheden', function ($query) use ($incheck, $uitcheck) {
+                $query->where('van_datum', '<=', $incheck)
+                    ->where('tot_datum', '>=', $uitcheck);
+            })
+            ->get();
+
+        return view('accommodaties.results', [
+            'accommodaties' => $accommodaties,
+            'locatie' => $locatie,
+            'incheck' => $incheck,
+            'uitcheck' => $uitcheck,
+            'gasten' => $gasten,
+        ]);
+    }
 }

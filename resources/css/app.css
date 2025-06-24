@@ -128,7 +128,7 @@ html {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 700px;
+    width: 875px;
     margin: 0 auto;
     border: none;
 }
@@ -155,7 +155,7 @@ html {
     outline: none;
 }
 
-.search-bar a {
+.search-bar button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -172,7 +172,7 @@ html {
 }
 
 
-.search-bar a:hover {
+.search-bar button:hover {
     background-color: #d9a319;
 }
 
@@ -582,7 +582,7 @@ footer h2 {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 700px;
+    width: 825px;
     margin: 0 auto;
     border: none;
     margin-top: 60px;
@@ -617,7 +617,7 @@ footer h2 {
     outline: none;
 }
 
-.search-bar-results a {
+.search-bar-results button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -633,7 +633,7 @@ footer h2 {
     text-align: center;
 }
 
-.search-bar-results a:hover {
+.search-bar-results button:hover {
     background-color: #d9a319;
 }
 
