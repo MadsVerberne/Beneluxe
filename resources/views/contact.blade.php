@@ -1,6 +1,13 @@
-    @extends('layouts.app')
+@extends('layouts.app')
 
     @section('content')
+        @if(session('success'))
+            <script>
+                window.onload = function() {
+                    alert("{{ session('success') }}");
+                };
+            </script>
+        @endif
         <section class="heroother">
             <div class="heroother-content">
                 <h1 class="fade-in">Contact</h1>

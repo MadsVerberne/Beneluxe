@@ -1,6 +1,6 @@
 <script>
-    window.beschikbaarheden = @json($beschikbaarheden);
-    window.boekingen = @json($boekingen);
+    window.beschikbaarheden = json($beschikbaarheden);
+    window.boekingen = json($boekingen);
 </script>
 
 <style>
