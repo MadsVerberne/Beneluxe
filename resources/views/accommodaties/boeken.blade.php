@@ -1,6 +1,6 @@
 <script>
-    window.beschikbaarheden = json($beschikbaarheden);
-    window.boekingen = json($boekingen);
+    window.beschikbaarheden = @json($beschikbaarheden);
+    window.boekingen = @json($boekingen);
 </script>
 
 <style>
@@ -71,17 +71,20 @@
         </div>
     </section>
 
-    <div id="calendar" class="border p-4 rounded mb-6 size-[40rem]"></div>
+    <div class="boeken">
+        <div id="calendar" class="border p-4 rounded mb-6 size-[40rem]"></div>
 
-    <form action="{{ route('boeken.store') }}" method="POST">
-        @csrf
-        <input type="hidden" name="accommodatie_id" value="{{ $accommodatie->id }}">
-        <input type="hidden" name="van_datum">
-        <input type="hidden" name="tot_datum">
-        <p>Geselecteerde aankomstdatum: <span id="selected-van-datum"></span></p>
-        <p>Geselecteerde vertrekdatum: <span id="selected-tot-datum"></span></p>
-        <button type="submit" class="bg-blue-600 text-white p-2 rounded">Boek nu</button>
-    </form>
+        <form action="{{ route('boeken.store') }}" method="POST" class="formboeken">
+            @csrf
+            <input type="hidden" name="accommodatie_id" value="{{ $accommodatie->id }}">
+            <input type="hidden" name="van_datum">
+            <input type="hidden" name="tot_datum">
+            <p>Geselecteerde aankomstdatum: <span id="selected-van-datum"></span></p>
+            <p>Geselecteerde vertrekdatum: <span id="selected-tot-datum"></span></p>
+            <button type="submit">Boek nu</button>
+        </form>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const beschikbaarheden = window.beschikbaarheden;

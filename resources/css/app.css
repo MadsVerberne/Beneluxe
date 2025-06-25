@@ -93,7 +93,7 @@ html {
 .hero-content {
     position: relative;
     z-index: 2;
-    max-width: 800px;
+    max-width: 1000px;
     padding: 0 20px;
 }
 
@@ -102,7 +102,7 @@ html {
     font-weight: 500;
     font-family: playfair;
     line-height: 1.1;
-    margin-bottom: 60px;
+    margin-bottom: 80px;
     margin-top: 70px;
     color: #f9f7f1;
 }
@@ -1622,3 +1622,174 @@ footer h2 {
     margin-top: 12px;
     font-size: 18px;
 }
+
+/* Boeken */
+.boeken {
+    padding: 100px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formboeken {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.formboeken button {
+    background-color: #f5c144;
+    color: white;
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    transition: 0.3s ease;
+}
+
+.formboeken button:hover {
+    background-color: #CCA403;
+}
+
+.boekingtegel {
+    width: 400px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.10);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.boekingtegel img {
+    width: 100%;             
+    height: 200px;           
+    object-fit: cover;       
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    display: block;     
+}
+
+.boekinginfo {
+    padding: 20px;
+}
+
+.boekinginfo p {
+    margin-bottom: 10px;
+}
+
+.boekingspan {
+    font-weight: 700;
+}
+
+.boekinginfo h3 {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+#lastp {
+    margin-top: 10px;
+}
+
+/* Dashboard */
+.dashboard {
+    padding: 100px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.dashboard h2 {
+    font-family: Playfair;
+    font-size: 48px;
+    font-weight: 500;
+}
+
+.grid {
+    margin-top: 20px;
+    display: flex;
+}
+
+.annuleerboeking {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s ease;
+    margin-top: 20px;
+}
+
+.annuleerboeking:hover {
+    background-color: #bb2d3b;
+    text-decoration: none;
+    color: white;
+}
+
+.annuleerboeking i {
+    font-size: 22px;
+}
+
+.pt-5 {
+    margin-top: 70px
+}
+
+.uitlog-knop {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-size: 1rem;
+    margin-top: 20px;
+}
+
+.uitlog-knop:hover {
+    background-color: #bb2d3b;
+}
+
+.uitlog-knop i {
+    font-size: 1rem;
+}
+
+.aanmaken-knop {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #f5c144;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.aanmaken-knop:hover {
+    background-color: #CCA403;
+    color: white;
+    text-decoration: none;
+}
+
+.aanmaken-knop i {
+    font-size: 1rem;
+}
+
+.dashboard-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 70px;
+    gap: 16px;
+}
+
+
+
