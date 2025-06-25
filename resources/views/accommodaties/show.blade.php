@@ -106,7 +106,7 @@
             <div class="voorzieningen">
                 <h2>Voorzieningen</h2>
                 <div class="voorzieningenlijst">
-                    @foreach ($accommodatie->voorzieningen->chunk(ceil($accommodatie->voorzieningen->count() / 2)) as $chunk)
+                    @foreach ($accommodatie->voorzieningen->chunk(ceil($accommodatie->voorzieningen->count() / 3)) as $chunk)
                         <ul>
                             @foreach ($chunk as $voorziening)
                                 <li>- {{ $voorziening->naam }}</li>

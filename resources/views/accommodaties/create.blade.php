@@ -65,13 +65,14 @@
 
                     <div class="mb-4">
                         <label class="block font-medium mb-2">Voorzieningen</label>
-                        <div class="grid grid-cols-2 gap-2">
+                        <div class="flex flex-wrap">
                             @foreach ($voorzieningen as $voorziening)
-                                <label class="flex items-center">
+                                <div class="w-1/2 flex items-center mb-2">
                                     <input type="checkbox" name="voorzieningen[]" value="{{ $voorziening->id }}"
-                                        {{ in_array($voorziening->id, old('voorzieningen', [])) ? 'checked' : '' }}>
-                                    <span class="ml-2">{{ $voorziening->naam }}</span>
-                                </label>
+                                        {{ in_array($voorziening->id, old('voorzieningen', [])) ? 'checked' : '' }}
+                                        class="mr-2">
+                                    <span>{{ $voorziening->naam }}</span>
+                                </div>
                             @endforeach
                         </div>
                     </div>
@@ -91,6 +92,3 @@
             </div>
         </div>
     @endsection
-    </body>
-
-    </html>

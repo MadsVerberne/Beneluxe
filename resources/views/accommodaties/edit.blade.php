@@ -113,8 +113,9 @@
                             @foreach ($voorzieningen as $voorziening)
                                 <label class="flex items-center">
                                     <input type="checkbox" name="voorzieningen[]" value="{{ $voorziening->id }}"
-                                        {{ in_array($voorziening->id, old('voorzieningen', $accommodatie->voorzieningen->pluck('id')->toArray())) ? 'checked' : '' }}>
-                                    <span class="ml-2">{{ $voorziening->naam }}</span>
+                                        {{ in_array($voorziening->id, old('voorzieningen', [])) ? 'checked' : '' }}
+                                        class="mr-2">
+                                    <span>{{ $voorziening->naam }}</span>
                                 </label>
                             @endforeach
                         </div>

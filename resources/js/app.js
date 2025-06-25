@@ -145,7 +145,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function updateCarousel() {
         const slideWidth = slides[0].getBoundingClientRect().width;
-        track.style.transform = "translateX(-" + slideWidth * currentIndex + "px)";
+        track.style.transform =
+            "translateX(-" + slideWidth * currentIndex + "px)";
         currentDisplay.textContent = currentIndex + 1;
     }
 
@@ -175,7 +176,9 @@ document.addEventListener("DOMContentLoaded", () => {
     function updateLightboxImage() {
         lightboxImg.src = imgSlides[lightboxIndex].src;
         lightboxImg.alt = imgSlides[lightboxIndex].alt;
-        lightboxCounter.textContent = `${lightboxIndex + 1} / ${imgSlides.length}`;
+        lightboxCounter.textContent = `${lightboxIndex + 1} / ${
+            imgSlides.length
+        }`;
     }
 
     function openLightbox(index) {
@@ -189,7 +192,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function showPrev() {
-        lightboxIndex = (lightboxIndex - 1 + imgSlides.length) % imgSlides.length;
+        lightboxIndex =
+            (lightboxIndex - 1 + imgSlides.length) % imgSlides.length;
         updateLightboxImage();
     }
 
@@ -214,18 +218,5 @@ document.addEventListener("DOMContentLoaded", () => {
             if (e.key === "ArrowLeft") showPrev();
             if (e.key === "ArrowRight") showNext();
         }
-    });
-});
-
-
-document.addEventListener("DOMContentLoaded", function () {
-    flatpickr("#incheck-datum", {
-        dateFormat: "d-m-Y",
-        locale: "nl",
-    });
-
-    flatpickr("#uitcheck-datum", {
-        dateFormat: "d-m-Y",
-        locale: "nl",
     });
 });

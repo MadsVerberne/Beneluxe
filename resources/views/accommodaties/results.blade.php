@@ -1,4 +1,3 @@
-<pre>{{ var_dump($accommodaties ?? 'niet beschikbaar') }}</pre>
 @php
     use Carbon\Carbon;
     Carbon::setLocale('nl');
@@ -28,7 +27,8 @@
         </form>
     </section>
     <div class="results">
-        <h2><span>{{ $locatie }}:</span> 2 accommodaties gevonden</h2>
+        <h2><span>{{ $locatie }}:</span> {{ $accommodaties->count() }}
+            accommodatie{{ $accommodaties->count() === 1 ? '' : 's' }} gevonden</h2>
         <div class="accommodatie-lijst">
             @foreach ($accommodaties as $accommodatie)
                 <div class="accommodatie-tegel-verticaal">
@@ -58,7 +58,8 @@
                         <p class="prijs"><span>€{{ $accommodatie->prijs_per_nacht }}</span>&nbsp;· 5 nachten</p>
                     </div>
                     <div class="actie-knop">
-                        <a href="#" class="bekijk-btn">Bekijk beschikbaarheid</a>
+                        <a href="{{ route('accommodaties.show', $accommodatie->id) }}" class="bekijk-btn">Bekijk
+                            beschikbaarheid</a>
                     </div>
                 </div>
             @endforeach

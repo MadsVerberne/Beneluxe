@@ -260,13 +260,24 @@ class AccommodatieController extends Controller
         $uitcheck = $request->input('uitcheck_datum');
         $gasten = $request->input('gasten');
 
-        $accommodaties = Accommodatie::where('locatie', 'like', "%$locatie%")
-            ->where('aantal_personen', '>=', $gasten)
-            ->whereHas('beschikbaarheden', function ($query) use ($incheck, $uitcheck) {
-                $query->where('van_datum', '<=', $incheck)
+        $query = Accommodatie::query();
+
+        if ($locatie) {
+            $query->where('locatie', 'like', "%$locatie%");
+        }
+
+        if ($gasten) {
+            $query->where('aantal_personen', '>=', $gasten);
+        }
+
+        if ($incheck && $uitcheck) {
+            $query->whereHas('beschikbaarheden', function ($q) use ($incheck, $uitcheck) {
+                $q->where('van_datum', '<=', $incheck)
                     ->where('tot_datum', '>=', $uitcheck);
-            })
-            ->get();
+            });
+        }
+
+        $accommodaties = $query->get();
 
         return view('accommodaties.results', [
             'accommodaties' => $accommodaties,
