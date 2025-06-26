@@ -1,13 +1,20 @@
     @extends('layouts.app')
     @section('content')
+        @if (session('alert'))
+            <script>
+                setTimeout(() => {
+                    alert("{{ session('alert') }}");
+                }, 1);
+            </script>
+        @endif
         <section class="hero">
             <div class="hero-content">
                 <h1 class="fade-in">Vakantiehuizen in<br>Nederland, België<br>en Luxemburg</h1>
                 <form class="search-bar" method="GET" action="{{ route('accommodaties.results') }}">
-                    <input name="locatie" id="bestemming-autocomplete" class="search-field" placeholder="Bestemming">
-                    <input name="incheck_datum" class="search-field" type="date" placeholder="Incheck datum">
-                    <input name="uitcheck_datum" class="search-field" type="date" placeholder="Uitcheck datum">
-                    <input name="gasten" class="search-field" type="number" placeholder="Gasten">
+                    <input name="locatie" id="bestemming-autocomplete" class="search-field" placeholder="Bestemming" required>
+                    <input name="incheck_datum" class="search-field" type="date" placeholder="Incheck datum" required>
+                    <input name="uitcheck_datum" class="search-field" type="date" placeholder="Uitcheck datum" required>
+                    <input name="gasten" class="search-field" type="number" placeholder="Gasten" required>
                     <button type="submit">Zoeken</button>
                 </form>
             </div>
