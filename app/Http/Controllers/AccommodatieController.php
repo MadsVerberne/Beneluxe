@@ -305,8 +305,8 @@ class AccommodatieController extends Controller
 
         if ($incheck && $uitcheck) {
             $query->whereHas('beschikbaarheden', function ($q) use ($incheck, $uitcheck) {
-                $q->where('van_datum', '<=', $incheck)
-                    ->where('tot_datum', '>=', $uitcheck);
+                $q->where('van_datum', '<=', $uitcheck)
+                    ->where('tot_datum', '>=', $incheck);
             });
         }
 
