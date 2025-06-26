@@ -24,10 +24,15 @@
                 <h4>Van: <span class="boekingspan">{{ \Carbon\Carbon::parse($boeking->van_datum)->format('d-m-Y') }}</span></h4>
                 <h4>Tot: <span class="boekingspan">{{ \Carbon\Carbon::parse($boeking->tot_datum)->format('d-m-Y') }}</span></h4>
                 <p id="lastp">Totaal prijs: <span class="boekingspan">€{{ number_format($boeking->totaal_prijs, 2, ',', '.') }}</span></p>
-                <a href="#" class="annuleerboeking">
-                    <i class="bi bi-x"></i>
-                    <span>Boeking annuleren</span>
-                </a>
+                <form method="POST" action="{{ route('boekingen.destroy', $boeking->id) }}" onsubmit="return confirm('Weet je zeker dat je deze boeking wilt annuleren?')">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="annuleerboeking">
+                        <i class="bi bi-x"></i>
+                        <span>Boeking annuleren</span>
+                    </button>
+                </form>
+
             </div>
         </div>
         @endforeach

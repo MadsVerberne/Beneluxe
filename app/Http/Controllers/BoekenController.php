@@ -41,11 +41,10 @@ class BoekenController extends Controller
         $accommodatie = Accommodatie::findOrFail($request->accommodatie_id);
 
         $van = Carbon::parse($request->van_datum);
-        $tot = Carbon::parse($request->tot_datum); // ⛔️ niet meer +1 dag doen
+        $tot = Carbon::parse($request->tot_datum);
 
-        $nachten = $van->diffInDays($tot); // ⛔️ geen +1 dag
+        $nachten = $van->diffInDays($tot);
 
-        // ✅ Controle op overlap (voor [van, tot))
         $overlap = Boeken::where('accommodatie_id', $accommodatie->id)
             ->where(function ($query) use ($van, $tot) {
                 $query->where('van_datum', '<', $tot)
@@ -109,5 +108,22 @@ class BoekenController extends Controller
                 'end' => $periode['end'],
             ];
         });
+    }
+}
+
+class BoekingController extends Controller
+{
+    public function destroy($id)
+    {
+        $boeking = Boeken::findOrFail($id);
+
+        // Alleen de eigenaar mag annuleren
+        if (auth()->id() !== $boeking->gebruiker_id) {
+            abort(403, 'Je mag deze boeking niet annuleren.');
+        }
+
+        $boeking->delete();
+
+        return redirect()->back()->with('success', 'Boeking succesvol geannuleerd.');
     }
 }

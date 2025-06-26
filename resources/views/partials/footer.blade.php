@@ -36,7 +36,7 @@
             </div>
             <div class="icona">
                 <i class="bi bi-telephone-fill"></i>
-                <a href="tel:0683610158">06 - 836 101 58</a>
+                <a href="tel:0492507900">0492 - 507900</a>
             </div>
             <div class="icona">
                 <i class="bi bi-geo-alt-fill"></i>

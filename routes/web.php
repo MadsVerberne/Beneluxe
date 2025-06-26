@@ -7,6 +7,8 @@ use App\Models\accommodatie;
 use App\Models\Boeken;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BoekingController;
+
 
 Route::get('/', function () {
     $accommodaties = Accommodatie::inRandomOrder()->take(5)->get(); // 5 random huizen
@@ -39,6 +41,9 @@ Route::middleware('auth')->group(function () {
 
     // Route om boekingen te maken (POST)
     Route::post('/boeken', [BoekenController::class, 'store'])->name('boeken.store');
+
+    Route::delete('/boekingen/{id}', [BoekingController::class, 'destroy'])->name('boekingen.destroy');
+
 
     // Profile routes
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

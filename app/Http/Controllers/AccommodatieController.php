@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class AccommodatieController extends Controller
 {
@@ -24,13 +25,45 @@ class AccommodatieController extends Controller
     }
 
     // Detailpagina van één accommodatie
+
     public function show($id)
     {
         $accommodatie = Accommodatie::with(['fotos', 'voorzieningen'])->findOrFail($id);
         $suggesties = Accommodatie::where('id', '!=', $id)->inRandomOrder()->take(5)->get();
 
-        return view('accommodaties.show', compact('accommodatie', 'suggesties'));
+        // Ophalen van query parameters
+        $incheck = request('incheck_datum');
+        $uitcheck = request('uitcheck_datum');
+
+        if ($incheck && $uitcheck) {
+            try {
+                $in = Carbon::parse($incheck);
+                $uit = Carbon::parse($uitcheck);
+                $aantalNachten = max($in->diffInDays($uit), 1);
+            } catch (\Exception $e) {
+                $aantalNachten = 7;
+            }
+        } else {
+            $aantalNachten = 7;
+        }
+
+        // Prijsberekening
+        $prijsPerNacht = $accommodatie->prijs_per_nacht;
+        $schoonmaakKosten = 150;
+        $serviceKosten = 270;
+
+        $subtotaal = $prijsPerNacht * $aantalNachten;
+        $totaal = $subtotaal + $schoonmaakKosten + $serviceKosten;
+
+        return view('accommodaties.show', compact(
+            'accommodatie',
+            'suggesties',
+            'aantalNachten',
+            'subtotaal',
+            'totaal'
+        ));
     }
+
 
 
     // Formulier om nieuw accommodatie aan te maken
