@@ -574,26 +574,21 @@ footer h2 {
     color: #f9f7f1;
 }
 
-
 /* Search bar results */
 .search-bar-results {
-    display: flex;
+    position: absolute;
+    bottom: -40px; /* hangt half over de hero heen */
+    left: 50%;
+    transform: translateX(-50%);
     background-color: #f9f7f1;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     width: 825px;
-    margin: 0 auto;
+    display: flex;
     border: none;
-    margin-top: 60px;
-    margin-bottom: -90px;
-    /* schuift de search bar omhoog, half over hero */
-
-    position: relative;
     z-index: 10;
-    /* zorgt dat search bar boven overlay komt */
 }
-
 
 .search-field {
     flex: 1;
@@ -1790,6 +1785,3 @@ footer h2 {
     margin-top: 70px;
     gap: 16px;
 }
-
-
-
