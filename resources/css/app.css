@@ -16,56 +16,102 @@ html {
 
 /* Header */
 .header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 24px 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 24px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
+  flex-wrap: wrap;
 }
 
-/* Logo */
 .logo img {
-    height: 90px;
+  height: 90px;
 }
 
-/* Navigatie */
 .nav ul {
-    display: flex;
-    list-style: none;
-    gap: 32px;
+  display: flex;
+  list-style: none;
+  gap: 32px;
+  margin: 0;
+  padding: 0;
 }
 
 .nav a {
-    text-decoration: none;
-    color: #f9f7f1;
-    font-weight: 500;
-    font-size: 18px;
-    transition: color 0.3s ease;
+  text-decoration: none;
+  color: #f9f7f1;
+  font-weight: 500;
+  font-size: 18px;
+  transition: color 0.3s ease;
 }
 
 .nav a:hover {
-    color: #f5c144;
+  color: #f5c144;
 }
 
-/* Knop */
 .header-button button {
-    padding: 10px 20px;
-    background-color: #f5c144;
-    color: #f9f7f1;
-    font-size: 18px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background-color 0.3s ease;
+  padding: 10px 20px;
+  background-color: #f5c144;
+  color: #f9f7f1;
+  font-size: 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
 }
 
 .header-button button:hover {
-    background-color: #CCA403;
+  background-color: #CCA403;
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 30px;
+  color: #f9f7f1;
+  cursor: pointer;
+}
+
+/* Responsive header */
+@media (max-width: 768px) {
+  .header {
+    padding: 16px 30px;
+  }
+
+  .logo img {
+    height: 70px;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav {
+    width: 100%;
+    order: 3;
+    display: none;
+  }
+
+  .nav ul {
+    flex-direction: column;
+    gap: 16px;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px 20px;
+    border-radius: 8px;
+  }
+
+  .nav.active {
+    display: block;
+  }
+
+  .header-button {
+    order: 2;
+  }
 }
 
 /* Hero */
@@ -176,6 +222,49 @@ html {
     background-color: #d9a319;
 }
 
+/* Responsive hero */
+@media (max-width: 768px) {
+  .hero {
+    height: auto;
+    padding: 140px 20px 80px;
+    background-position: center center;
+  }
+
+  .hero-content {
+    padding: 0;
+  }
+
+  .hero h1 {
+    font-size: 40px;
+    margin-bottom: 80px;
+    margin-top: 0;
+  }
+
+  .search-bar {
+    flex-direction: column;
+    width: 60%;
+    max-width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .search-field {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #aaaaaa31;
+    padding: 16px 20px;
+  }
+
+  .search-field:last-of-type {
+    border-bottom: none;
+  }
+
+  .search-bar button {
+    width: 100%;
+    padding: 16px;
+    font-size: 16px;
+  }
+}
 
 /* main */
 .populairehuizen {
@@ -191,63 +280,71 @@ html {
     font-weight: 500;
 }
 
-.populairehuizenrow {
+.accommodatierow {
     display: flex;
-    margin-top: 20px;
     justify-content: space-between;
+    gap: 30px;
+    margin-top: 40px;
+    flex-wrap: wrap;
 }
 
-.populairehuizencol h3 {
-    font-size: 20px;
-    margin-top: 10px;
-    font-weight: 700;
-    transition: 0.3s ease;
-    text-decoration: none;
+.accommodatiecol {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
 }
 
-.populairehuizencol a {
-    color: black;
-    transition: 0.3s ease;
-}
-
-.populairehuizencol a img {
+.accommodatiecol img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
     transition: transform 0.3s ease;
 }
 
-.populairehuizencol a img:hover {
+.accommodatiecol img:hover {
     transform: scale(0.95);
 }
 
+.accommodatiecol a {
+    color: black;
+    text-decoration: none;
+    font-weight: 700;
+    margin-top: 10px;
+    transition: 0.3s ease;
+}
 
-.populairehuizencol a:hover {
+.accommodatiecol a:hover {
     color: #f5c144;
     text-decoration: none;
 }
 
-.populairehuizencol span {
+.accommodatiecol p {
+    margin: 5px 0;
     font-weight: 400;
+    color: #333;
 }
 
-.populairehuizencol h4 {
+.accommodatiecol h4 {
     font-size: 20px;
     margin-top: 10px;
     font-weight: 700;
 }
 
-.ratingstars i {
-    color: #F5C144;
+.accommodatiecol span {
+    font-weight: 400;
 }
 
 .ratingstars {
     margin: 5px 0px;
+    color: #F5C144;
 }
 
-.populairehuizen img {
-    width: 300px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
+.ratingstars i {
+    margin-right: 2px;
 }
+
 
 /* Footer */
 footer {
@@ -319,6 +416,61 @@ footer h2 {
     margin-right: 10px;
 }
 
+/* Responsive footer */
+@media (max-width: 768px) {
+  footer {
+    padding: 40px 20px 20px;
+  }
+
+  .footerrow1 {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .footercol1,
+  .footercol2,
+  .footercol3,
+  .footercol4 {
+    align-items: center;
+    width: 100%;
+  }
+
+  .footercol1 img {
+    margin-bottom: 15px;
+  }
+
+  .footercol1 p {
+    max-width: 300px;
+  }
+
+  .footerrow2 {
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .footerrow2 hr {
+    margin: 20px 0;
+  }
+
+  .icona {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 5px;
+  }
+
+  .icona i,
+  .icona span {
+    margin-right: 5px;
+  }
+
+  .icona p {
+    margin: 0;
+  }
+}
+
 /* bestemmingen */
 .bestemmingen {
     display: flex;
@@ -346,7 +498,6 @@ footer h2 {
     flex: 1;
 }
 
-/* Afbeelding */
 .bestemming-tegel img {
     width: 100%;
     height: 100%;
@@ -360,7 +511,6 @@ footer h2 {
     transform: scale(1.05);
 }
 
-/* Overlay met vlag en tekst */
 .overlay {
     position: absolute;
     top: 0;
@@ -382,7 +532,6 @@ footer h2 {
     font-family: 'Instrument Sans', sans-serif;
 }
 
-/* Zorg dat vlag-iconen goed zichtbaar zijn */
 .overlay .fi {
     font-size: 24px;
 }
@@ -512,6 +661,135 @@ footer h2 {
     color: white;
 }
 
+/* Responsive homepagina */
+@media (max-width: 768px) {
+  .populairehuizen {
+    padding: 60px 20px 40px 20px;
+  }
+
+  .populairehuizen h2 {
+    font-size: 32px;
+    text-align: center;
+  }
+
+  .accommodatierow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    width: 100%;
+  }
+
+  .accommodatierow .accommodatiecol {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 15px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .accommodatiecol img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: cover;
+  }
+
+  .accommodatiecol a {
+    display: block;
+    margin-top: 10px;
+  }
+
+  .accommodatiecol h4,
+  .accommodatiecol p {
+    text-align: center;
+  }
+
+  /* Bestemmingen */
+  .bestemmingen {
+    padding: 40px 20px 80px 20px;
+  }
+
+  .bestemmingen h2 {
+    font-size: 32px;
+    text-align: center;
+  }
+
+  .bestemmingentegels {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .bestemming-tegel {
+    width: 100%;
+    height: 250px;
+  }
+
+  .bestemming-tegel img {
+    height: 100%;
+  }
+
+  .overlay {
+    padding: 10px 15px;
+    font-size: 16px;
+  }
+
+  .overlay h3 {
+    font-size: 18px;
+  }
+
+  /* USP's */
+  .usp {
+    padding: 40px 20px;
+    margin-top: 0;
+  }
+
+  .usp h2 {
+    font-size: 32px;
+  }
+
+  .usp-tegels-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .usptegel {
+    max-width: 100%;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .usptext h3,
+  .usptext p {
+    text-align: left;
+  }
+
+  /* CTA-sectie */
+  .calltoactionhome {
+    margin: 80px 20px;
+    padding: 400px 20px 60px 20px;
+  }
+
+  .cta-overlay {
+    padding: 20px;
+    text-align: center;
+  }
+
+  .cta-content h2 {
+    font-size: 28px;
+  }
+
+  .cta-content p {
+    font-size: 16px;
+  }
+
+  .cta-button {
+    font-size: 16px;
+    padding: 12px 24px;
+  }
+}
+
 /* About */
 .about {
     padding: 100px;
@@ -574,10 +852,47 @@ footer h2 {
     color: #f9f7f1;
 }
 
-/* Search bar results */
+/* Responsive about */
+@media (max-width: 768px) {
+    .heroother {
+        height: 40vh;
+    }
+    .heroother h1 {
+        font-size: 32px;
+        margin-top: 50px;
+        margin-bottom: 30px;
+    }
+
+    .about {
+        flex-direction: column-reverse;
+        padding: 40px 20px;
+    }
+
+    .about img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 30px;
+    }
+
+    .aboutinfo {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .aboutinfo h2 {
+        font-size: 32px;
+    }
+
+    .aboutinfo p {
+        font-size: 16px;
+    }
+}
+
+/* Results */
 .search-bar-results {
     position: absolute;
-    bottom: -40px; /* hangt half over de hero heen */
+    bottom: -40px;
     left: 50%;
     transform: translateX(-50%);
     background-color: #f9f7f1;
@@ -632,7 +947,6 @@ footer h2 {
     background-color: #d9a319;
 }
 
-/* hero results */
 .heroresults {
     position: relative;
     height: 60vh;
@@ -670,6 +984,242 @@ footer h2 {
     margin-bottom: 60px;
     margin-top: 150px;
     color: #f9f7f1;
+}
+
+.results {
+    padding: 100px;
+}
+
+.results h2 {
+    font-size: 28px;
+}
+
+.results h2 span {
+    font-weight: 700;
+}
+
+.accommodatie-lijst {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.accommodatie-tegel-verticaal {
+    display: flex;
+    gap: 20px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+    transition: transform 0.3s ease;
+}
+
+.img-wrapper {
+    width: 280px;
+    height: 240px;
+    overflow: hidden;
+    border-radius: 10px 0 0 10px;
+    flex-shrink: 0;
+}
+
+.img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.img-wrapper img:hover {
+    transform: scale(1.1);
+}
+
+.accommodatie-tegel-verticaal .info {
+    padding: 15px 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+
+.accommodatie-tegel-verticaal h3 {
+    font-size: 24px;
+    margin-bottom: 5px;
+    color: #000000;
+    font-weight: 700;
+}
+
+.accommodatie-tegel-verticaal h3 a {
+    color: #000000;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.accommodatie-tegel-verticaal h3 a:hover {
+    color: #F5C144;
+}
+
+.accommodatie-tegel-verticaal p {
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: #555;
+}
+
+.accommodatie-tegel-verticaal .extra-info {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.ratingstars {
+    color: #F5C144;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.accommodatie-tegel-verticaal .prijs {
+    font-size: 24px;
+    font-weight: 400;
+    color: #000;
+    margin-top: auto;
+    margin-bottom: 0px;
+    display: flex;
+}
+
+.accommodatie-tegel-verticaal .prijs span {
+    font-weight: 600;
+}
+
+.actie-knop {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    margin: 15px;
+}
+
+.bekijk-btn {
+    background-color: #F5C144;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.bekijk-btn:hover {
+    background-color: #e0ad3a;
+    color: #fff;
+    text-decoration: none;
+}
+
+@media (max-width: 767px) {
+    /* Heroresults aanpassen */
+    .heroresults {
+        height: 40vh;
+    }
+
+    .heroresults h1 {
+        font-size: 32px;
+        margin-top: 80px;
+        margin-bottom: 30px;
+        padding: 0 15px;
+        line-height: 1.2;
+    }
+
+    /* Search bar onder de hero en smaller */
+    .search-bar-results {
+        position: static;
+        transform: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 10px;
+        padding: 20px;
+        box-shadow: none;
+        border-radius: 0;
+        margin-top: 20px;
+    }
+
+    .search-field {
+        width: 100%;
+        border-right: none;
+        padding: 12px 15px;
+        font-size: 1rem;
+    }
+
+    .search-bar-results button {
+        width: 100%;
+        padding: 12px 0;
+        font-size: 16px;
+    }
+
+    /* Results sectie smaller padding */
+    .results {
+        padding: 20px;
+    }
+
+    .results h2 {
+        font-size: 20px;
+    }
+
+    /* Accommodatie lijst verticaler en compacter */
+    .accommodatie-lijst {
+        gap: 20px;
+    }
+
+    /* Accommodatie tegel smaller en stapelen */
+    .accommodatie-tegel-verticaal {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .img-wrapper {
+        width: 100%;
+        height: 200px;
+        border-radius: 10px;
+    }
+
+    .img-wrapper img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .accommodatie-tegel-verticaal .info {
+        padding: 10px 0;
+    }
+
+    .accommodatie-tegel-verticaal h3 {
+        font-size: 18px;
+    }
+
+    .accommodatie-tegel-verticaal p,
+    .accommodatie-tegel-verticaal .extra-info {
+        font-size: 13px;
+    }
+
+    .ratingstars {
+        font-size: 12px;
+        margin-bottom: 3px;
+    }
+
+    .accommodatie-tegel-verticaal .prijs {
+        font-size: 18px;
+    }
+
+    .actie-knop {
+        margin: 10px 0 0 0;
+        justify-content: flex-start;
+    }
+
+    .bekijk-btn {
+        font-size: 14px;
+        padding: 10px 14px;
+        width: 100%;
+        text-align: center;
+    }
 }
 
 /* Contact */
@@ -836,16 +1386,32 @@ footer h2 {
     text-decoration: none;
 }
 
-
-@media (max-width: 800px) {
+/* Responsive contact */
+@media (max-width: 768px) {
+    .heroother {
+        height: 40vh;
+    }
+    .heroother h1 {
+        font-size: 32px;
+        margin-top: 50px;
+        margin-bottom: 30px;
+    }
+    .contact-container {
+        padding: 30px 20px;
+        margin: 60px 10px;
+    }
     .contact-content {
         flex-direction: column;
-        gap: 20px;
+        gap: 30px;
     }
-
-    .register-cta-box,
-    .contact-form {
-        min-width: 0;
+    .contact-form,
+    .register-cta-box {
+        flex: none;
+        width: 100%;
+        max-width: 100%;
+    }
+    .register-cta-box {
+        padding: 350px 20px 60px 20px;
     }
 }
 
@@ -963,18 +1529,70 @@ footer h2 {
     padding: 300px 100px 100px 100px;
 }
 
-/* CTA show */
-.calltoactionshow {
-    position: relative;
-    background-image: url('/public/img/CTA.jpg');
-    background-size: cover;
-    background-position: center;
-    color: white;
-    text-align: center;
-    border-radius: 20px;
-    overflow: hidden;
-    margin: 0px 100px 100px 100px;
-    padding: 300px 100px 100px 100px;
+/* Responsive accommodaties */
+@media (max-width: 768px) {
+    .heroother {
+        height: 40vh;
+    }
+
+    .heroother h1 {
+        font-size: 56px;
+    }
+}
+
+@media (max-width: 768px) {
+  .accommodaties {
+    padding: 50px 20px;
+  }
+
+  .accommodatierow {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .accommodatiecol {
+    width: 100% !important;
+    max-width: 100%;
+    margin-bottom: 30px;
+    padding: 0 15px;
+    box-sizing: border-box;
+  }
+
+  .accommodatiecol a img {
+    height: 300px;
+    max-width: 100%;
+  }
+  
+  .flagandname,
+  .flagandnametop {
+    justify-content: center;
+    margin-top: 100px;
+  }
+
+  .flagandname h2,
+  .flagandnametop h2 {
+    font-size: 52px;
+  }
+
+  .flagandname span,
+  .flagandnametop span {
+    font-size: 28px;
+  }
+
+  /* CTA aanpassen */
+  .calltoactionaccommodaties {
+    margin: 60px 20px 40px 20px;
+    padding: 350px 20px 60px 20px;
+  }
+
+  .calltoactionaccommodaties .cta-content h2 {
+    font-size: 28px;
+  }
+
+  .calltoactionaccommodaties .cta-content p {
+    font-size: 16px;
+  }
 }
 
 /* LOGIN/REGISTER */
@@ -1118,144 +1736,6 @@ footer h2 {
 
 .logintile .loginandclose i {
     cursor: pointer;
-}
-
-/* Algemene sectiestyling */
-.results {
-    padding: 100px;
-}
-
-.results h2 {
-    font-size: 28px;
-}
-
-.results h2 span {
-    font-weight: 700;
-}
-
-/* Lijst van accommodatietegels */
-.accommodatie-lijst {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    margin-top: 50px;
-}
-
-/* Tegelstructuur */
-.accommodatie-tegel-verticaal {
-    display: flex;
-    gap: 20px;
-    background: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
-    transition: transform 0.3s ease;
-}
-
-.img-wrapper {
-    width: 280px;
-    height: 240px;
-    overflow: hidden;
-    border-radius: 10px 0 0 10px;
-    flex-shrink: 0;
-}
-
-.img-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.img-wrapper img:hover {
-    transform: scale(1.1);
-}
-
-
-/* Info-blok */
-.accommodatie-tegel-verticaal .info {
-    padding: 15px 15px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-}
-
-.accommodatie-tegel-verticaal h3 {
-    font-size: 24px;
-    margin-bottom: 5px;
-    color: #000000;
-    font-weight: 700;
-}
-
-.accommodatie-tegel-verticaal h3 a {
-    color: #000000;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.accommodatie-tegel-verticaal h3 a:hover {
-    color: #F5C144;
-}
-
-.accommodatie-tegel-verticaal p {
-    font-size: 14px;
-    margin-bottom: 6px;
-    color: #555;
-}
-
-/* Extra faciliteiten-info */
-.accommodatie-tegel-verticaal .extra-info {
-    font-size: 14px;
-    color: #777;
-    margin-bottom: 10px;
-}
-
-/* Beoordeling */
-.ratingstars {
-    color: #F5C144;
-    font-size: 14px;
-    margin-bottom: 5px;
-}
-
-/* Prijs prominent weergegeven */
-.accommodatie-tegel-verticaal .prijs {
-    font-size: 24px;
-    font-weight: 400;
-    color: #000;
-    margin-top: auto;
-    margin-bottom: 0px;
-    display: flex;
-}
-
-.accommodatie-tegel-verticaal .prijs span {
-    font-weight: 600;
-}
-
-/* Knop onderin de tegel */
-.actie-knop {
-    display: flex;
-    justify-content: end;
-    align-items: end;
-    margin: 15px;
-}
-
-.bekijk-btn {
-    background-color: #F5C144;
-    color: white;
-    padding: 10px 18px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
-}
-
-.bekijk-btn:hover {
-    background-color: #e0ad3a;
-    color: #fff;
-    text-decoration: none;
 }
 
 /* Header dashboard icon */
@@ -1433,11 +1913,25 @@ footer h2 {
     right: 20px;
 }
 
-.lightbox-nav:focus, .lightbox-close:focus {
+.lightbox-nav:focus,
+.lightbox-close:focus {
     outline: none;
     box-shadow: none;
 }
 
+/* CTA show */
+.calltoactionshow {
+    position: relative;
+    background-image: url('/public/img/CTA.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 0px 100px 100px 100px;
+    padding: 300px 100px 100px 100px;
+}
 
 @keyframes fadeIn {
     from {
@@ -1472,17 +1966,17 @@ footer h2 {
 }
 
 .lightbox-counter {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
-  background-color: rgba(0,0,0,0.4);
-  padding: 4px 10px;
-  border-radius: 12px;
-  user-select: none;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 4px 10px;
+    border-radius: 12px;
+    user-select: none;
 }
 
 
@@ -1618,6 +2112,115 @@ footer h2 {
     font-size: 18px;
 }
 
+/* Responsive show */
+@media (max-width: 767px) {
+    .show {
+        padding: 20px;
+    }
+
+    .row1,
+    .row2 {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .row2 .beschrijving,
+    .row2 .voorzieningen {
+        width: 100%;
+    }
+
+    .voorzieningenlijst {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .vertical-line {
+        display: none;
+    }
+
+    .carousel {
+        max-width: 100%;
+    }
+
+    .carousel-slide img {
+        height: 300px;
+    }
+
+    .price-summary-card {
+        max-width: 100%;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .price-summary-info {
+        grid-template-columns: 1fr;
+        gap: 8px 0;
+    }
+
+    .book-button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .calltoactionshow {
+        padding: 350px 20px 50px 20px;
+        margin: 0 20px 50px 20px;
+    }
+
+    .carousel-btn {
+        font-size: 1.5rem;
+        padding: 0.3em;
+    }
+
+    .carousel-counter {
+        font-size: 12px;
+        padding: 2px 6px;
+    }
+
+    .lightbox-img {
+        max-height: 300px;
+        max-width: 90vw;
+    }
+}
+
+/* Tablets vanaf 768px */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .show {
+        padding: 50px;
+    }
+
+    .row1 {
+        flex-direction: row;
+    }
+
+    .row2 {
+        flex-direction: row;
+    }
+
+    .voorzieningenlijst {
+        flex-direction: row;
+        gap: 30px;
+    }
+
+    .vertical-line {
+        display: block;
+    }
+
+    .carousel-slide img {
+        height: 400px;
+    }
+
+    .price-summary-card {
+        max-width: 400px;
+        width: 100%;
+    }
+
+    .calltoactionshow {
+        padding: 350px 50px 100px 50px;
+        margin: 0 50px 100px 50px;
+    }
+}
+
 /* Boeken */
 .boeken {
     padding: 100px;
@@ -1654,12 +2257,12 @@ footer h2 {
 }
 
 .boekingtegel img {
-    width: 100%;             
-    height: 200px;           
-    object-fit: cover;       
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
-    display: block;     
+    display: block;
 }
 
 .boekinginfo {
@@ -1784,4 +2387,44 @@ footer h2 {
     justify-content: center;
     margin-top: 70px;
     gap: 16px;
+}
+
+/* Responsive dashboard */
+@media (max-width: 768px) {
+    .dashboard {
+        padding: 40px 20px;
+    }
+
+    .dashboard h2 {
+        font-size: 32px;
+        text-align: center;
+    }
+
+    .grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .boekingtegel {
+        width: 90vw;
+        max-width: 400px;
+    }
+
+    .accommodatierow {
+        flex-direction: column;
+        gap: 30px;
+        width: 90vw;
+        max-width: 400px;
+    }
+
+    .accommodatiecol {
+        width: 100%;
+        min-width: auto;
+    }
+
+    .dashboard-buttons {
+        max-width: 90vw;
+        width: 100%;
+    }
 }
