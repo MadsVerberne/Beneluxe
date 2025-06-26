@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     updateCarousel();
 
-    // LIGHTBOX
+    /* Lightbox */
     const lightbox = document.getElementById("lightbox");
     const lightboxImg = lightbox.querySelector(".lightbox-img");
     const closeBtn = document.getElementById("lightbox-close");
